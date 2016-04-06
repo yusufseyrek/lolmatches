@@ -62,8 +62,6 @@ export default class SelectSummoner extends Component {
           </View>
         </View>
 
-
-
         {UiLayer.bind(this,"")}
       </View>
 
