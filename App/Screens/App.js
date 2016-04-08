@@ -1,4 +1,6 @@
 
+console.disableYellowBox = true; 
+
 import React, {
   Component,
   StyleSheet,
@@ -25,8 +27,9 @@ export default class lolnexus extends Component {
   render() {
     return <Router createReducer={reducerCreate} sceneStyle={{backgroundColor:'#000'}}>
             <Scene key="root">
-                <Scene key="SelectSummoner" component={SelectSummoner} title={Strings.get("selectsummoner")}/>
+                
                 <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
+                <Scene key="SelectSummoner" component={SelectSummoner} title={Strings.get("selectsummoner")}/>
             </Scene>
         </Router>
   }

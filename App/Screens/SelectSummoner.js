@@ -6,11 +6,13 @@ import React, {
   View,
   TextInput,
   TouchableOpacity,
-  Alert
+  Alert,
+  Platform
 } from 'react-native';
 
 import ModalPicker from 'react-native-modal-picker';
 import Spinner from 'react-native-loading-spinner-overlay';
+import {Actions} from 'react-native-router-flux';
 
 import Strings from '../Components/Strings';
 import StaticData from '../Components/StaticData';
@@ -21,7 +23,7 @@ export default class SelectSummoner extends Component {
   constructor(props){
     super(props);
     this.state = {
-      summonerName : "",
+      summonerName : "mr zaza",
       summonerRegion : "",
       spinnerVisiblity: false
     };
@@ -61,7 +63,6 @@ export default class SelectSummoner extends Component {
             <Text style={styles.recentSearchText}>TEST</Text>
           </View>
         </View>
-
         {UiLayer.bind(this,"")}
       </View>
 
@@ -74,6 +75,13 @@ export default class SelectSummoner extends Component {
       UiLayer.isSpinnerVisible(that, true);
       NetworkManager.request("getGameInfo",{"summonerName" : summonerName, "summonerRegion": summonerRegion},function(result){
         UiLayer.isSpinnerVisible(that, false);
+        console.log(JSON.stringify(result));
+        if (result.err) {
+            Alert.alert(Strings.get("warning"),Strings.get("gamenotfound"));
+        }
+        else{
+            Actions.GameInfo({data : result});
+        }
       })
     }
     else{
@@ -100,7 +108,7 @@ let styles = StyleSheet.create({
     borderTopWidth:1,
     borderBottomWidth:1,
     borderColor:'#ddd',
-    padding:15,
+    padding:15
   },
   whiteCellItem:{
     borderBottomWidth:1,
@@ -121,7 +129,8 @@ let styles = StyleSheet.create({
     flex:1
   },
   summonerInput:{
-    height:25,
+    fontSize:18,
+    height: (Platform.OS === "ios") ? 25 : 45
   },
   regionButton:{
     height:25,

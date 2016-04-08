@@ -19,6 +19,12 @@ let Strings = {
       "warning" : {"tr" : "Uyarı", "en" : "Warning"},
       "search" : {"tr" : "Ara", "en" : "Search"},
       "recentsearch" : {"tr" : "Son Aramalar", "en" : "Recent Searches"},
+      "gamenotfound" : {"tr" : "Oyun Bulunamadı", "en" : "Game Not Found"},
+      "purpleteam" : {"tr" : "Mor Takım", "en" : "Purple Team"},
+      "blueteam" : {"tr" : "Mavi Takım", "en" : "Blue Team"},
+      "wins" : {"tr" : "Kazanmalar", "en" : "Wins"},
+      "ranked" : {"tr" : "Dereceli", "en" : "Ranked"},
+      "masteries" : {"tr" : "Kabiliyetler", "en" : "Masteries"},
   }
 
 
