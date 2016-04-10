@@ -26,20 +26,44 @@ export default class SummonerList extends Component {
         return (
             <ListView
             dataSource={this.state.dataSource}
-            renderRow={this.renderRow}
+            renderRow={this.renderRow.bind(this)}
             renderSeparator={this.renderSeparator}/>
         );
     }
-    renderSeparator(d){
+    renderSeparator(section,index){
         return(
-            <View style={styles.seperator}></View>
+            <View key={"seperator-"+index} style={styles.seperator}></View>
         )
     }
+    calculateStats(stats){
+        var kill,death,assist,winRate;
+        
+        if(stats.kills == null || stats.deaths == null || stats.assists == null){
+            return {kill : 0, death: 0, assist: 0, wins: 0, losses: 0, winRate: 0};
+        }
+        
+        kill = parseInt(stats.total_games) / parseInt(stats.kills);
+        death =  parseInt(stats.total_games) / parseInt(stats.deaths);
+        assist = parseInt(stats.total_games) / parseInt(stats.assists);
+        winRate = (parseInt(stats.wins) / (parseInt(stats.wins) + parseInt(stats.losses))) * 100;
+        console.log(winRate)
+        return {
+            kill : kill.toFixed(1), 
+            death: death.toFixed(1), 
+            assist: assist.toFixed(1), 
+            wins: stats.wins, 
+            losses: stats.losses, 
+            winRate: winRate.toFixed(0)
+        };
+    }
     renderRow(rowData, section, index){
-        console.log(rowData);
+        var cellBg = (index % 2 == 0) ? "#F5F5F5" : "#FFFFFF";
+        if(rowData.itsMe)
+            cellBg = "#FFF7BF";
+        var stats = this.calculateStats(rowData.champion_stats);
         var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
         return(
-            <View style={styles.cell}>
+            <View style={[styles.cell, {backgroundColor : cellBg}]} key={"item-"+index}>
                 <View style={styles.left}>
                     <Text style={styles.summonerName}>{rowData.summonerName}</Text>
                     <View style={styles.championImageContainer}>
@@ -56,32 +80,35 @@ export default class SummonerList extends Component {
                     </View>
                 </View>
                 <View style={styles.right}>
-                    <View style={styles.rowView}>
+                    <View style={styles.rowContainerView}>
                         <Text style={styles.greyText}>KDA: </Text>
-                        <Text style={styles.greenText}>11</Text>
+                        <Text style={styles.greenText}>{stats.kill}</Text>
                         <Text style={styles.blackText}> / </Text>
-                        <Text style={styles.redText}>11</Text>
+                        <Text style={styles.redText}>{stats.death}</Text>
                         <Text style={styles.blackText}> / </Text>
-                        <Text style={styles.yellowText}>11</Text>
+                        <Text style={styles.yellowText}>{stats.assist}</Text>
                     </View>
-                    <View style={styles.rowView}>
+                    <View style={styles.rowContainerView}>
                         <View style={styles.columnView}>
                             <Text style={styles.greyText}>{Strings.get("wins")}</Text>
-                            <Text style={styles.blackText}>1,222</Text>
+                            <Text style={styles.blackText}>{rowData.champion_stats.total_games}</Text>
                         </View>
                         <View style={styles.columnView}>
                             <Text style={styles.greyText}>{Strings.get("ranked")}</Text>
                             <View style={styles.rowView}>
-                                <Text style={styles.greenText}>{111}</Text>
+                                <Text style={styles.greenText}>{stats.wins}</Text>
                                 <Text style={styles.blackText}> / </Text>
-                                <Text style={styles.redText}>{222}</Text>
+                                <Text style={styles.redText}>{stats.losses}</Text>
                             </View>
                         </View>
                     </View>
-                    <View style={styles.rowView}>
+                    <View style={styles.rowContainerView}>
                         <View style={styles.columnView}>
                             <Text style={styles.greyText}>{Strings.get("masteries")}</Text>
-                            <Text style={styles.blackText}>12/18/0</Text>
+                            <Text style={styles.blackText}>{`${rowData.masterie.ferocity} / ${rowData.masterie.cunning} / ${rowData.masterie.resolve}`}</Text>
+                        </View>
+                        <View style={styles.columnView}>
+                            <Text style={styles.bigText}>{`${stats.winRate}%`}</Text>
                         </View>
                     </View>
                 </View>
@@ -153,29 +180,38 @@ var styles = StyleSheet.create({
     rowView:{
         flexDirection :'row',
     },
+    rowContainerView:{
+        marginTop:7,
+        flexDirection :'row',
+    },
     columnView:{
         flex:1,
         flexDirection:'column'
     },
     blackText:{
-        color:'#000',
-        fontSize:12
+        color:'black',
+        fontSize:14
     },
     greyText:{
-        color:'#aaa',
-        fontSize:12
+        color:'grey',
+        fontSize:14
     },
     greenText:{
         color:'green',
-        fontSize:12
+        fontSize:14
     },
     redText:{
         color:'red',
-        fontSize:12
+        fontSize:14
     },
     yellowText:{
         color:'orange',
-        fontSize:12
+        fontSize:14
+    },
+    bigText:{
+        color:'black',
+        alignSelf:'center',
+        fontSize:25
     }
     
 });
