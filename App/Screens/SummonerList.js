@@ -5,7 +5,8 @@ import React, {
   Text,
   View,
   ListView,
-  Image
+  Image,
+  TouchableHighlight
 } from 'react-native';
 
 
@@ -17,7 +18,6 @@ export default class SummonerList extends Component {
         super(props);
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         
-        console.log(this.props.data);
         this.state = {
             dataSource : ds.cloneWithRows(this.props.data)
         }
@@ -46,7 +46,7 @@ export default class SummonerList extends Component {
         death =  parseInt(stats.total_games) / parseInt(stats.deaths);
         assist = parseInt(stats.total_games) / parseInt(stats.assists);
         winRate = (parseInt(stats.wins) / (parseInt(stats.wins) + parseInt(stats.losses))) * 100;
-        console.log(winRate)
+
         return {
             kill : kill.toFixed(1), 
             death: death.toFixed(1), 
@@ -56,6 +56,9 @@ export default class SummonerList extends Component {
             winRate: winRate.toFixed(0)
         };
     }
+    onSummonerClick(rowData){
+        console.log(rowData);
+    }
     renderRow(rowData, section, index){
         var cellBg = (index % 2 == 0) ? "#F5F5F5" : "#FFFFFF";
         if(rowData.itsMe)
@@ -63,56 +66,58 @@ export default class SummonerList extends Component {
         var stats = this.calculateStats(rowData.champion_stats);
         var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
         return(
-            <View style={[styles.cell, {backgroundColor : cellBg}]} key={"item-"+index}>
-                <View style={styles.left}>
-                    <Text style={styles.summonerName}>{rowData.summonerName}</Text>
-                    <View style={styles.championImageContainer}>
-                        <Image style={styles.championImage} source={{uri : rowData.championSquareImage}}/>
-                        <View style={styles.spellImageContainer}>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.spells[0].spellUrl}}/>
-                            <Image style={styles.spellImageBottom} source={{uri : rowData.spells[1].spellUrl}}/>
+            <TouchableHighlight onPress={()=>this.onSummonerClick(rowData)}>
+                <View style={[styles.cell, {backgroundColor : cellBg}]} key={"item-"+index}>
+                    <View style={styles.left}>
+                        <Text style={styles.summonerName}>{rowData.summonerName}</Text>
+                        <View style={styles.championImageContainer}>
+                            <Image style={styles.championImage} source={{uri : rowData.championSquareImage}}/>
+                            <View style={styles.spellImageContainer}>
+                                <Image style={styles.spellImageTop} source={{uri : rowData.spells[0].spellUrl}}/>
+                                <Image style={styles.spellImageBottom} source={{uri : rowData.spells[1].spellUrl}}/>
+                            </View>
+                            <Text style={styles.championName}>{`${rowData.championName} (${rowData.champion_stats.total_games})`}</Text>
                         </View>
-                        <Text style={styles.championName}>{`${rowData.championName} (${rowData.champion_stats.total_games})`}</Text>
-                    </View>
-                    <View style={styles.summonerRankContainer}>
-                        <Image style={styles.rankImage} source={rankImage}/>
-                        <Text style={styles.rankText}>{rowData.rank.rankString}</Text>
-                    </View>
-                </View>
-                <View style={styles.right}>
-                    <View style={styles.rowContainerView}>
-                        <Text style={styles.greyText}>KDA: </Text>
-                        <Text style={styles.greenText}>{stats.kill}</Text>
-                        <Text style={styles.blackText}> / </Text>
-                        <Text style={styles.redText}>{stats.death}</Text>
-                        <Text style={styles.blackText}> / </Text>
-                        <Text style={styles.yellowText}>{stats.assist}</Text>
-                    </View>
-                    <View style={styles.rowContainerView}>
-                        <View style={styles.columnView}>
-                            <Text style={styles.greyText}>{Strings.get("wins")}</Text>
-                            <Text style={styles.blackText}>{rowData.champion_stats.total_games}</Text>
+                        <View style={styles.summonerRankContainer}>
+                            <Image style={styles.rankImage} source={rankImage}/>
+                            <Text style={styles.rankText}>{rowData.rank.rankString}</Text>
                         </View>
-                        <View style={styles.columnView}>
-                            <Text style={styles.greyText}>{Strings.get("ranked")}</Text>
-                            <View style={styles.rowView}>
-                                <Text style={styles.greenText}>{stats.wins}</Text>
-                                <Text style={styles.blackText}> / </Text>
-                                <Text style={styles.redText}>{stats.losses}</Text>
+                    </View>
+                    <View style={styles.right}>
+                        <View style={styles.rowContainerView}>
+                            <Text style={styles.greyText}>KDA: </Text>
+                            <Text style={styles.greenText}>{stats.kill}</Text>
+                            <Text style={styles.blackText}> / </Text>
+                            <Text style={styles.redText}>{stats.death}</Text>
+                            <Text style={styles.blackText}> / </Text>
+                            <Text style={styles.yellowText}>{stats.assist}</Text>
+                        </View>
+                        <View style={styles.rowContainerView}>
+                            <View style={styles.columnView}>
+                                <Text style={styles.greyText}>{Strings.get("wins")}</Text>
+                                <Text style={styles.blackText}>{rowData.champion_stats.total_games}</Text>
+                            </View>
+                            <View style={styles.columnView}>
+                                <Text style={styles.greyText}>{Strings.get("ranked")}</Text>
+                                <View style={styles.rowView}>
+                                    <Text style={styles.greenText}>{stats.wins}</Text>
+                                    <Text style={styles.blackText}> / </Text>
+                                    <Text style={styles.redText}>{stats.losses}</Text>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={styles.rowContainerView}>
+                            <View style={styles.columnView}>
+                                <Text style={styles.greyText}>{Strings.get("masteries")}</Text>
+                                <Text style={styles.blackText}>{`${rowData.masterie.ferocity} / ${rowData.masterie.cunning} / ${rowData.masterie.resolve}`}</Text>
+                            </View>
+                            <View style={styles.columnView}>
+                                <Text style={styles.bigText}>{`${stats.winRate}%`}</Text>
                             </View>
                         </View>
                     </View>
-                    <View style={styles.rowContainerView}>
-                        <View style={styles.columnView}>
-                            <Text style={styles.greyText}>{Strings.get("masteries")}</Text>
-                            <Text style={styles.blackText}>{`${rowData.masterie.ferocity} / ${rowData.masterie.cunning} / ${rowData.masterie.resolve}`}</Text>
-                        </View>
-                        <View style={styles.columnView}>
-                            <Text style={styles.bigText}>{`${stats.winRate}%`}</Text>
-                        </View>
-                    </View>
                 </View>
-            </View>
+            </TouchableHighlight>
         )
     }
 };

@@ -18,8 +18,7 @@ export default class GameInfo extends Component {
     constructor(props){
         super(props);
         var blueTeamMembers = [], purpleTeamMembers = [];
-        StaticData.dummy.participants.map(function (data) {
-        //this.props.data.participants.map(function (data) {
+        this.props.data.participants.map(function (data) {
             if (data.teamId == 100) {
                 blueTeamMembers.push(data);
             }else{

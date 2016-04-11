@@ -10,14 +10,16 @@ import React, {
   Platform
 } from 'react-native';
 
+var TEST_ENVIROMENT_FLAG = true;
+
 import ModalPicker from 'react-native-modal-picker';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {Actions} from 'react-native-router-flux';
 
-import Strings from '../Components/Strings';
-import StaticData from '../Components/StaticData';
-import NetworkManager from '../Components/NetworkManager';
-import UiLayer from '../Components/UiLayer';
+var Strings = require('../Components/Strings');
+var StaticData = require('../Components/StaticData');
+var NetworkManager = require('../Components/NetworkManager');
+var UiLayer = require('../Components/UiLayer');
 
 export default class SelectSummoner extends Component {
   constructor(props){
@@ -69,23 +71,28 @@ export default class SelectSummoner extends Component {
     );
   }
   searchClick(){
+    if(TEST_ENVIROMENT_FLAG){
+        Actions.GameInfo({data : StaticData.dummy});
+        return false;
+    }
     var that = this;
     var {summonerName, summonerRegion} = this.state;
     if (summonerName.trim() !== "" && summonerRegion.trim() !== "") {
-      UiLayer.isSpinnerVisible(that, true);
-      NetworkManager.request("getGameInfo",{"summonerName" : summonerName, "summonerRegion": summonerRegion},function(result){
-        UiLayer.isSpinnerVisible(that, false);
-        console.log(JSON.stringify(result));
-        if (result.err) {
-            Alert.alert(Strings.get("warning"),Strings.get("gamenotfound"));
-        }
-        else{
-            Actions.GameInfo({data : result});
-        }
-      })
+        
+        UiLayer.isSpinnerVisible(that, true);
+        NetworkManager.request("getGameInfo",{"summonerName" : summonerName, "summonerRegion": summonerRegion},function(result){
+            UiLayer.isSpinnerVisible(that, false);
+            console.log(JSON.stringify(result));
+            if (result.err) {
+                Alert.alert(Strings.get("warning"),Strings.get("gamenotfound"));
+            }
+            else{
+                Actions.GameInfo({data : result});
+            }
+        })
     }
     else{
-      Alert.alert(Strings.get("warning"),Strings.get("enterproperly"));
+        Alert.alert(Strings.get("warning"),Strings.get("enterproperly"));
     }
   }
 };
