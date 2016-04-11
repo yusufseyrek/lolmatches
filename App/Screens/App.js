@@ -11,13 +11,13 @@ import React, {
 import Strings from '../Components/Strings';
 import SelectSummoner from './SelectSummoner';
 import GameInfo from './GameInfo';
+import SummonerDetail from './SummonerDetail';
 
 import {Scene, Reducer, Router, Switch, TabBar, Modal, Schema, Actions} from 'react-native-router-flux'
 
 const reducerCreate = params=>{
     const defaultReducer = Reducer(params);
     return (state, action)=>{
-        console.log("ACTION:", action);
         return defaultReducer(state, action);
     }
 };
@@ -29,6 +29,9 @@ export default class lolnexus extends Component {
             <Scene key="root">
                 <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")}/>
                 <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
+            </Scene>
+            <Scene key="modal" component={Modal}>
+                <SummonerDetail key="SummonerDetail"/>
             </Scene>
         </Router>
   }

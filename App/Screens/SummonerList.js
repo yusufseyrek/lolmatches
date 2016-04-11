@@ -10,6 +10,10 @@ import React, {
 } from 'react-native';
 
 
+import {Actions} from 'react-native-router-flux';
+import Modal from 'react-native-modalbox';
+import SummonerDetail from './SummonerDetail';
+
 var StaticData = require('../Components/StaticData');
 var Strings = require('../Components/Strings'); 
 
@@ -19,21 +23,28 @@ export default class SummonerList extends Component {
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         
         this.state = {
-            dataSource : ds.cloneWithRows(this.props.data)
+            dataSource : ds.cloneWithRows(this.props.data),
+            modalData : {}
         }
     }
     render() {
         return (
-            <ListView
-            dataSource={this.state.dataSource}
-            renderRow={this.renderRow.bind(this)}
-            renderSeparator={this.renderSeparator}/>
+            <View style={{flex:1}}>
+                <ListView
+                    dataSource={this.state.dataSource}
+                    renderRow={this.renderRow.bind(this)}
+                    renderSeparator={this.renderSeparator}/>
+                    
+                <Modal ref={"modalRef"} style={styles.modal}>
+                    <SummonerDetail modalRef={this.refs.modalRef} modalData={this.state.modalData}/>
+                </Modal>
+            </View>
         );
     }
     renderSeparator(section,index){
         return(
             <View key={"seperator-"+index} style={styles.seperator}></View>
-        )
+        );
     }
     calculateStats(stats){
         var kill,death,assist,winRate;
@@ -57,7 +68,7 @@ export default class SummonerList extends Component {
         };
     }
     onSummonerClick(rowData){
-        console.log(rowData);
+        //this.refs.modalRef.open();
     }
     renderRow(rowData, section, index){
         var cellBg = (index % 2 == 0) ? "#F5F5F5" : "#FFFFFF";
@@ -123,6 +134,11 @@ export default class SummonerList extends Component {
 };
 
 var styles = StyleSheet.create({
+    modal: {
+        flex : 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     seperator : {
         flex:1,
         height:.5,

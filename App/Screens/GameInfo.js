@@ -32,7 +32,7 @@ export default class GameInfo extends Component {
     }
     render() {
         return (
-            <ScrollableTabView style={{paddingTop:64}}>
+            <ScrollableTabView style={styles.container}>
                 <SummonerList data={this.state.blueTeamMembers} tabLabel={Strings.get("blueteam")}/>
                 <SummonerList data={this.state.purpleTeamMembers} tabLabel={Strings.get("purpleteam")}/>
             </ScrollableTabView>
@@ -42,3 +42,11 @@ export default class GameInfo extends Component {
         console.log(rowData);
     }
 };
+
+var styles = StyleSheet.create({
+    container : {
+        flex:1,
+        paddingTop:64,
+        backgroundColor:'#ddd'
+    },
+});

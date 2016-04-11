@@ -103,7 +103,8 @@ let styles = StyleSheet.create({
   },
   container : {
     flex:1,
-    paddingTop:64
+    paddingTop:64,
+    backgroundColor:'#ddd'
   },
   sectionTitle:{
     margin:20,
