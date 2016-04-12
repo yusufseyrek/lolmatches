@@ -18,20 +18,20 @@ import {Scene, Reducer, Router, Switch, TabBar, Modal, Schema, Actions} from 're
 const reducerCreate = params=>{
     const defaultReducer = Reducer(params);
     return (state, action)=>{
+        console.log(action);
         return defaultReducer(state, action);
     }
 };
 
-
 export default class lolnexus extends Component {
   render() {
     return <Router createReducer={reducerCreate} sceneStyle={{backgroundColor:'#000'}}>
-            <Scene key="root">
-                <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")}/>
-                <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
-            </Scene>
-            <Scene key="modal" component={Modal}>
-                <SummonerDetail key="SummonerDetail"/>
+            <Scene key="modal" component={Modal} >
+                <Scene key="root">
+                    <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")} initial={true}/>
+                    <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
+                    <Scene direction="vertical" component={SummonerDetail} key="SummonerDetail" title="Test" hideNavBar={true} />
+                </Scene>
             </Scene>
         </Router>
   }

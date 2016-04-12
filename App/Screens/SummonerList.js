@@ -10,12 +10,14 @@ import React, {
 } from 'react-native';
 
 
+
 import {Actions} from 'react-native-router-flux';
-import Modal from 'react-native-modalbox';
 import SummonerDetail from './SummonerDetail';
 
 var StaticData = require('../Components/StaticData');
 var Strings = require('../Components/Strings'); 
+
+var Utils = require('../Components/Utils');
 
 export default class SummonerList extends Component {
     constructor(props){
@@ -23,22 +25,15 @@ export default class SummonerList extends Component {
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         
         this.state = {
-            dataSource : ds.cloneWithRows(this.props.data),
-            modalData : {}
+            dataSource : ds.cloneWithRows(this.props.data)
         }
     }
     render() {
         return (
-            <View style={{flex:1}}>
-                <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={this.renderRow.bind(this)}
-                    renderSeparator={this.renderSeparator}/>
-                    
-                <Modal ref={"modalRef"} style={styles.modal}>
-                    <SummonerDetail modalRef={this.refs.modalRef} modalData={this.state.modalData}/>
-                </Modal>
-            </View>
+            <ListView
+                dataSource={this.state.dataSource}
+                renderRow={this.renderRow.bind(this)}
+                renderSeparator={this.renderSeparator}/>
         );
     }
     renderSeparator(section,index){
@@ -46,35 +41,14 @@ export default class SummonerList extends Component {
             <View key={"seperator-"+index} style={styles.seperator}></View>
         );
     }
-    calculateStats(stats){
-        var kill,death,assist,winRate;
-        
-        if(stats.kills == null || stats.deaths == null || stats.assists == null){
-            return {kill : 0, death: 0, assist: 0, wins: 0, losses: 0, winRate: 0};
-        }
-        
-        kill = parseInt(stats.total_games) / parseInt(stats.kills);
-        death =  parseInt(stats.total_games) / parseInt(stats.deaths);
-        assist = parseInt(stats.total_games) / parseInt(stats.assists);
-        winRate = (parseInt(stats.wins) / (parseInt(stats.wins) + parseInt(stats.losses))) * 100;
-
-        return {
-            kill : kill.toFixed(1), 
-            death: death.toFixed(1), 
-            assist: assist.toFixed(1), 
-            wins: stats.wins, 
-            losses: stats.losses, 
-            winRate: winRate.toFixed(0)
-        };
-    }
     onSummonerClick(rowData){
-        //this.refs.modalRef.open();
+        Actions.SummonerDetail({summonerData : rowData});
     }
     renderRow(rowData, section, index){
         var cellBg = (index % 2 == 0) ? "#F5F5F5" : "#FFFFFF";
         if(rowData.itsMe)
             cellBg = "#FFF7BF";
-        var stats = this.calculateStats(rowData.champion_stats);
+        var stats = Utils.calculateStats(rowData.champion_stats);
         var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
         return(
             <TouchableHighlight onPress={()=>this.onSummonerClick(rowData)}>
@@ -134,11 +108,6 @@ export default class SummonerList extends Component {
 };
 
 var styles = StyleSheet.create({
-    modal: {
-        flex : 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
     seperator : {
         flex:1,
         height:.5,

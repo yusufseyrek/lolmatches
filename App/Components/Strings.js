@@ -26,6 +26,7 @@ let Strings = {
       "ranked" : {"tr" : "Dereceli", "en" : "Ranked"},
       "masteries" : {"tr" : "Kabiliyetler", "en" : "Masteries"},
       "winrate" : {"tr" : "Kazanma Oranı", "en" : "Win Rate"},
+      "runes" : {"tr" : "Rünler", "en" : "Runes"},
   }
 
 
