@@ -12,6 +12,7 @@ import Strings from '../Components/Strings';
 import SelectSummoner from './SelectSummoner';
 import GameInfo from './GameInfo';
 import SummonerDetail from './SummonerDetail';
+import MatchList from './MatchList';
 
 import {Scene, Reducer, Router, Switch, TabBar, Modal, Schema, Actions} from 'react-native-router-flux'
 
@@ -39,10 +40,12 @@ export default class lolnexus extends Component {
                     <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")} initial={true}/>
                     <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
                     
-                    <Scene key="SummonerDetailTab" tabs={true} direction="vertical">
-                        <Scene component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")} hideNavBar={true} />
-                        <Scene component={SummonerDetail} icon={TabIcon} key="SummonerDetail1" title={Strings.get("matchhistory")} hideNavBar={true} />
+                    
+                    <Scene key="SummonerDetailTab" tabs={true} direction="vertical" default="SummonerDetail">
+                        <Scene component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")} hideNavBar={true} initial={true} />
+                        <Scene component={MatchList} icon={TabIcon} key="MatchList" title={Strings.get("matchhistory")} hideNavBar={true} />
                     </Scene>
+                    
                 </Scene>
             </Scene>
         </Router>

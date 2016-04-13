@@ -24,8 +24,8 @@ export default class SummonerDetail extends Component {
         super(props);
     }
     mapRunesView(runes){
-        var views = runes.statistics.map(function(item) {
-            return (<Text style={[styles.heading4]}>{`${item.value} ${item.label}`}</Text>);
+        var views = runes.statistics.map(function(item, index) {
+            return (<Text key={`runes-${index}`} style={[styles.heading4]}>{`${item.value} ${item.label}`}</Text>);
         });
         
         return views;
