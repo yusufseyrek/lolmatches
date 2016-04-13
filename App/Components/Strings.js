@@ -27,6 +27,8 @@ let Strings = {
       "masteries" : {"tr" : "Kabiliyetler", "en" : "Masteries"},
       "winrate" : {"tr" : "Kazanma Oranı", "en" : "Win Rate"},
       "runes" : {"tr" : "Rünler", "en" : "Runes"},
+      "summonerdetails" : {"tr" : "Sihirdar Detayları", "en" : "Summoner Details"},
+      "matchhistory" : {"tr" : "Maç Geçmişi", "en" : "Match History"}
   }
 
 

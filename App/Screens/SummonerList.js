@@ -42,7 +42,7 @@ export default class SummonerList extends Component {
         );
     }
     onSummonerClick(rowData){
-        Actions.SummonerDetail({summonerData : rowData});
+        Actions.SummonerDetailTab({summonerData : rowData});
     }
     renderRow(rowData, section, index){
         var cellBg = (index % 2 == 0) ? "#F5F5F5" : "#FFFFFF";

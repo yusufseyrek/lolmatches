@@ -31,7 +31,8 @@ export default class SummonerDetail extends Component {
         return views;
     }
     render() {
-        var { summonerData } = this.props; 
+        var { summonerData } = this.props;
+         
         var rankImage = StaticData.getRankedIcon(summonerData.rank.tier);
         var oldRankImage = StaticData.getRankedIcon(summonerData.rank_last.tier);
 

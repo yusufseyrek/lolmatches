@@ -23,6 +23,14 @@ const reducerCreate = params=>{
     }
 };
 
+class TabIcon extends React.Component {
+    render(){
+        return (
+            <Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>
+        );
+    }
+}
+
 export default class lolnexus extends Component {
   render() {
     return <Router createReducer={reducerCreate} sceneStyle={{backgroundColor:'#000'}}>
@@ -30,7 +38,11 @@ export default class lolnexus extends Component {
                 <Scene key="root">
                     <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")} initial={true}/>
                     <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
-                    <Scene direction="vertical" component={SummonerDetail} key="SummonerDetail" title="Test" hideNavBar={true} />
+                    
+                    <Scene key="SummonerDetailTab" tabs={true} direction="vertical">
+                        <Scene component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")} hideNavBar={true} />
+                        <Scene component={SummonerDetail} icon={TabIcon} key="SummonerDetail1" title={Strings.get("matchhistory")} hideNavBar={true} />
+                    </Scene>
                 </Scene>
             </Scene>
         </Router>
