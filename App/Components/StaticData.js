@@ -29,7 +29,1123 @@ let StaticData = {
       };
       return icons[rank]
   },
-  dummy : {"gameId":377488634,"mapId":11,"gameMode":"CLASSIC","gameType":"MATCHED_GAME","gameQueueConfigId":410,"participants":[{"teamId":100,"championId":133,"profileIconId":562,"summonerName":"YILDIZ TILBE","summonerId":893035,"runes":{"statistics":[{"label":"Crit Chance","value":"+0.93%"},{"label":"Armor Pen","value":"+10.24"},{"label":"Cooldown","value":"-7.5%"},{"label":"Attack Speed","value":"+6.88%"},{"label":"Attack Damage","value":"+6.75"}]},"rank":{"tier":"platinum","division":4,"rankString":"Platinum IV"},"rank_last":{"tier":"platinum","division":2,"rankString":"Platinum II"},"champion_stats":{"wins":"5","losses":"6","kills":"126","assists":"88","deaths":"89","total_games":"313","total_wins":"169","total_losses":"144"},"top_champions":[{"champion_id":"412","kills":"178","deaths":"402","assists":"1331","wins":"43","losses":"29","played":"72","creep_score":"1704","name":"Thresh","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Thresh.png"},{"champion_id":"432","kills":"38","deaths":"85","assists":"236","wins":"9","losses":"5","played":"14","creep_score":"239","name":"Bard","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Bard.png"},{"champion_id":"64","kills":"50","deaths":"92","assists":"150","wins":"8","losses":"5","played":"13","creep_score":"516","name":"LeeSin","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/LeeSin.png"}],"championName":"Quinn","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Quinn.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Quinn_0.jpg","masterie":{"ferocity":12,"cunning":18,"resolve":0},"itsMe":false,"spells":[{"spellName":"Teleport","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerTeleport.png"},{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"}]},{"teamId":100,"championId":222,"profileIconId":502,"summonerName":"Makaveli the Don","summonerId":2760932,"runes":{"statistics":[{"label":"Attack Damage","value":"+15.26"},{"label":"Magic Resist","value":"+12.06"},{"label":"Armor","value":"+9"}]},"rank":{"tier":"platinum","division":4,"rankString":"Platinum IV"},"rank_last":{"tier":"platinum","division":5,"rankString":"Platinum V"},"champion_stats":{"wins":null,"losses":null,"kills":null,"assists":null,"deaths":null,"total_games":"110","total_wins":"64","total_losses":"46"},"top_champions":[{"champion_id":"60","kills":"94","deaths":"57","assists":"131","wins":"8","losses":"4","played":"12","creep_score":"271","name":"Elise","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Elise.png"},{"champion_id":"121","kills":"71","deaths":"15","assists":"42","wins":"6","losses":"1","played":"7","creep_score":"177","name":"Khazix","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Khazix.png"},{"champion_id":"81","kills":"52","deaths":"32","assists":"74","wins":"3","losses":"4","played":"7","creep_score":"1352","name":"Ezreal","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Ezreal.png"}],"championName":"Jinx","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Jinx.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Jinx_0.jpg","masterie":{"ferocity":18,"cunning":12,"resolve":0},"itsMe":false,"spells":[{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"},{"spellName":"Heal","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerHeal.png"}]},{"teamId":100,"championId":254,"profileIconId":1108,"summonerName":"GotYıkamaBorusu","summonerId":1826093,"runes":{"statistics":[{"label":"Attack Damage","value":"+15.26"},{"label":"Magic Resist","value":"+4.02"},{"label":"Cooldown","value":"-5%"},{"label":"Armor","value":"+9"}]},"rank":{"tier":"platinum","division":5,"rankString":"Platinum V"},"rank_last":{"tier":"platinum","division":2,"rankString":"Platinum II"},"champion_stats":{"wins":null,"losses":null,"kills":null,"assists":null,"deaths":null,"total_games":"227","total_wins":"104","total_losses":"123"},"top_champions":[{"champion_id":"111","kills":"65","deaths":"140","assists":"434","wins":"23","losses":"14","played":"37","creep_score":"1843","name":"Nautilus","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Nautilus.png"},{"champion_id":"40","kills":"10","deaths":"67","assists":"311","wins":"13","losses":"8","played":"21","creep_score":"242","name":"Janna","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Janna.png"},{"champion_id":"267","kills":"22","deaths":"81","assists":"293","wins":"11","losses":"8","played":"19","creep_score":"268","name":"Nami","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Nami.png"}],"championName":"Vi","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Vi.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Vi_0.jpg","masterie":{"ferocity":12,"cunning":18,"resolve":0},"itsMe":false,"spells":[{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"},{"spellName":"Smite","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerSmite.png"}]},{"teamId":100,"championId":127,"profileIconId":503,"summonerName":"Archenion","summonerId":404177,"runes":{"statistics":[{"label":"Magic Pen","value":"+7.83"},{"label":"Magic Resist","value":"+12.06"},{"label":"Armor","value":"+9"},{"label":"Ability Power","value":"+14.85"}]},"rank":{"tier":"platinum","division":3,"rankString":"Platinum III"},"rank_last":{"tier":"platinum","division":1,"rankString":"Platinum I"},"champion_stats":{"wins":"4","losses":"0","kills":"28","assists":"48","deaths":"19","total_games":"170","total_wins":"84","total_losses":"86"},"top_champions":[{"champion_id":"98","kills":"79","deaths":"74","assists":"190","wins":"10","losses":"6","played":"16","creep_score":"1719","name":"Shen","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Shen.png"},{"champion_id":"62","kills":"73","deaths":"46","assists":"105","wins":"7","losses":"4","played":"11","creep_score":"718","name":"MonkeyKing","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/MonkeyKing.png"},{"champion_id":"161","kills":"64","deaths":"45","assists":"95","wins":"9","losses":"2","played":"11","creep_score":"1944","name":"Velkoz","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Velkoz.png"}],"championName":"Lissandra","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Lissandra.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lissandra_0.jpg","masterie":{"ferocity":12,"cunning":18,"resolve":0},"itsMe":false,"spells":[{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"},{"spellName":"Ignite","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerDot.png"}]},{"teamId":100,"championId":412,"profileIconId":979,"summonerName":"Mârd","summonerId":10560494,"runes":{"statistics":[{"label":"Attack Damage","value":"+7.56"},{"label":"Magic Resist","value":"+12.06"},{"label":"Armor","value":"+9"},{"label":"Attack Speed","value":"+13.5%"}]},"rank":{"tier":"Unranked","rankString":"Unranked"},"rank_last":{"tier":"Unranked","rankString":"Unranked"},"champion_stats":{"wins":null,"losses":null,"kills":null,"assists":null,"deaths":null,"total_games":"9","total_wins":"6","total_losses":"3"},"top_champions":[{"champion_id":"18","kills":"34","deaths":"24","assists":"30","wins":"2","losses":"1","played":"3","creep_score":"741","name":"Tristana","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Tristana.png"},{"champion_id":"21","kills":"14","deaths":"18","assists":"15","wins":"2","losses":"0","played":"2","creep_score":"440","name":"MissFortune","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/MissFortune.png"},{"champion_id":"236","kills":"19","deaths":"16","assists":"14","wins":"1","losses":"1","played":"2","creep_score":"556","name":"Lucian","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Lucian.png"}],"championName":"Thresh","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Thresh.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Thresh_0.jpg","masterie":{"ferocity":0,"cunning":12,"resolve":18},"itsMe":false,"spells":[{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"},{"spellName":"Ignite","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerDot.png"}]},{"teamId":200,"championId":81,"profileIconId":582,"summonerName":"Samess","summonerId":3278830,"runes":{"statistics":[{"label":"Attack Damage","value":"+15.26"},{"label":"Magic Resist","value":"+12.06"},{"label":"Armor","value":"+9"}]},"rank":{"tier":"gold","division":2,"rankString":"Gold II"},"rank_last":{"tier":"platinum","division":5,"rankString":"Platinum V"},"champion_stats":{"wins":null,"losses":null,"kills":null,"assists":null,"deaths":null,"total_games":"29","total_wins":"19","total_losses":"10"},"top_champions":[{"champion_id":"35","kills":"70","deaths":"54","assists":"52","wins":"6","losses":"2","played":"8","creep_score":"711","name":"Shaco","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Shaco.png"},{"champion_id":"105","kills":"58","deaths":"22","assists":"22","wins":"4","losses":"0","played":"4","creep_score":"698","name":"Fizz","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Fizz.png"},{"champion_id":"60","kills":"52","deaths":"29","assists":"27","wins":"1","losses":"3","played":"4","creep_score":"224","name":"Elise","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Elise.png"}],"championName":"Ezreal","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Ezreal.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ezreal_0.jpg","masterie":{"ferocity":12,"cunning":18,"resolve":0},"itsMe":false,"spells":[{"spellName":"Heal","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerHeal.png"},{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"}]},{"teamId":200,"championId":245,"profileIconId":1027,"summonerName":"Merhaba Ben Uras","summonerId":5771798,"runes":{"statistics":[{"label":"Attack Speed","value":"+15.28%"},{"label":"Ability Power","value":"+10.71"},{"label":"Armor","value":"+9"},{"label":"Health","value":"+78"}]},"rank":{"tier":"platinum","division":3,"rankString":"Platinum III"},"rank_last":{"tier":"gold","division":1,"rankString":"Gold I"},"champion_stats":{"wins":"1","losses":"0","kills":"9","assists":"9","deaths":"10","total_games":"155","total_wins":"90","total_losses":"65"},"top_champions":[{"champion_id":"60","kills":"517","deaths":"255","assists":"457","wins":"34","losses":"14","played":"48","creep_score":"2063","name":"Elise","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Elise.png"},{"champion_id":"79","kills":"238","deaths":"197","assists":"402","wins":"18","losses":"15","played":"33","creep_score":"1725","name":"Gragas","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Gragas.png"},{"champion_id":"90","kills":"87","deaths":"62","assists":"89","wins":"7","losses":"4","played":"11","creep_score":"2060","name":"Malzahar","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Malzahar.png"}],"championName":"Ekko","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Ekko.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ekko_0.jpg","masterie":{"ferocity":12,"cunning":18,"resolve":0},"itsMe":true,"spells":[{"spellName":"Teleport","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerTeleport.png"},{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"}]},{"teamId":200,"championId":25,"profileIconId":508,"summonerName":"Super Frank","summonerId":423824,"runes":{"statistics":[{"label":"Magic Pen","value":"+7.83"},{"label":"Ability Power","value":"+25.56"},{"label":"Armor","value":"+9"}]},"rank":{"tier":"gold","division":2,"rankString":"Gold II"},"rank_last":{"tier":"platinum","division":2,"rankString":"Platinum II"},"champion_stats":{"wins":"5","losses":"7","kills":"41","assists":"180","deaths":"65","total_games":"121","total_wins":"59","total_losses":"62"},"top_champions":[{"champion_id":"1","kills":"136","deaths":"86","assists":"135","wins":"11","losses":"8","played":"19","creep_score":"3019","name":"Annie","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Annie.png"},{"champion_id":"54","kills":"64","deaths":"88","assists":"96","wins":"3","losses":"10","played":"13","creep_score":"1774","name":"Malphite","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Malphite.png"},{"champion_id":"25","kills":"41","deaths":"65","assists":"180","wins":"5","losses":"7","played":"12","creep_score":"353","name":"Morgana","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Morgana.png"}],"championName":"Morgana","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Morgana.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Morgana_0.jpg","masterie":{"ferocity":0,"cunning":12,"resolve":18},"itsMe":false,"spells":[{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"},{"spellName":"Ignite","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerDot.png"}]},{"teamId":200,"championId":7,"profileIconId":759,"summonerName":"The Madly","summonerId":298400,"runes":{"statistics":[{"label":"Magic Pen","value":"+7.83"},{"label":"Cooldown","value":"-5%"},{"label":"Cooldown / Level","value":"-0.28% (-5.01% @ 18)"},{"label":"Magic Resist","value":"+6.68"},{"label":"Ability Power","value":"+14.85"}]},"rank":{"tier":"gold","division":2,"rankString":"Gold II"},"rank_last":{"tier":"diamond","division":5,"rankString":"Diamond V"},"champion_stats":{"wins":"2","losses":"1","kills":"38","assists":"25","deaths":"13","total_games":"192","total_wins":"102","total_losses":"90"},"top_champions":[{"champion_id":"64","kills":"147","deaths":"119","assists":"214","wins":"8","losses":"11","played":"19","creep_score":"654","name":"LeeSin","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/LeeSin.png"},{"champion_id":"222","kills":"191","deaths":"95","assists":"157","wins":"13","losses":"5","played":"18","creep_score":"3448","name":"Jinx","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Jinx.png"},{"champion_id":"67","kills":"148","deaths":"60","assists":"114","wins":"11","losses":"5","played":"16","creep_score":"3122","name":"Vayne","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Vayne.png"}],"championName":"Leblanc","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Leblanc.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg","masterie":{"ferocity":12,"cunning":18,"resolve":0},"itsMe":false,"spells":[{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"},{"spellName":"Ignite","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerDot.png"}]},{"teamId":200,"championId":78,"profileIconId":539,"summonerName":"D Grây Man","summonerId":881631,"runes":{"statistics":[{"label":"Attack Damage","value":"+15.26"},{"label":"Magic Resist","value":"+6.7"},{"label":"Cooldown","value":"-3.33%"},{"label":"Armor","value":"+9"}]},"rank":{"tier":"platinum","division":4,"rankString":"Platinum IV"},"rank_last":{"tier":"diamond","division":4,"rankString":"Diamond IV"},"champion_stats":{"wins":"2","losses":"4","kills":"33","assists":"71","deaths":"26","total_games":"72","total_wins":"33","total_losses":"39"},"top_champions":[{"champion_id":"154","kills":"64","deaths":"55","assists":"198","wins":"9","losses":"6","played":"15","creep_score":"522","name":"Zac","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Zac.png"},{"champion_id":"254","kills":"48","deaths":"35","assists":"54","wins":"4","losses":"3","played":"7","creep_score":"198","name":"Vi","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Vi.png"},{"champion_id":"81","kills":"54","deaths":"27","assists":"62","wins":"4","losses":"3","played":"7","creep_score":"1310","name":"Ezreal","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Ezreal.png"}],"championName":"Poppy","championSquareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Poppy.png","championSplashImage":"http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Poppy_0.jpg","masterie":{"ferocity":6,"cunning":6,"resolve":18},"itsMe":false,"spells":[{"spellName":"Smite","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerSmite.png"},{"spellName":"Flash","spellUrl":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"}]}],"observers":{"encryptionKey":"ijktYLnYyR+KuY3SpRYZu48ujl3fWqYm"},"platformId":"TR1","bannedChampions":[{"championId":238,"teamId":100,"pickTurn":1,"name":"Zed","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Zed.png"},{"championId":12,"teamId":200,"pickTurn":2,"name":"Alistar","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Alistar.png"},{"championId":48,"teamId":100,"pickTurn":3,"name":"Trundle","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Trundle.png"},{"championId":105,"teamId":200,"pickTurn":4,"name":"Fizz","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Fizz.png"},{"championId":102,"teamId":100,"pickTurn":5,"name":"Shyvana","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Shyvana.png"},{"championId":111,"teamId":200,"pickTurn":6,"name":"Nautilus","squareImage":"http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Nautilus.png"}],"gameStartTime":1460119511479,"gameLength":146,"region":"tr","map":"Summoner's Rift","gameQueueConfig":"Ranked 5v5"},
+  dummy : {
+  "gameId": 380301186,
+  "mapId": 11,
+  "gameMode": "CLASSIC",
+  "gameType": "MATCHED_GAME",
+  "gameQueueConfigId": 410,
+  "participants": [
+    {
+      "teamId": 100,
+      "championId": 67,
+      "profileIconId": 906,
+      "summonerName": "veil Nebulâ",
+      "summonerId": 2832285,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Attack Damage",
+            "value": "+8.51"
+          },
+          {
+            "label": "Attack Speed",
+            "value": "+16.05%"
+          },
+          {
+            "label": "Magic Resist",
+            "value": "+6.7"
+          },
+          {
+            "label": "Armor",
+            "value": "+9"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "diamond",
+        "division": 1,
+        "rankString": "Diamond I"
+      },
+      "rank_last": {
+        "tier": "diamond",
+        "division": 4,
+        "rankString": "Diamond IV"
+      },
+      "champion_stats": {
+        "wins": "34",
+        "losses": "18",
+        "kills": "380",
+        "assists": "343",
+        "deaths": "244",
+        "total_games": "256",
+        "total_wins": "142",
+        "total_losses": "114"
+      },
+      "top_champions": [
+        {
+          "champion_id": "236",
+          "kills": "469",
+          "deaths": "293",
+          "assists": "413",
+          "wins": "32",
+          "losses": "28",
+          "played": "60",
+          "creep_score": "13410",
+          "name": "Lucian",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Lucian.png"
+        },
+        {
+          "champion_id": "67",
+          "kills": "380",
+          "deaths": "244",
+          "assists": "343",
+          "wins": "34",
+          "losses": "18",
+          "played": "52",
+          "creep_score": "9720",
+          "name": "Vayne",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Vayne.png"
+        },
+        {
+          "champion_id": "81",
+          "kills": "123",
+          "deaths": "89",
+          "assists": "134",
+          "wins": "8",
+          "losses": "14",
+          "played": "22",
+          "creep_score": "3708",
+          "name": "Ezreal",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Ezreal.png"
+        }
+      ],
+      "championName": "Vayne",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Vayne.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Vayne_0.jpg",
+      "masterie": {
+        "ferocity": 18,
+        "cunning": 12,
+        "resolve": 0
+      },
+      "itsMe": false,
+      "spells": [
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        },
+        {
+          "spellName": "Heal",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerHeal.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/906.png"
+    },
+    {
+      "teamId": 100,
+      "championId": 12,
+      "profileIconId": 912,
+      "summonerName": "67 MUSTANG GT500",
+      "summonerId": 2272730,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Armor",
+            "value": "+8.23"
+          },
+          {
+            "label": "Magic Resist",
+            "value": "+12.06"
+          },
+          {
+            "label": "Mana Regen",
+            "value": "+0.73"
+          },
+          {
+            "label": "Ability Power",
+            "value": "+14.85"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "rank_last": {
+        "tier": "gold",
+        "division": 5,
+        "rankString": "Gold V"
+      },
+      "champion_stats": {
+        "wins": "12",
+        "losses": "8",
+        "kills": "49",
+        "assists": "236",
+        "deaths": "75",
+        "total_games": "328",
+        "total_wins": "210",
+        "total_losses": "118"
+      },
+      "top_champions": [
+        {
+          "champion_id": "25",
+          "kills": "729",
+          "deaths": "569",
+          "assists": "1883",
+          "wins": "91",
+          "losses": "51",
+          "played": "142",
+          "creep_score": "10158",
+          "name": "Morgana",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Morgana.png"
+        },
+        {
+          "champion_id": "43",
+          "kills": "274",
+          "deaths": "325",
+          "assists": "1095",
+          "wins": "49",
+          "losses": "33",
+          "played": "82",
+          "creep_score": "5041",
+          "name": "Karma",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Karma.png"
+        },
+        {
+          "champion_id": "91",
+          "kills": "515",
+          "deaths": "193",
+          "assists": "303",
+          "wins": "31",
+          "losses": "11",
+          "played": "42",
+          "creep_score": "8707",
+          "name": "Talon",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Talon.png"
+        }
+      ],
+      "championName": "Alistar",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Alistar.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Alistar_0.jpg",
+      "masterie": {
+        "ferocity": 12,
+        "cunning": 18,
+        "resolve": 0
+      },
+      "itsMe": false,
+      "spells": [
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        },
+        {
+          "spellName": "Exhaust",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerExhaust.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/912.png"
+    },
+    {
+      "teamId": 100,
+      "championId": 33,
+      "profileIconId": 562,
+      "summonerName": "Anasterian",
+      "summonerId": 419551,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Attack Speed",
+            "value": "+15.28%"
+          },
+          {
+            "label": "Magic Resist / Level",
+            "value": "+1.5 (+27 @ 18)"
+          },
+          {
+            "label": "Armor",
+            "value": "+9"
+          },
+          {
+            "label": "Ability Power",
+            "value": "+14.85"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "diamond",
+        "division": 1,
+        "rankString": "Diamond I"
+      },
+      "rank_last": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "champion_stats": {
+        "wins": "0",
+        "losses": "1",
+        "kills": "10",
+        "assists": "11",
+        "deaths": "6",
+        "total_games": "289",
+        "total_wins": "154",
+        "total_losses": "135"
+      },
+      "top_champions": [
+        {
+          "champion_id": "8",
+          "kills": "761",
+          "deaths": "539",
+          "assists": "884",
+          "wins": "78",
+          "losses": "55",
+          "played": "133",
+          "creep_score": "24358",
+          "name": "Vladimir",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Vladimir.png"
+        },
+        {
+          "champion_id": "36",
+          "kills": "253",
+          "deaths": "254",
+          "assists": "481",
+          "wins": "37",
+          "losses": "21",
+          "played": "58",
+          "creep_score": "10313",
+          "name": "DrMundo",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/DrMundo.png"
+        },
+        {
+          "champion_id": "16",
+          "kills": "19",
+          "deaths": "90",
+          "assists": "249",
+          "wins": "9",
+          "losses": "10",
+          "played": "19",
+          "creep_score": "300",
+          "name": "Soraka",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Soraka.png"
+        }
+      ],
+      "championName": "Rammus",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Rammus.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Rammus_0.jpg",
+      "masterie": {
+        "ferocity": 0,
+        "cunning": 12,
+        "resolve": 18
+      },
+      "itsMe": true,
+      "spells": [
+        {
+          "spellName": "Teleport",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerTeleport.png"
+        },
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/562.png"
+    },
+    {
+      "teamId": 100,
+      "championId": 103,
+      "profileIconId": 771,
+      "summonerName": "Gaddar Omar",
+      "summonerId": 2073036,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Magic Pen",
+            "value": "+7.83"
+          },
+          {
+            "label": "Ability Power",
+            "value": "+25.56"
+          },
+          {
+            "label": "Armor",
+            "value": "+9"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "rank_last": {
+        "tier": "diamond",
+        "division": 2,
+        "rankString": "Diamond II"
+      },
+      "champion_stats": {
+        "wins": "0",
+        "losses": "1",
+        "kills": "1",
+        "assists": "1",
+        "deaths": "1",
+        "total_games": "199",
+        "total_wins": "121",
+        "total_losses": "78"
+      },
+      "top_champions": [
+        {
+          "champion_id": "60",
+          "kills": "199",
+          "deaths": "85",
+          "assists": "221",
+          "wins": "16",
+          "losses": "7",
+          "played": "23",
+          "creep_score": "726",
+          "name": "Elise",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Elise.png"
+        },
+        {
+          "champion_id": "39",
+          "kills": "109",
+          "deaths": "54",
+          "assists": "105",
+          "wins": "13",
+          "losses": "5",
+          "played": "18",
+          "creep_score": "2721",
+          "name": "Irelia",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Irelia.png"
+        },
+        {
+          "champion_id": "236",
+          "kills": "116",
+          "deaths": "66",
+          "assists": "117",
+          "wins": "9",
+          "losses": "6",
+          "played": "15",
+          "creep_score": "3001",
+          "name": "Lucian",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Lucian.png"
+        }
+      ],
+      "championName": "Ahri",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Ahri.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Ahri_0.jpg",
+      "masterie": {
+        "ferocity": 12,
+        "cunning": 18,
+        "resolve": 0
+      },
+      "itsMe": false,
+      "spells": [
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        },
+        {
+          "spellName": "Ignite",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerDot.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/771.png"
+    },
+    {
+      "teamId": 100,
+      "championId": 76,
+      "profileIconId": 1078,
+      "summonerName": "EG0 Womanizer",
+      "summonerId": 1941748,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Attack Damage",
+            "value": "+8.51"
+          },
+          {
+            "label": "Ability Power",
+            "value": "+25.56"
+          },
+          {
+            "label": "Armor",
+            "value": "+9"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "master",
+        "division": 1,
+        "rankString": "Master I"
+      },
+      "rank_last": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "champion_stats": {
+        "wins": "28",
+        "losses": "11",
+        "kills": "424",
+        "assists": "298",
+        "deaths": "204",
+        "total_games": "151",
+        "total_wins": "88",
+        "total_losses": "63"
+      },
+      "top_champions": [
+        {
+          "champion_id": "76",
+          "kills": "424",
+          "deaths": "204",
+          "assists": "298",
+          "wins": "28",
+          "losses": "11",
+          "played": "39",
+          "creep_score": "1776",
+          "name": "Nidalee",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Nidalee.png"
+        },
+        {
+          "champion_id": "103",
+          "kills": "127",
+          "deaths": "77",
+          "assists": "95",
+          "wins": "12",
+          "losses": "2",
+          "played": "14",
+          "creep_score": "3000",
+          "name": "Ahri",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Ahri.png"
+        },
+        {
+          "champion_id": "64",
+          "kills": "162",
+          "deaths": "106",
+          "assists": "114",
+          "wins": "6",
+          "losses": "6",
+          "played": "12",
+          "creep_score": "751",
+          "name": "LeeSin",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/LeeSin.png"
+        }
+      ],
+      "championName": "Nidalee",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Nidalee.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Nidalee_0.jpg",
+      "masterie": {
+        "ferocity": 12,
+        "cunning": 0,
+        "resolve": 18
+      },
+      "itsMe": false,
+      "spells": [
+        {
+          "spellName": "Smite",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerSmite.png"
+        },
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/1078.png"
+    },
+    {
+      "teamId": 200,
+      "championId": 107,
+      "profileIconId": 1106,
+      "summonerName": "Güvercin Kira",
+      "summonerId": 8192892,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Attack Damage",
+            "value": "+7.92"
+          },
+          {
+            "label": "Attack Speed",
+            "value": "+14.09%"
+          },
+          {
+            "label": "Magic Resist",
+            "value": "+6.7"
+          },
+          {
+            "label": "Cooldown",
+            "value": "-3.33%"
+          },
+          {
+            "label": "Armor",
+            "value": "+9"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "rank_last": {
+        "tier": "master",
+        "division": 1,
+        "rankString": "Master I"
+      },
+      "champion_stats": {
+        "wins": "0",
+        "losses": "1",
+        "kills": "1",
+        "assists": "3",
+        "deaths": "5",
+        "total_games": "239",
+        "total_wins": "150",
+        "total_losses": "89"
+      },
+      "top_champions": [
+        {
+          "champion_id": "104",
+          "kills": "415",
+          "deaths": "204",
+          "assists": "361",
+          "wins": "37",
+          "losses": "14",
+          "played": "51",
+          "creep_score": "4489",
+          "name": "Graves",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Graves.png"
+        },
+        {
+          "champion_id": "60",
+          "kills": "229",
+          "deaths": "166",
+          "assists": "219",
+          "wins": "23",
+          "losses": "11",
+          "played": "34",
+          "creep_score": "1490",
+          "name": "Elise",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Elise.png"
+        },
+        {
+          "champion_id": "102",
+          "kills": "204",
+          "deaths": "135",
+          "assists": "187",
+          "wins": "16",
+          "losses": "12",
+          "played": "28",
+          "creep_score": "2440",
+          "name": "Shyvana",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Shyvana.png"
+        }
+      ],
+      "championName": "Rengar",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Rengar.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Rengar_0.jpg",
+      "masterie": {
+        "ferocity": 12,
+        "cunning": 18,
+        "resolve": 0
+      },
+      "itsMe": false,
+      "spells": [
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        },
+        {
+          "spellName": "Smite",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerSmite.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/1106.png"
+    },
+    {
+      "teamId": 200,
+      "championId": 83,
+      "profileIconId": 761,
+      "summonerName": "Dartz",
+      "summonerId": 492484,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Armor Pen",
+            "value": "+16.64"
+          },
+          {
+            "label": "Magic Resist",
+            "value": "+12.06"
+          },
+          {
+            "label": "Health / Level",
+            "value": "+12 (+216.01 @ 18)"
+          },
+          {
+            "label": "Attack Damage",
+            "value": "+2.25"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "diamond",
+        "division": 1,
+        "rankString": "Diamond I"
+      },
+      "rank_last": {
+        "tier": "diamond",
+        "division": 4,
+        "rankString": "Diamond IV"
+      },
+      "champion_stats": {
+        "wins": "4",
+        "losses": "0",
+        "kills": "16",
+        "assists": "31",
+        "deaths": "12",
+        "total_games": "244",
+        "total_wins": "135",
+        "total_losses": "109"
+      },
+      "top_champions": [
+        {
+          "champion_id": "114",
+          "kills": "202",
+          "deaths": "133",
+          "assists": "148",
+          "wins": "16",
+          "losses": "13",
+          "played": "29",
+          "creep_score": "5742",
+          "name": "Fiora",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Fiora.png"
+        },
+        {
+          "champion_id": "236",
+          "kills": "163",
+          "deaths": "104",
+          "assists": "145",
+          "wins": "10",
+          "losses": "13",
+          "played": "23",
+          "creep_score": "4766",
+          "name": "Lucian",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Lucian.png"
+        },
+        {
+          "champion_id": "36",
+          "kills": "86",
+          "deaths": "83",
+          "assists": "142",
+          "wins": "11",
+          "losses": "9",
+          "played": "20",
+          "creep_score": "4228",
+          "name": "DrMundo",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/DrMundo.png"
+        }
+      ],
+      "championName": "Yorick",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Yorick.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Yorick_0.jpg",
+      "masterie": {
+        "ferocity": 18,
+        "cunning": 12,
+        "resolve": 0
+      },
+      "itsMe": false,
+      "spells": [
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        },
+        {
+          "spellName": "Teleport",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerTeleport.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/761.png"
+    },
+    {
+      "teamId": 200,
+      "championId": 133,
+      "profileIconId": 1023,
+      "summonerName": "Nyctophiliâ",
+      "summonerId": 262112,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Attack Damage",
+            "value": "+8.51"
+          },
+          {
+            "label": "Magic Resist",
+            "value": "+12.06"
+          },
+          {
+            "label": "Armor",
+            "value": "+9"
+          },
+          {
+            "label": "Attack Speed",
+            "value": "+13.5%"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "rank_last": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "champion_stats": {
+        "wins": "19",
+        "losses": "6",
+        "kills": "244",
+        "assists": "211",
+        "deaths": "130",
+        "total_games": "172",
+        "total_wins": "109",
+        "total_losses": "63"
+      },
+      "top_champions": [
+        {
+          "champion_id": "133",
+          "kills": "244",
+          "deaths": "130",
+          "assists": "211",
+          "wins": "19",
+          "losses": "6",
+          "played": "25",
+          "creep_score": "3760",
+          "name": "Quinn",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Quinn.png"
+        },
+        {
+          "champion_id": "34",
+          "kills": "119",
+          "deaths": "53",
+          "assists": "113",
+          "wins": "11",
+          "losses": "6",
+          "played": "17",
+          "creep_score": "3448",
+          "name": "Anivia",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Anivia.png"
+        },
+        {
+          "champion_id": "7",
+          "kills": "170",
+          "deaths": "101",
+          "assists": "102",
+          "wins": "9",
+          "losses": "8",
+          "played": "17",
+          "creep_score": "2644",
+          "name": "Leblanc",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Leblanc.png"
+        }
+      ],
+      "championName": "Quinn",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Quinn.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Quinn_0.jpg",
+      "masterie": {
+        "ferocity": 12,
+        "cunning": 18,
+        "resolve": 0
+      },
+      "itsMe": false,
+      "spells": [
+        {
+          "spellName": "Ignite",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerDot.png"
+        },
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/1023.png"
+    },
+    {
+      "teamId": 200,
+      "championId": 236,
+      "profileIconId": 987,
+      "summonerName": "Edward Elric W",
+      "summonerId": 621570,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Attack Damage",
+            "value": "+8.51"
+          },
+          {
+            "label": "Attack Speed",
+            "value": "+16.05%"
+          },
+          {
+            "label": "Magic Resist",
+            "value": "+6.7"
+          },
+          {
+            "label": "Health",
+            "value": "+40"
+          },
+          {
+            "label": "Armor",
+            "value": "+4"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "rank_last": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "champion_stats": {
+        "wins": "26",
+        "losses": "19",
+        "kills": "301",
+        "assists": "287",
+        "deaths": "205",
+        "total_games": "216",
+        "total_wins": "123",
+        "total_losses": "93"
+      },
+      "top_champions": [
+        {
+          "champion_id": "81",
+          "kills": "405",
+          "deaths": "263",
+          "assists": "447",
+          "wins": "31",
+          "losses": "21",
+          "played": "52",
+          "creep_score": "10211",
+          "name": "Ezreal",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Ezreal.png"
+        },
+        {
+          "champion_id": "236",
+          "kills": "301",
+          "deaths": "205",
+          "assists": "287",
+          "wins": "26",
+          "losses": "19",
+          "played": "45",
+          "creep_score": "9403",
+          "name": "Lucian",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Lucian.png"
+        },
+        {
+          "champion_id": "51",
+          "kills": "189",
+          "deaths": "164",
+          "assists": "221",
+          "wins": "18",
+          "losses": "13",
+          "played": "31",
+          "creep_score": "6201",
+          "name": "Caitlyn",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Caitlyn.png"
+        }
+      ],
+      "championName": "Lucian",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Lucian.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Lucian_0.jpg",
+      "masterie": {
+        "ferocity": 18,
+        "cunning": 12,
+        "resolve": 0
+      },
+      "itsMe": false,
+      "spells": [
+        {
+          "spellName": "Heal",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerHeal.png"
+        },
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/987.png"
+    },
+    {
+      "teamId": 200,
+      "championId": 201,
+      "profileIconId": 22,
+      "summonerName": "Bâbe",
+      "summonerId": 630838,
+      "runes": {
+        "statistics": [
+          {
+            "label": "Armor",
+            "value": "+15.49"
+          },
+          {
+            "label": "Magic Resist",
+            "value": "+4.02"
+          },
+          {
+            "label": "Cooldown",
+            "value": "-5%"
+          },
+          {
+            "label": "Health",
+            "value": "+48"
+          },
+          {
+            "label": "Health Regen",
+            "value": "+1.08"
+          }
+        ]
+      },
+      "rank": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "rank_last": {
+        "tier": "challenger",
+        "division": 1,
+        "rankString": "Challenger I"
+      },
+      "champion_stats": {
+        "wins": "31",
+        "losses": "17",
+        "kills": "49",
+        "assists": "617",
+        "deaths": "195",
+        "total_games": "260",
+        "total_wins": "155",
+        "total_losses": "105"
+      },
+      "top_champions": [
+        {
+          "champion_id": "201",
+          "kills": "49",
+          "deaths": "195",
+          "assists": "617",
+          "wins": "31",
+          "losses": "17",
+          "played": "48",
+          "creep_score": "1881",
+          "name": "Braum",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Braum.png"
+        },
+        {
+          "champion_id": "412",
+          "kills": "90",
+          "deaths": "238",
+          "assists": "643",
+          "wins": "27",
+          "losses": "21",
+          "played": "48",
+          "creep_score": "1598",
+          "name": "Thresh",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Thresh.png"
+        },
+        {
+          "champion_id": "421",
+          "kills": "148",
+          "deaths": "93",
+          "assists": "345",
+          "wins": "20",
+          "losses": "10",
+          "played": "30",
+          "creep_score": "1429",
+          "name": "RekSai",
+          "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/RekSai.png"
+        }
+      ],
+      "championName": "Braum",
+      "championSquareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Braum.png",
+      "championSplashImage": "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Braum_0.jpg",
+      "masterie": {
+        "ferocity": 0,
+        "cunning": 12,
+        "resolve": 18
+      },
+      "itsMe": false,
+      "spells": [
+        {
+          "spellName": "Flash",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerFlash.png"
+        },
+        {
+          "spellName": "Exhaust",
+          "spellUrl": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/spell/SummonerExhaust.png"
+        }
+      ],
+      "profileIconImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/22.png"
+    }
+  ],
+  "observers": {
+    "encryptionKey": "e00QplMvzvRTm73HFhlTGpcQkKnzojo6"
+  },
+  "platformId": "TR1",
+  "bannedChampions": [
+    {
+      "championId": 54,
+      "teamId": 100,
+      "pickTurn": 1,
+      "name": "Malphite",
+      "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Malphite.png"
+    },
+    {
+      "championId": 111,
+      "teamId": 200,
+      "pickTurn": 2,
+      "name": "Nautilus",
+      "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Nautilus.png"
+    },
+    {
+      "championId": 16,
+      "teamId": 100,
+      "pickTurn": 3,
+      "name": "Soraka",
+      "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Soraka.png"
+    },
+    {
+      "championId": 203,
+      "teamId": 200,
+      "pickTurn": 4,
+      "name": "Kindred",
+      "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Kindred.png"
+    },
+    {
+      "championId": 11,
+      "teamId": 100,
+      "pickTurn": 5,
+      "name": "MasterYi",
+      "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/MasterYi.png"
+    },
+    {
+      "championId": 245,
+      "teamId": 200,
+      "pickTurn": 6,
+      "name": "Ekko",
+      "squareImage": "http://ddragon.leagueoflegends.com/cdn/6.7.1/img/champion/Ekko.png"
+    }
+  ],
+  "gameStartTime": 1460729444767,
+  "gameLength": 498,
+  "region": "tr",
+  "map": "Summoner's Rift",
+  "gameQueueConfig": "Ranked 5v5",
+  "replayStatus": 1
+},
   
   matchList:[
   {

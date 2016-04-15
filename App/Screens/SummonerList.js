@@ -29,7 +29,7 @@ export default class SummonerList extends Component {
         }
     }
     render() {
-        return (
+        return ( 
             <ListView
                 dataSource={this.state.dataSource}
                 renderRow={this.renderRow.bind(this)}
@@ -53,52 +53,13 @@ export default class SummonerList extends Component {
         return(
             <TouchableHighlight onPress={()=>this.onSummonerClick(rowData)}>
                 <View style={[styles.cell, {backgroundColor : cellBg}]} key={"item-"+index}>
-                    <View style={styles.left}>
-                        <Text style={styles.summonerName}>{rowData.summonerName}</Text>
-                        <View style={styles.championImageContainer}>
+                    <View style={styles.columnView}>
+                        <View style={styles.rowView}>
                             <Image style={styles.championImage} source={{uri : rowData.championSquareImage}}/>
-                            <View style={styles.spellImageContainer}>
-                                <Image style={styles.spellImageTop} source={{uri : rowData.spells[0].spellUrl}}/>
-                                <Image style={styles.spellImageBottom} source={{uri : rowData.spells[1].spellUrl}}/>
-                            </View>
-                            <Text style={styles.championName}>{`${rowData.championName} (${rowData.champion_stats.total_games})`}</Text>
                         </View>
-                        <View style={styles.summonerRankContainer}>
-                            <Image style={styles.rankImage} source={rankImage}/>
-                            <Text style={styles.rankText}>{rowData.rank.rankString}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.right}>
-                        <View style={styles.rowContainerView}>
-                            <Text style={styles.greyText}>KDA: </Text>
-                            <Text style={styles.greenText}>{stats.kill}</Text>
-                            <Text style={styles.blackText}> / </Text>
-                            <Text style={styles.redText}>{stats.death}</Text>
-                            <Text style={styles.blackText}> / </Text>
-                            <Text style={styles.yellowText}>{stats.assist}</Text>
-                        </View>
-                        <View style={styles.rowContainerView}>
-                            <View style={styles.columnView}>
-                                <Text style={styles.greyText}>{Strings.get("wins")}</Text>
-                                <Text style={styles.blackText}>{rowData.champion_stats.total_games}</Text>
-                            </View>
-                            <View style={styles.columnView}>
-                                <Text style={styles.greyText}>{Strings.get("ranked")}</Text>
-                                <View style={styles.rowView}>
-                                    <Text style={styles.greenText}>{stats.wins}</Text>
-                                    <Text style={styles.blackText}> / </Text>
-                                    <Text style={styles.redText}>{stats.losses}</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.rowContainerView}>
-                            <View style={styles.columnView}>
-                                <Text style={styles.greyText}>{Strings.get("masteries")}</Text>
-                                <Text style={styles.blackText}>{`${rowData.masterie.ferocity} / ${rowData.masterie.cunning} / ${rowData.masterie.resolve}`}</Text>
-                            </View>
-                            <View style={styles.columnView}>
-                                <Text style={styles.bigText}>{`${stats.winRate}%`}</Text>
-                            </View>
+                        <View style={styles.rowView}>
+                            <Image style={styles.spellImage} source={{uri : rowData.spells[0].spellUrl}}/>
+                            <Image style={styles.spellImage} source={{uri : rowData.spells[1].spellUrl}}/>
                         </View>
                     </View>
                 </View>
@@ -108,6 +69,14 @@ export default class SummonerList extends Component {
 };
 
 var styles = StyleSheet.create({
+    spellImage:{
+        width:25,
+        height:25
+    },
+    championImage:{
+        width:50,
+        height:50
+    },
     seperator : {
         flex:1,
         height:.5,
@@ -117,55 +86,6 @@ var styles = StyleSheet.create({
         flex : 1,
         flexDirection:'row',
         backgroundColor:'#fff'
-    },
-    left:{
-        flex:1,
-    },
-    right:{
-        flex:1,
-    },
-    championImageContainer: {
-        marginLeft: 5,
-        flexDirection:'row',
-        alignItems:'center'
-    },
-    spellImageContainer:{
-        marginLeft:1,
-        flexDirection:'column'  
-    },
-    spellImageTop:{
-      width:21,
-      height:21  
-    },
-    spellImageBottom:{
-      width:21,
-      height:21,
-      marginTop:1
-    },
-    championName:{
-        marginLeft:5,
-        fontWeight:'bold'
-    },
-    summonerRankContainer:{
-        marginLeft: 11,
-        marginTop:5,marginBottom:5,
-        flexDirection:'row',
-        alignItems:'center'
-    },
-    rankImage:{
-        width:30,
-        height:30,
-    },
-    rankText:{
-        marginLeft:5
-    },
-    championImage:{
-        width:43,
-        height: 43,
-    },
-    summonerName:{
-        margin: 5,
-        fontSize:14
     },
     rowView:{
         flexDirection :'row',
@@ -177,31 +97,5 @@ var styles = StyleSheet.create({
     columnView:{
         flex:1,
         flexDirection:'column'
-    },
-    blackText:{
-        color:'black',
-        fontSize:14
-    },
-    greyText:{
-        color:'grey',
-        fontSize:14
-    },
-    greenText:{
-        color:'green',
-        fontSize:14
-    },
-    redText:{
-        color:'red',
-        fontSize:14
-    },
-    yellowText:{
-        color:'orange',
-        fontSize:14
-    },
-    bigText:{
-        color:'black',
-        alignSelf:'center',
-        fontSize:25
     }
-    
 });

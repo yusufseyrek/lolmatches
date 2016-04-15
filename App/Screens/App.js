@@ -34,15 +34,15 @@ class TabIcon extends React.Component {
 
 export default class lolnexus extends Component {
   render() {
-    return <Router createReducer={reducerCreate} sceneStyle={{backgroundColor:'#000'}}>
+    return <Router createReducer={reducerCreate}>
             <Scene key="modal" component={Modal} >
-                <Scene key="root">
+                <Scene key="root" hideNavBar={true}>
                     <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")} initial={true}/>
                     <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
                     
                     <Scene key="SummonerDetailTab" tabs={true} direction="vertical" default="SummonerDetail">
-                        <Scene component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")} hideNavBar={true} />
-                        <Scene component={MatchList} icon={TabIcon} key="MatchList" title={Strings.get("matchhistory")} hideNavBar={true} />
+                        <Scene component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")}  />
+                        <Scene component={MatchList} icon={TabIcon} key="MatchList" title={Strings.get("matchhistory")} />
                     </Scene>
                     
                 </Scene>

@@ -6,11 +6,17 @@ import React, {
   View,
   TextInput,
   TouchableOpacity,
+  TouchableHighlight,
   Alert,
-  Platform
+  Platform,
+  Image,
+  Dimensions
 } from 'react-native';
 
 var TEST_ENVIROMENT_FLAG = true;
+
+var { width, height } = Dimensions.get("window");
+
 
 import ModalPicker from 'react-native-modal-picker';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -33,36 +39,53 @@ export default class SelectSummoner extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.sectionTitle}>{Strings.get("search")}</Text>
+        <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
         <View style={styles.whiteCell}>
           <View style={styles.inputWrapper}>
             <TextInput
               style={styles.summonerInput}
+              placeholderTextColor={"#ddd"}
               onChangeText={(text)=> this.setState({summonerName : text})}
               placeholder={Strings.get("entersummoner")}
               value={this.state.summonerName}
             />
           </View>
           <ModalPicker
-            data={StaticData.regions}
-            style={{marginTop:15}}
-            initValue={Strings.get("selectregion")}
-            cancelText={Strings.get("cancel")}
-            onChange={(option)=>{ this.setState({summonerRegion : option.key}) }} />
+              data={StaticData.regions}
+              selectStyle={styles.regionButton}
+              initValue={Strings.get("selectregion")}
+              cancelText={Strings.get("cancel")}
+              selectTextStyle={styles.regionButtonText}
+              onChange={(option)=>{ this.setState({summonerRegion : option.key}) }}/>
+            
+            
         </View>
-        <View style={[styles.whiteCell,{marginTop:5}]}>
-          <TouchableOpacity onPress={()=> this.searchClick()}>
+        <View style={styles.whiteCell}>
+          <TouchableHighlight onPress={()=> this.searchClick()} style={{borderRadius:5, overflow:'hidden'}}>
             <Text style={styles.textButton}>{Strings.get("searchgame")}</Text>
-          </TouchableOpacity>
+          </TouchableHighlight>
         </View>
 
         <Text style={styles.sectionTitle}>{Strings.get("recentsearch")}</Text>
-        <View style={styles.whiteCell}>
-          <View style={styles.whiteCellItem}>
-            <Text style={styles.recentSearchText}>TEST</Text>
-          </View>
-          <View style={styles.whiteCellItem}>
-            <Text style={styles.recentSearchText}>TEST</Text>
+        <View style={styles.whiteBorder}></View>
+        
+        <View style={styles.containerColumnView}>
+          <View style={styles.rowView}>
+            <View style={styles.columnView}>
+              <Image style={styles.profileIcon} source={{uri: 'http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/912.png'}}/>
+            </View>
+            <View style={styles.columnView}>
+              <View style={styles.rowView} >
+                <Text style={styles.historyText}>{"ANIL"}</Text>
+              </View>
+              <View style={[styles.whiteBorder,{width:width-145}]}></View>
+              <View style={styles.rowView} >
+                <Text style={styles.historyText}>{"Platinum IV"}</Text>
+              </View>
+            </View>
+            <View style={styles.columnView}>
+              <Text style={styles.historyText}>{"TR"}</Text>
+            </View>
           </View>
         </View>
         {UiLayer.bind(this,"")}
@@ -98,24 +121,59 @@ export default class SelectSummoner extends Component {
 };
 
 let styles = StyleSheet.create({
+  historyText:{
+    backgroundColor:'transparent',
+    color:'#fff',
+    marginVertical:3,
+    marginLeft:5
+  },
+  profileIcon:{
+    width:60,
+    height:60,
+    marginRight:15
+  },
+  containerRowView:{
+    justifyContent:'space-between',
+    margin:20,
+    flexDirection:'row',
+  },
+  containerColumnView:{
+    flexDirection:'column',
+    margin:20
+  },
+  rowView:{
+    flexDirection:'row',
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  columnView:{
+    flexDirection:'column'
+  },
+  whiteBorder:{
+    width:width,
+    height:1,
+    backgroundColor:'#fff',
+    opacity:.5
+  },
+  bgImage:{
+    width:width,
+    height:height,
+    position:'absolute'
+  },
   recentSearchText:{
     fontSize:17
   },
   container : {
-    flex:1,
-    paddingTop:64,
-    backgroundColor:'#ddd'
+    flex:1
   },
   sectionTitle:{
     margin:20,
     fontSize:20,
-    fontWeight:'600'
+    fontWeight:'600',
+    backgroundColor:'transparent',
+    color:'#fff'
   },
   whiteCell:{
-    backgroundColor:'white',
-    borderTopWidth:1,
-    borderBottomWidth:1,
-    borderColor:'#ddd',
     padding:15
   },
   whiteCellItem:{
@@ -134,24 +192,35 @@ let styles = StyleSheet.create({
     flexDirection:'column'
   },
   inputWrapper:{
+    borderWidth:1,
+    borderColor:'#fff',
+    padding:10,
+    borderRadius:5,
     flex:1
   },
   summonerInput:{
+    textAlign:'center',
+    color:'#fff',
     fontSize:18,
     height: (Platform.OS === "ios") ? 25 : 45
   },
   regionButton:{
-    height:25,
-    marginLeft:10,
-    marginRight:10
+    marginTop:15,
+    justifyContent:'center',
+    alignItems:'center',
+    padding:10
+    
   },
   regionButtonText:{
-    fontSize:18,
-    color:'blue'
+    backgroundColor:'transparent',
+    color:'#fff',
+    fontSize:18
   },
   textButton:{
     textAlign:'center',
     fontSize:18,
-    color:'#9edae8'
+    color:'#fff',
+    backgroundColor:'#1266a8',
+    paddingVertical:10
   }
 });
