@@ -10,6 +10,7 @@
     "react-native": "^0.22.2",
     "react-native-loading-spinner-overlay": "0.0.8",
     "react-native-modal-picker": "0.0.13",
+    "react-native-parallax": "^0.2.2",
     "react-native-router-flux": "^3.2.8",
     "react-native-scrollable-tab-view": "^0.4.0",
     "react-native-ximage": "^1.0.2"
