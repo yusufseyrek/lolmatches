@@ -52,7 +52,6 @@ export default class MatchList extends Component {
     }
     renderRow(rowData, section, index){
         var cellBgColor = rowData.myData.winner ? 'green' : 'red';
-        console.log(rowData)
         return(
             <View style={[styles.rowView,styles.cellView]} key={`matchlistkey-${index}`}>
                 <Image style={styles.splashImage} source={{uri: rowData.myData.championSplashImage}}>
