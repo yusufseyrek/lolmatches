@@ -15,8 +15,7 @@ import React, {
 
 const TEST_ENVIROMENT_FLAG = true;
 
-var { width, height } = Dimensions.get("window");
-
+let { width, height } = Dimensions.get("window");
 
 import ModalPicker from 'react-native-modal-picker';
 import Spinner from 'react-native-loading-spinner-overlay';

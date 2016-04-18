@@ -28,7 +28,8 @@ let Strings = {
       "winrate" : {"tr" : "Kazanma Oranı", "en" : "Win Rate"},
       "runes" : {"tr" : "Rünler", "en" : "Runes"},
       "summonerdetails" : {"tr" : "Sihirdar Detayları", "en" : "Summoner Details"},
-      "matchhistory" : {"tr" : "Maç Geçmişi", "en" : "Match History"}
+      "matchhistory" : {"tr" : "Maç Geçmişi", "en" : "Match History"},
+      "back" : {"tr" : "Geri", "en" : "Back"},
   }
 
 

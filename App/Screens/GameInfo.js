@@ -4,15 +4,20 @@ import React, {
   StyleSheet,
   Text,
   View,
-  ListView
+  ListView,
+  Dimensions,
+  Image,
+  TouchableOpacity
 } from 'react-native';
+
+let { width, height } = Dimensions.get("window");
 
 import {Actions} from 'react-native-router-flux';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-
 import SummonerList from './SummonerList';
-import Strings from '../Components/Strings';
-import StaticData from '../Components/StaticData';
+
+var Strings = require('../Components/Strings');
+var StaticData = require('../Components/StaticData');
 
 export default class GameInfo extends Component {
     constructor(props){
@@ -33,21 +38,48 @@ export default class GameInfo extends Component {
     
     render() {
         return (
-            <ScrollableTabView style={styles.container}>
-                <SummonerList data={this.state.blueTeamMembers} tabLabel={Strings.get("blueteam")}/>
-                <SummonerList data={this.state.purpleTeamMembers} tabLabel={Strings.get("purpleteam")}/>
-            </ScrollableTabView>
+            <View style={styles.container}>
+                <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
+                <View style={styles.containerRowView}>
+                    <TouchableOpacity style={styles.backButton} onPress={()=>Actions.pop()}>
+                        <Text style={styles.backButtonText} >{Strings.get("back").toUpperCase()}</Text>
+                    </TouchableOpacity>
+                    <Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
+                </View>
+                <ScrollableTabView style={{flex:1}}>
+                    <SummonerList data={this.state.blueTeamMembers} tabLabel={Strings.get("blueteam").toUpperCase()}/>
+                    <SummonerList data={this.state.purpleTeamMembers} tabLabel={Strings.get("purpleteam").toUpperCase()}/>
+                </ScrollableTabView>
+            </View>
         );
-    }
-    renderRow(rowData){
-        console.log(rowData);
     }
 };
 
 var styles = StyleSheet.create({
     container : {
-        flex:1,
-        paddingTop:64,
-        backgroundColor:'#ddd'
+        flex:1
     },
+    bgImage:{
+        width:width,
+        height:height,
+        position:'absolute'
+    },
+    containerRowView:{
+        flexDirection:'row',
+        marginHorizontal : 20,
+        marginTop : 20,
+        marginBottom : 10,
+        justifyContent:'space-between',
+        alignItems:'center'
+    },
+    backButtonText:{
+        backgroundColor:'transparent',
+        color : 'white',
+        fontSize : 19
+    },
+    logoImage:{
+        width:132,
+        height:50,
+        resizeMode:'contain'
+    }
 });

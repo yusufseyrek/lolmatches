@@ -35,7 +35,7 @@ class TabIcon extends React.Component {
 export default class lolnexus extends Component {
   render() {
     return <Router createReducer={reducerCreate} sceneStyle={{backgroundColor:'#000'}}>
-            <Scene key="modal" component={Modal} >
+            <Scene key="modal" component={Modal}>
                 <Scene key="root" hideNavBar={true}>
                     <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")} initial={true}/>
                     <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
