@@ -13,6 +13,7 @@
     "react-native-parallax": "^0.2.2",
     "react-native-router-flux": "^3.2.8",
     "react-native-scrollable-tab-view": "^0.4.0",
+    "react-native-simple-store": "^0.1.0",
     "react-native-ximage": "^1.0.2"
   }
 }

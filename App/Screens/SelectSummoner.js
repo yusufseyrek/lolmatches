@@ -13,7 +13,7 @@ import React, {
   Dimensions
 } from 'react-native';
 
-var TEST_ENVIROMENT_FLAG = true;
+const TEST_ENVIROMENT_FLAG = true;
 
 var { width, height } = Dimensions.get("window");
 
@@ -26,19 +26,61 @@ var Strings = require('../Components/Strings');
 var StaticData = require('../Components/StaticData');
 var NetworkManager = require('../Components/NetworkManager');
 var UiLayer = require('../Components/UiLayer');
+var Utils = require('../Components/Utils');
 
 export default class SelectSummoner extends Component {
   constructor(props){
     super(props);
     this.state = {
-      summonerName : "mr zaza",
+      summonerName : "",
       summonerRegion : "",
-      spinnerVisiblity: false
+      spinnerVisiblity: false,
+      summonerHistory : []
     };
   }
+  componentWillMount(){
+    Utils.getSummonersFromHistory().then((summonerList)=>{
+      if(summonerList){
+        this.setState({summonerHistory : summonerList});
+      }
+    });
+  }
   render() {
+    let { summonerHistory, summonerName, summonerRegion } = this.state;
+    
+    let historyViews = summonerHistory.map(function(item, index) {
+		return (
+			<TouchableOpacity style={{marginBottom:10}} onPress={()=>this.searchClick(item.summonerName,item.region)} key={"history-"+index}>
+				<View style={styles.rowView}>
+					<View style={styles.columnView}>
+						<Image style={styles.profileIcon} source={{uri: item.profileIconImage}}/>
+					</View>
+					<View style={styles.columnView}>
+						<View style={styles.rowView}>
+							<Text style={styles.historyText}>{item.summonerName}</Text>
+						</View>
+					<View style={[styles.whiteBorder,{width:width-145}]}></View>
+						<View style={styles.rowView} >
+							<Text style={styles.historyText}>{item.rankString}</Text>
+						</View>
+					</View>
+					<View style={styles.columnView}>
+						<Text style={styles.historyText}>{item.region.toUpperCase()}</Text>
+					</View>
+				</View>
+			</TouchableOpacity>
+		);
+    }.bind(this));
+    
+    
     return (
       <View style={styles.container}>
+
+        <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
+        <View style={styles.rowView}>
+          <Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
+        </View>
+
         <View style={styles.whiteCell}>
           <View style={styles.inputWrapper}>
             <TextInput
@@ -46,7 +88,7 @@ export default class SelectSummoner extends Component {
               placeholderTextColor={"#ddd"}
               onChangeText={(text)=> this.setState({summonerName : text})}
               placeholder={Strings.get("entersummoner")}
-              value={this.state.summonerName}
+              value={summonerName}
             />
           </View>
           <ModalPicker
@@ -60,7 +102,7 @@ export default class SelectSummoner extends Component {
             
         </View>
         <View style={styles.whiteCell}>
-          <TouchableHighlight onPress={()=> this.searchClick()} style={{borderRadius:5, overflow:'hidden'}}>
+          <TouchableHighlight onPress={()=> this.searchClick(summonerName, summonerRegion)} style={{borderRadius:5, overflow:'hidden'}}>
             <Text style={styles.textButton}>{Strings.get("searchgame")}</Text>
           </TouchableHighlight>
         </View>
@@ -69,47 +111,30 @@ export default class SelectSummoner extends Component {
         <View style={styles.whiteBorder}></View>
         
         <View style={styles.containerColumnView}>
-          <View style={styles.rowView}>
-            <View style={styles.columnView}>
-              <Image style={styles.profileIcon} source={{uri: 'http://ddragon.leagueoflegends.com/cdn/6.7.1/img/profileicon/912.png'}}/>
-            </View>
-            <View style={styles.columnView}>
-              <View style={styles.rowView} >
-                <Text style={styles.historyText}>{"ANIL"}</Text>
-              </View>
-              <View style={[styles.whiteBorder,{width:width-145}]}></View>
-              <View style={styles.rowView} >
-                <Text style={styles.historyText}>{"Platinum IV"}</Text>
-              </View>
-            </View>
-            <View style={styles.columnView}>
-              <Text style={styles.historyText}>{"TR"}</Text>
-            </View>
-          </View>
+          {historyViews}
         </View>
         {UiLayer.bind(this,"")}
       </View>
 
     );
   }
-  searchClick(){
+  searchClick(summonerName, summonerRegion){
     if(TEST_ENVIROMENT_FLAG){
         Actions.GameInfo({data : StaticData.dummy});
         return false;
     }
     var that = this;
-    var {summonerName, summonerRegion} = this.state;
     if (summonerName.trim() !== "" && summonerRegion.trim() !== "") {
-        
+	 	
         UiLayer.isSpinnerVisible(that, true);
         NetworkManager.request("getGameInfo",{"summonerName" : summonerName, "summonerRegion": summonerRegion},function(result){
             UiLayer.isSpinnerVisible(that, false);
-            console.log(JSON.stringify(result));
             if (result.err) {
                 Alert.alert(Strings.get("warning"),Strings.get("gamenotfound"));
             }
             else{
-                Actions.GameInfo({data : result});
+				Utils.addSummonerToHistory(result);
+				Actions.GameInfo({data : result});
             }
         })
     }
@@ -152,7 +177,7 @@ let styles = StyleSheet.create({
     width:width,
     height:1,
     backgroundColor:'#fff',
-    opacity:.5
+    opacity:.3
   },
   bgImage:{
     width:width,
@@ -221,5 +246,11 @@ let styles = StyleSheet.create({
     color:'#fff',
     backgroundColor:'#1266a8',
     paddingVertical:10
+  },
+  logoImage:{
+	  width:200,
+	  height:75,
+	  resizeMode:'contain',
+	  marginTop:20
   }
 });

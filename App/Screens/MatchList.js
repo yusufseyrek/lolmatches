@@ -54,7 +54,7 @@ export default class MatchList extends Component {
         var cellBgColor = rowData.myData.winner ? 'green' : 'red';
         console.log(rowData)
         return(
-            <View style={[styles.rowView,styles.cellView]} >
+            <View style={[styles.rowView,styles.cellView]} key={`matchlistkey-${index}`}>
                 <Image style={styles.splashImage} source={{uri: rowData.myData.championSplashImage}}>
                     <View style={[styles.maskView,{backgroundColor: cellBgColor}]}></View>
                 </Image>
@@ -118,9 +118,8 @@ export default class MatchList extends Component {
                             <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[5]}}/>
                         </View>
                         
-                        </View>
                         
-                        
+                    </View>
                 </View>
             </View>
         );

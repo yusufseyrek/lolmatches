@@ -1163,7 +1163,7 @@ let StaticData = {
     "teams": [
       {
         "teamId": 100,
-        "winner": true,
+        "winner": false,
         "firstBlood": false,
         "firstTower": false,
         "firstInhibitor": true,
@@ -1406,7 +1406,7 @@ let StaticData = {
         "tenToTwenty": 384.3,
         "twentyToThirty": 459
       },
-      "winner": true,
+      "winner": false,
       "champLevel": 15,
       "kills": 7,
       "deaths": 3,
