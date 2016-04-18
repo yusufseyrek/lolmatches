@@ -51,8 +51,8 @@ export default class SummonerList extends Component {
         var stats = Utils.calculateStats(rowData.champion_stats);
         var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
         return(
-            <TouchableHighlight onPress={()=>this.onSummonerClick(rowData)}>
-                <View style={[styles.cell, {backgroundColor : cellBg}]} key={"item-"+index}>
+            <TouchableHighlight onPress={()=>this.onSummonerClick(rowData)} key={"item-"+index}>
+                <View style={[styles.cell, {backgroundColor : cellBg}]}>
                     <View style={styles.columnView}>
                         <View style={styles.rowView}>
                             <Image style={styles.championImage} source={{uri : rowData.championSquareImage}}/>

@@ -1,7 +1,47 @@
 
-
+import Store from 'react-native-simple-store';
+const STORE_KEY = 'summoner_history';
 
 let Utils = {
+    addSummonerToHistory(summoner){
+        var summoner = this.formatSummonerData(summoner);
+        //TODO arrange duplicated history datas.
+        Store.get(STORE_KEY).then((summonerList)=>{
+            if(summonerList){
+                if(summonerList.length > 2){
+                    summonerList.splice(0, summonerList.length - 2);
+                }
+                summonerList.push(summoner);
+            }else{
+                summonerList = [];
+                summonerList.push(summoner);
+            }
+            Store.save(STORE_KEY,summonerList).then(()=>{
+                return new Promise(function (resolve,reject) {
+                    resolve(summoner);
+                })
+            });
+        });
+    },
+    formatSummonerData(summoner){
+        var data = {
+            region : summoner.region 
+        };
+        summoner.participants.forEach(function (item) {
+            if(item.itsMe){
+                data.summonerName = item.summonerName;
+                data.rankString = item.rank.rankString;
+                data.summonerId = item.summonerId;
+                data.profileIconImage = item.profileIconImage;
+                return ;
+            }
+        });
+        return data;
+        
+    },
+    getSummonersFromHistory(){
+        return Store.get(STORE_KEY).then((list) => list.reverse())
+    },
     calculateStats(stats){
         var kill,death,assist,winRate;
         
