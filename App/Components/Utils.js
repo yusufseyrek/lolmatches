@@ -53,7 +53,8 @@ let Utils = {
         death =  parseInt(stats.total_games) / parseInt(stats.deaths);
         assist = parseInt(stats.total_games) / parseInt(stats.assists);
         winRate = (parseInt(stats.wins) / (parseInt(stats.wins) + parseInt(stats.losses))) * 100;
-
+            
+          
         return {
             kill : kill.toFixed(1), 
             death: death.toFixed(1), 
@@ -62,7 +63,23 @@ let Utils = {
             losses: stats.losses, 
             winRate: winRate.toFixed(0)
         };
+    },
+    calculateKda(kill,death,assist){
+        
+        var kda = (kill + assist) / death ;
+        newKda=kda.toFixed(2);
+        return newKda
+        
+    },
+    calculateTotalGold(totalGold){
+        
+        var total_gold = Math.round((totalGold / 1000));
+        return total_gold
+        
     }
+    
 }
+
+    
 
 module.exports = Utils;

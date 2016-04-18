@@ -58,14 +58,14 @@ export default class MatchList extends Component {
                     <View style={[styles.maskView,{backgroundColor: cellBgColor}]}></View>
                 </Image>
                 
-                
-                <View style={styles.rowView}>
+                <View style={[styles.rowView,{width : width, justifyContent:'space-between'}]}>
                     <View style={styles.columnView}>
                         <Image style={styles.championImage} source={{uri : rowData.myData.championSquareImage}}>
                             <View style={styles.championNameView}>
                                 <Text style={styles.championName}>{rowData.myData.championName}</Text>
                             </View>
                         </Image>
+          
                     </View>
                     
                     <View style={styles.columnView}>
@@ -73,10 +73,52 @@ export default class MatchList extends Component {
                             <Text style={styles.textView}>{`${rowData.myData.kills}/${rowData.myData.deaths}/${rowData.myData.assists}`}</Text>
                         </View>
                         <View style={styles.rowView}>
-                            <Text style={styles.textView}>{`${rowData.myData.kills}/${rowData.myData.deaths}/${rowData.myData.assists}`}</Text>
+                            <Text style={styles.textView}>{Utils.calculateKda(rowData.myData.kills,rowData.myData.deaths,rowData.myData.assists)}</Text>
+                            <Text style={styles.kda}>KDA</Text>
                         </View>
+                        </View>
+                        <View style={styles.columnView}>
+                        <View style={styles.rowView}>
+                                                             
+                            <Text style={styles.textView}>{Utils.calculateTotalGold(rowData.myData.totalGold)}K</Text>
+                        </View>
+                        <View style={styles.rowView}>
+                            <Text style={styles.kda}>Gold</Text>
+                        </View>
+                        <View style={styles.rowView}>
+                        
+                            <Text style={styles.textView}>{`${rowData.myData.minionsKilled}`}</Text>
+                        </View>
+                        <View style={styles.rowView}>
+                            <Text style={styles.kda}>Creep</Text>
+                        </View>
+                        </View>
+                        
+                        <View style={styles.columnView}>
+                        <View style={styles.rowView}>
+                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.spells[0].spellUrl}}/>
+                            
+                        </View>
+                        <View style={styles.rowView}>
+                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.spells[1].spellUrl}}/>
+                            
+                        </View>
+                        </View>
+                        
+                        <View style={[styles.columnView, {marginRight:10}]}>
+                        <View style={styles.rowView}>
+                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[0]}}/>
+                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[1]}}/>
+                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[2]}}/>
+                        </View>
+                        <View style={styles.rowView}>
+                            <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[3]}}/>
+                            <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[4]}}/>
+                            <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[5]}}/>
+                        </View>
+                        
+                        
                     </View>
-                    
                 </View>
             </View>
         );
@@ -86,7 +128,15 @@ export default class MatchList extends Component {
 var styles = StyleSheet.create({
     textView:{
         backgroundColor:'transparent',
-        color:'#fff' 
+        color:'#fff' ,
+        fontSize:13,
+        marginTop:3
+    },
+    kda:{
+        backgroundColor:'transparent',
+        color:'#fff' ,
+        fontSize:9,
+        marginTop:3
     },
     cellView:{
         overflow:'hidden'
@@ -110,12 +160,11 @@ var styles = StyleSheet.create({
     },
     maskView:{
         flex:1,
-        opacity:.7,
-        backgroundColor:'green'
+        opacity:.7
     },
     championImage:{
-        width: 100,
-        height:100,
+        width: width/4,
+        height:width/4,
         margin:10
     },
     containerView:{
@@ -129,7 +178,8 @@ var styles = StyleSheet.create({
         alignItems:'center'
     },
     columnView:{
-        flexDirection:'column'
+        flexDirection:'column',
+        alignItems:'center'
     },
     summonerName:{
         fontSize:20,
@@ -149,5 +199,15 @@ var styles = StyleSheet.create({
         position:'absolute',
         top:20,
         right:15
+    },
+    spellImageTop:{
+        width:width/13,
+        height:width/13,
+        margin:1
+    },
+    spellImageBottom:{
+        width:width/13,
+        height:width/13,
+        margin:1
     }
 });

@@ -13,7 +13,7 @@ import React, {
   Dimensions
 } from 'react-native';
 
-const TEST_ENVIROMENT_FLAG = false;
+const TEST_ENVIROMENT_FLAG = true;
 
 var { width, height } = Dimensions.get("window");
 
@@ -75,10 +75,12 @@ export default class SelectSummoner extends Component {
     
     return (
       <View style={styles.container}>
+
         <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
-		<View style={styles.rowView}>
-			<Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
-		</View>
+        <View style={styles.rowView}>
+          <Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
+        </View>
+
         <View style={styles.whiteCell}>
           <View style={styles.inputWrapper}>
             <TextInput
