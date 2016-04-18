@@ -39,7 +39,6 @@ export default class SelectSummoner extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
         <View style={styles.whiteCell}>
           <View style={styles.inputWrapper}>
             <TextInput

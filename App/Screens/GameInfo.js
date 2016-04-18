@@ -30,6 +30,7 @@ export default class GameInfo extends Component {
             purpleTeamMembers : purpleTeamMembers
         };
     }
+    
     render() {
         return (
             <ScrollableTabView style={styles.container}>
