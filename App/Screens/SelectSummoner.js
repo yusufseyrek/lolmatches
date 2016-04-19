@@ -128,12 +128,12 @@ export default class SelectSummoner extends Component {
         UiLayer.isSpinnerVisible(that, true);
         NetworkManager.request("getGameInfo",{"summonerName" : summonerName, "summonerRegion": summonerRegion},function(result){
             UiLayer.isSpinnerVisible(that, false);
-            if (result.err) {
+            if (result.err || result.error) {
                 Alert.alert(Strings.get("warning"),Strings.get("gamenotfound"));
             }
             else{
-				Utils.addSummonerToHistory(result);
-				Actions.GameInfo({data : result});
+                Utils.addSummonerToHistory(result);
+                Actions.GameInfo({data : result});
             }
         })
     }

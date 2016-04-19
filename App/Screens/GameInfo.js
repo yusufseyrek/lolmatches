@@ -14,7 +14,9 @@ let { width, height } = Dimensions.get("window");
 
 import {Actions} from 'react-native-router-flux';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import CustomScrollableTabBar from '../Components/CustomScrollableTabBar';
 import SummonerList from './SummonerList';
+
 
 var Strings = require('../Components/Strings');
 var StaticData = require('../Components/StaticData');
@@ -35,7 +37,6 @@ export default class GameInfo extends Component {
             purpleTeamMembers : purpleTeamMembers
         };
     }
-    
     render() {
         return (
             <View style={styles.container}>
@@ -46,9 +47,9 @@ export default class GameInfo extends Component {
                     </TouchableOpacity>
                     <Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
                 </View>
-                <ScrollableTabView style={{flex:1}}>
-                    <SummonerList data={this.state.blueTeamMembers} tabLabel={Strings.get("blueteam").toUpperCase()}/>
-                    <SummonerList data={this.state.purpleTeamMembers} tabLabel={Strings.get("purpleteam").toUpperCase()}/>
+                <ScrollableTabView style={{flex:1}} renderTabBar={()=> <CustomScrollableTabBar />}>
+                    <SummonerList data={this.state.blueTeamMembers} cellColor={StaticData.BLUE_COLOR} tabLabel={Strings.get("blueteam").toUpperCase()}/>
+                    <SummonerList data={this.state.purpleTeamMembers} cellColor={StaticData.PURPLE_COLOR} tabLabel={Strings.get("purpleteam").toUpperCase()}/>
                 </ScrollableTabView>
             </View>
         );

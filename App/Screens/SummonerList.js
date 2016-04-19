@@ -32,8 +32,7 @@ export default class SummonerList extends Component {
         return ( 
             <ListView
                 dataSource={this.state.dataSource}
-                renderRow={this.renderRow.bind(this)}
-                renderSeparator={this.renderSeparator}/>
+                renderRow={this.renderRow.bind(this)}/>
         );
     }
     renderSeparator(section,index){
@@ -45,22 +44,61 @@ export default class SummonerList extends Component {
         Actions.SummonerDetailTab({summonerData : rowData});
     }
     renderRow(rowData, section, index){
-        var cellBg = (index % 2 == 0) ? "#F5F5F5" : "#FFFFFF";
+        var cellBg = this.props.cellColor;
         if(rowData.itsMe)
             cellBg = "#FFF7BF";
         var stats = Utils.calculateStats(rowData.champion_stats);
-        var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
         return(
             <TouchableHighlight onPress={()=>this.onSummonerClick(rowData)} key={"item-"+index}>
-                <View style={[styles.cell, {backgroundColor : cellBg}]}>
-                    <View style={styles.columnView}>
-                        <View style={styles.rowView}>
-                            <Image style={styles.championImage} source={{uri : rowData.championSquareImage}}/>
+                <View style={[styles.cell]}>
+                    <View style={[styles.bgView,{backgroundColor: cellBg}]}></View>
+                    <View style={styles.rowContainerView}>
+                        
+                        <View style={[styles.columnView,{marginRight:10}]}>
+                            <View style={styles.rowView}>
+                                <Image style={styles.championImage} source={{uri : rowData.championSquareImage}}/>
+                            </View>
+                            <View style={styles.rowView}>
+                                <Image style={styles.spellImage} source={{uri : rowData.spells[0].spellUrl}}/>
+                                <Image style={styles.spellImage} source={{uri : rowData.spells[1].spellUrl}}/>
+                            </View>
                         </View>
-                        <View style={styles.rowView}>
-                            <Image style={styles.spellImage} source={{uri : rowData.spells[0].spellUrl}}/>
-                            <Image style={styles.spellImage} source={{uri : rowData.spells[1].spellUrl}}/>
+                        
+                        <View style={[styles.columnView,{flex:1}]}>
+                            
+                            <View style={styles.rowView}>
+                                <Text style={[styles.textView,{fontSize:17}]}>{`${rowData.championName} (${stats.totalPlayed})`}</Text>
+                            </View>
+                            <View style={[styles.rowView,{justifyContent:'space-between',borderBottomWidth:.5,borderColor:'white',paddingBottom:5,marginVertical:5}]}>
+                                <Text style={styles.textView}>{`${rowData.summonerName}`}</Text>
+                                <Text style={styles.textView}>{rowData.rank.rankString}</Text>
+                            </View>
+                            <View style={styles.rowView}>
+                                
+                                <View style={styles.columnView}>
+                                    <Text style={styles.textView}>KDA</Text>
+                                    <Text style={styles.textView}>{Strings.get("ranked").toUpperCase()}</Text>
+                                    <Text style={styles.textView}>{Strings.get("masteries").toUpperCase()}</Text>
+                                </View>
+                                <View style={[styles.columnView,{marginHorizontal:5}]}>
+                                    <Text style={styles.textView}>:</Text>
+                                    <Text style={styles.textView}>:</Text>
+                                    <Text style={styles.textView}>:</Text>
+                                </View>
+                                <View style={styles.columnView}>
+                                    <Text style={styles.textView}>{`${stats.kill} / ${stats.death} / ${stats.assist}`}</Text>
+                                    <Text style={styles.textView}>{`${stats.wins} / ${stats.losses}`}</Text>
+                                    <Text style={styles.textView}>{`${rowData.masterie.ferocity} / ${rowData.masterie.cunning} / ${rowData.masterie.resolve}`}</Text>
+                                </View>
+                                <View style={[styles.columnView,{flex:1}]}>
+                                    <Text style={[styles.textView,{fontSize:40,textAlign:'right'}]}>{`${stats.winRate}%`}</Text>
+                                </View>
+                                
+                            </View>
+                            
                         </View>
+                        
+                        
                     </View>
                 </View>
             </TouchableHighlight>
@@ -69,13 +107,23 @@ export default class SummonerList extends Component {
 };
 
 var styles = StyleSheet.create({
+    bgView:{
+        position:'absolute',
+        top:0,left:0,right:0,bottom:0,
+        opacity:.6
+    },
+    textView:{
+        backgroundColor:'transparent',
+        color:'white',
+        fontSize:13
+    },
     spellImage:{
-        width:25,
-        height:25
+        width:35,
+        height:35
     },
     championImage:{
-        width:50,
-        height:50
+        width:70,
+        height:70
     },
     seperator : {
         flex:1,
@@ -85,17 +133,20 @@ var styles = StyleSheet.create({
     cell : {
         flex : 1,
         flexDirection:'row',
-        backgroundColor:'#fff'
+        borderBottomWidth:1,
+        borderColor:'#fff',
+        marginBottom:10,
     },
     rowView:{
+        flex:1,
         flexDirection :'row',
     },
     rowContainerView:{
-        marginTop:7,
+        margin:10,
+        flex:1,
         flexDirection :'row',
     },
     columnView:{
-        flex:1,
         flexDirection:'column'
     }
 });

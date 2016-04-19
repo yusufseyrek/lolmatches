@@ -2,7 +2,8 @@
 
 
 let StaticData = {
-
+  BLUE_COLOR : '#255a8a',
+  PURPLE_COLOR : 'purple', 
   regions : [
     { key : "BR" , label : "BR - Brazil"},
     { key : "EUNE" , label : "EUNE - Europe Nordic & East"},

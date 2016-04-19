@@ -15,9 +15,6 @@ let NetworkManager = {
     .then((response)=>{
       cb(response);
     })
-    .catch((err)=>{
-      console.log(err);
-    })
   }
 };
 

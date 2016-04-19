@@ -34,6 +34,7 @@ export default class MatchList extends Component {
         
         return (
             <View style={{flex:1,paddingBottom:50}}>
+                <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
                 <View style={styles.container}>
                     <View style={styles.containerView}>
                         <Text style={styles.summonerName}>{summonerData.summonerName}</Text>
@@ -126,6 +127,11 @@ export default class MatchList extends Component {
 };
 
 var styles = StyleSheet.create({
+    bgImage:{
+        width:width,
+        height:height,
+        position:'absolute'
+    },
     textView:{
         backgroundColor:'transparent',
         color:'#fff' ,

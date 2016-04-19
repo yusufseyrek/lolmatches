@@ -5,9 +5,9 @@ const STORE_KEY = 'summoner_history';
 let Utils = {
     addSummonerToHistory(summoner){
         var summoner = this.formatSummonerData(summoner);
-        //TODO arrange duplicated history datas.
         Store.get(STORE_KEY).then((summonerList)=>{
             if(summonerList){
+                summonerList = this.checkForDuplicateSummoner(summoner,summonerList);
                 if(summonerList.length > 2){
                     summonerList.splice(0, summonerList.length - 2);
                 }
@@ -22,6 +22,14 @@ let Utils = {
                 })
             });
         });
+    },
+    checkForDuplicateSummoner(summoner, summonerList){
+        summonerList.forEach(function(item, index) {
+            if(item.summonerName === summoner.summonerName){
+                summonerList.splice(index, 1);
+            }
+        });
+        return summonerList;
     },
     formatSummonerData(summoner){
         var data = {
@@ -43,33 +51,32 @@ let Utils = {
         return Store.get(STORE_KEY).then((list) => list.reverse())
     },
     calculateStats(stats){
-        var kill,death,assist,winRate;
+        var kill,death,assist,winRate, totalPlayedGame;
         
-        if(stats.kills == null || stats.deaths == null || stats.assists == null){
-            return {kill : 0, death: 0, assist: 0, wins: 0, losses: 0, winRate: 0};
+        if(stats.kills == null || stats.deaths == null || stats.assists == null || stats){
+            return {kill : 0, death: 0, assist: 0, wins: 0, losses: 0, winRate: 0, totalPlayed: 0};
         }
+        totalPlayedGame = parseInt(stats.wins) + parseInt(stats.losses)
         
-        kill = parseInt(stats.total_games) / parseInt(stats.kills);
-        death =  parseInt(stats.total_games) / parseInt(stats.deaths);
-        assist = parseInt(stats.total_games) / parseInt(stats.assists);
-        winRate = (parseInt(stats.wins) / (parseInt(stats.wins) + parseInt(stats.losses))) * 100;
+        kill =  parseInt(stats.kills) / totalPlayedGame;
+        death =  parseInt(stats.deaths) / totalPlayedGame;
+        assist = parseInt(stats.assists) / totalPlayedGame;
+        winRate = (parseInt(stats.wins) / (totalPlayedGame)) * 100;
             
-          
         return {
             kill : kill.toFixed(1), 
             death: death.toFixed(1), 
             assist: assist.toFixed(1), 
             wins: stats.wins, 
             losses: stats.losses, 
+            totalPlayed : totalPlayedGame,
             winRate: winRate.toFixed(0)
         };
     },
     calculateKda(kill,death,assist){
-        
         var kda = (kill + assist) / death ;
-        newKda=kda.toFixed(2);
+        newKda = kda.toFixed(2);
         return newKda
-        
     },
     calculateTotalGold(totalGold){
         
