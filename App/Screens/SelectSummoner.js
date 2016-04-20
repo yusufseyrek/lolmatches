@@ -200,7 +200,8 @@ let styles = StyleSheet.create({
     color:'#fff'
   },
   whiteCell:{
-    padding:15
+    paddingHorizontal:15,
+    paddingVertical:10
   },
   whiteCellItem:{
     borderBottomWidth:1,
@@ -258,6 +259,6 @@ let styles = StyleSheet.create({
 	  width:200,
 	  height:75,
 	  resizeMode:'contain',
-	  marginTop:20
+	  marginTop:30
   }
 });

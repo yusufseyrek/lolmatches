@@ -1,6 +1,7 @@
 
 import Store from 'react-native-simple-store';
 const STORE_KEY = 'summoner_history';
+const HISTORY_COUNT = 2;
 
 let Utils = {
     addSummonerToHistory(summoner, cb){
@@ -8,8 +9,8 @@ let Utils = {
         Store.get(STORE_KEY).then((summonerList)=>{
             if(summonerList){
                 summonerList = this.checkForDuplicateSummoner(summoner,summonerList);
-                if(summonerList.length > 2){
-                    summonerList.splice(0, summonerList.length - 2);
+                if(summonerList.length > (HISTORY_COUNT-1)){
+                    summonerList.splice(0, summonerList.length - (HISTORY_COUNT-1));
                 }
                 summonerList.push(summoner);
             }else{
@@ -46,7 +47,10 @@ let Utils = {
         
     },
     getSummonersFromHistory(){
-        return Store.get(STORE_KEY).then((list) => list.reverse())
+        return Store.get(STORE_KEY).then((list) => {
+            if(list)
+                return list.reverse();
+        })
     },
     calculateStats(stats){
         var kill,death,assist,winRate, totalPlayedGame;
