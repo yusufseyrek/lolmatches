@@ -102,7 +102,7 @@ export default class SummonerDetail extends Component {
                         <View style={styles.columnView}>
                             <View style={styles.rowView}>
                                 <Text style={styles.heading3}>{`${Strings.get("masteries")}: `}</Text>
-                                <Text style={styles.heading3}>{`${summonerData.masterie.ferocity} / ${summonerData.masterie.cunning} / ${summonerData.masterie.resolve}`}</Text>
+                                <Text style={styles.heading3}>{`${summonerData.masterie.ferocity}/${summonerData.masterie.cunning}/${summonerData.masterie.resolve}`}</Text>
                             </View>
                         </View>      
                     </View>
@@ -133,12 +133,12 @@ export default class SummonerDetail extends Component {
 var styles = StyleSheet.create({
     heading3:{
         backgroundColor:'transparent',
-        fontSize:18,
+        fontSize:16,
         color:'white'
     },
     heading4:{
         backgroundColor:'transparent',
-        fontSize:16,
+        fontSize:14,
         color:'white'
     },
     container: {

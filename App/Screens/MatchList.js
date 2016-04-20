@@ -51,14 +51,13 @@ export default class MatchList extends Component {
             </View>
         );
     }
-    //source={{uri: rowData.myData.championSplashImage}}
+
     renderRow(rowData, section, index){
         var cellBgColor = rowData.myData.winner ? 'green' : 'red';
         return(
             <View style={[styles.rowView,styles.cellView]} key={`matchlistkey-${index}`}>
-                <Image style={styles.splashImage}>
-                    <View style={[styles.maskView,{backgroundColor: cellBgColor}]}></View>
-                </Image>
+                
+                <View style={[styles.maskView,{backgroundColor: cellBgColor}]}></View>
                 
                 <View style={[styles.rowView,{width : width, justifyContent:'space-between'}]}>
                     <View style={styles.columnView}>
@@ -107,7 +106,7 @@ export default class MatchList extends Component {
                         </View>
                         </View>
                         
-                        <View style={[styles.columnView, {marginRight:10}]}>
+                        <View style={[styles.columnView, {marginRight:10, alignItems:'stretch'}]}>
                         <View style={styles.rowView}>
                             <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[0]}}/>
                             <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[1]}}/>
@@ -142,10 +141,11 @@ var styles = StyleSheet.create({
     kda:{
         backgroundColor:'transparent',
         color:'#fff' ,
-        fontSize:9,
+        fontSize:10,
         marginTop:3
     },
     cellView:{
+        flex:1,
         overflow:'hidden',
         marginBottom:5,
         borderBottomWidth:.5,
@@ -162,14 +162,9 @@ var styles = StyleSheet.create({
         marginVertical:3,
         color:'#FFCD03'
     },
-    splashImage:{
-        width:width,
-        height:250,
-        position:'absolute',
-        resizeMode:'cover'
-    },
     maskView:{
-        flex:1,
+        position:'absolute',
+        top:0, left:0, right:0, bottom:0,
         opacity:.3
     },
     championImage:{

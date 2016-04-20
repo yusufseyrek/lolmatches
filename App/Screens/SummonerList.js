@@ -25,7 +25,8 @@ export default class SummonerList extends Component {
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         
         this.state = {
-            dataSource : ds.cloneWithRows(this.props.data)
+            dataSource : ds.cloneWithRows(this.props.data),
+            rankImageSize : 0
         }
     }
     render() {
@@ -48,6 +49,8 @@ export default class SummonerList extends Component {
         if(rowData.itsMe)
             cellBg = "#FFF7BF";
         var stats = Utils.calculateStats(rowData.champion_stats);
+        var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
+        let {rankImageSize} = this.state; 
         return(
             <TouchableHighlight onPress={()=>this.onSummonerClick(rowData)} key={"item-"+index}>
                 <View style={[styles.cell]}>
@@ -66,15 +69,21 @@ export default class SummonerList extends Component {
                         
                         <View style={[styles.columnView,{flex:1}]}>
                             
-                            <View style={styles.rowView}>
+                            <View style={[styles.rowView,{justifyContent:'space-between', alignItems:'center'}]}>
                                 <Text style={[styles.textView,{fontSize:17}]}>{`${rowData.championName} (${stats.totalPlayed})`}</Text>
+                                <Text style={[styles.textView,{fontSize:15}]}>{`${Strings.get("winrate")}: ${stats.winRate}%`}</Text>
                             </View>
                             <View style={[styles.rowView,{justifyContent:'space-between',borderBottomWidth:.5,borderColor:'white',paddingBottom:5,marginVertical:5}]}>
                                 <Text style={styles.textView}>{`${rowData.summonerName}`}</Text>
                                 <Text style={styles.textView}>{rowData.rank.rankString}</Text>
                             </View>
-                            <View style={styles.rowView}>
-                                
+                            <View style={styles.rowView} onLayout={(event)=>{
+                                //TODO fix laggin while rendering
+                                if(!rankImageSize){
+                                    this.setState({rankImageSize: event.nativeEvent.layout.height});
+                                }
+                            }}>
+                                <Image style={[styles.rankImage,{width:rankImageSize,height:rankImageSize}]} source={rankImage}/>
                                 <View style={styles.columnView}>
                                     <Text style={styles.textView}>KDA</Text>
                                     <Text style={styles.textView}>{Strings.get("ranked").toUpperCase()}</Text>
@@ -90,9 +99,6 @@ export default class SummonerList extends Component {
                                     <Text style={styles.textView}>{`${stats.wins} / ${stats.losses}`}</Text>
                                     <Text style={styles.textView}>{`${rowData.masterie.ferocity} / ${rowData.masterie.cunning} / ${rowData.masterie.resolve}`}</Text>
                                 </View>
-                                <View style={[styles.columnView,{flex:1,justifyContent:'center'}]}>
-                                    <Text style={[styles.textView,{fontSize:30,textAlign:'right'}]}>{`${stats.winRate}%`}</Text>
-                                </View>
                             </View>
                         </View>
                     </View>
@@ -103,6 +109,12 @@ export default class SummonerList extends Component {
 };
 
 var styles = StyleSheet.create({
+    rankImage:{
+        position:'absolute',
+        top:0,
+        right:0,
+        bottom:0
+    },
     bgView:{
         position:'absolute',
         top:0,left:0,right:0,bottom:0,
