@@ -90,15 +90,11 @@ export default class SummonerList extends Component {
                                     <Text style={styles.textView}>{`${stats.wins} / ${stats.losses}`}</Text>
                                     <Text style={styles.textView}>{`${rowData.masterie.ferocity} / ${rowData.masterie.cunning} / ${rowData.masterie.resolve}`}</Text>
                                 </View>
-                                <View style={[styles.columnView,{flex:1}]}>
-                                    <Text style={[styles.textView,{fontSize:40,textAlign:'right'}]}>{`${stats.winRate}%`}</Text>
+                                <View style={[styles.columnView,{flex:1,justifyContent:'center'}]}>
+                                    <Text style={[styles.textView,{fontSize:30,textAlign:'right'}]}>{`${stats.winRate}%`}</Text>
                                 </View>
-                                
                             </View>
-                            
                         </View>
-                        
-                        
                     </View>
                 </View>
             </TouchableHighlight>

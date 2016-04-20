@@ -3,7 +3,7 @@ import Store from 'react-native-simple-store';
 const STORE_KEY = 'summoner_history';
 
 let Utils = {
-    addSummonerToHistory(summoner){
+    addSummonerToHistory(summoner, cb){
         var summoner = this.formatSummonerData(summoner);
         Store.get(STORE_KEY).then((summonerList)=>{
             if(summonerList){
@@ -16,10 +16,8 @@ let Utils = {
                 summonerList = [];
                 summonerList.push(summoner);
             }
-            Store.save(STORE_KEY,summonerList).then(()=>{
-                return new Promise(function (resolve,reject) {
-                    resolve(summoner);
-                })
+            Store.save(STORE_KEY,summonerList).then((res)=>{
+                cb(summonerList.reverse());
             });
         });
     },
@@ -53,7 +51,7 @@ let Utils = {
     calculateStats(stats){
         var kill,death,assist,winRate, totalPlayedGame;
         
-        if(stats.kills == null || stats.deaths == null || stats.assists == null || stats){
+        if(stats.kills == null || stats.deaths == null || stats.assists == null){
             return {kill : 0, death: 0, assist: 0, wins: 0, losses: 0, winRate: 0, totalPlayed: 0};
         }
         totalPlayedGame = parseInt(stats.wins) + parseInt(stats.losses)

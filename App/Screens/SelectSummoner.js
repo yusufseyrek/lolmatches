@@ -13,7 +13,7 @@ import React, {
   Dimensions
 } from 'react-native';
 
-const TEST_ENVIROMENT_FLAG = true;
+const TEST_ENVIROMENT_FLAG = false;
 
 let { width, height } = Dimensions.get("window");
 
@@ -132,8 +132,10 @@ export default class SelectSummoner extends Component {
                 Alert.alert(Strings.get("warning"),Strings.get("gamenotfound"));
             }
             else{
-                Utils.addSummonerToHistory(result);
-                Actions.GameInfo({data : result});
+                Utils.addSummonerToHistory(result,(newList)=>{
+                  that.setState({summonerHistory : newList});
+                  Actions.GameInfo({data : result});
+                });
             }
         })
     }

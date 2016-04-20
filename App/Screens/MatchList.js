@@ -51,11 +51,12 @@ export default class MatchList extends Component {
             </View>
         );
     }
+    //source={{uri: rowData.myData.championSplashImage}}
     renderRow(rowData, section, index){
         var cellBgColor = rowData.myData.winner ? 'green' : 'red';
         return(
             <View style={[styles.rowView,styles.cellView]} key={`matchlistkey-${index}`}>
-                <Image style={styles.splashImage} source={{uri: rowData.myData.championSplashImage}}>
+                <Image style={styles.splashImage}>
                     <View style={[styles.maskView,{backgroundColor: cellBgColor}]}></View>
                 </Image>
                 
@@ -145,7 +146,10 @@ var styles = StyleSheet.create({
         marginTop:3
     },
     cellView:{
-        overflow:'hidden'
+        overflow:'hidden',
+        marginBottom:5,
+        borderBottomWidth:.5,
+        borderColor:'white'
     },
     championNameView:{
         position:'absolute',
@@ -166,7 +170,7 @@ var styles = StyleSheet.create({
     },
     maskView:{
         flex:1,
-        opacity:.7
+        opacity:.3
     },
     championImage:{
         width: width/4,

@@ -207,9 +207,7 @@ const styles = StyleSheet.create({
     height: TAB_HEIGHT - 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: 20,
-    paddingRight: 20,
-    flex:1
+    width : WINDOW_WIDTH / 2
   },
   container: {
     height: TAB_HEIGHT,
