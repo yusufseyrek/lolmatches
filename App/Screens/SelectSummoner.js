@@ -193,7 +193,8 @@ let styles = StyleSheet.create({
     flex:1
   },
   sectionTitle:{
-    margin:20,
+    marginHorizontal:20,
+    marginVertical:15,
     fontSize:20,
     fontWeight:'600',
     backgroundColor:'transparent',

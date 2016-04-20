@@ -18,6 +18,8 @@ import SummonerDetail from './SummonerDetail';
 var StaticData = require('../Components/StaticData');
 var Strings = require('../Components/Strings'); 
 var Utils = require('../Components/Utils');
+var NetworkManager = require('../Components/NetworkManager');
+var UiLayer = require('../Components/UiLayer');
 
 
 export default class MatchList extends Component {
@@ -26,8 +28,20 @@ export default class MatchList extends Component {
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         
         this.state = {
-            dataSource : ds.cloneWithRows(StaticData.matchList)
+            spinnerVisiblity: true,
+            dataSource : ds.cloneWithRows([])
         }
+    }
+    componentDidMount(){
+        let {summonerData} = this.props;
+        //TODO userId -> summonerId
+        //TODO Backend should cache matchlist as well.
+        UiLayer.isSpinnerVisible(this, true);
+        NetworkManager.request("getMatchList",{userId: summonerData.summonerId, summonerRegion: summonerData.region},(matchList)=>{
+            UiLayer.isSpinnerVisible(this, false);
+            if(!matchList.err)
+                this.setState({dataSource : this.state.dataSource.cloneWithRows(matchList)});
+        });
     }
     render() {
         var { summonerData } = this.props;
@@ -43,11 +57,13 @@ export default class MatchList extends Component {
                     <ListView 
                         style={{marginTop:20}}
                         dataSource={this.state.dataSource}
-                        renderRow={this.renderRow}/>
+                        enableEmptySections
+                        renderRow={this.renderRow.bind(this)}/>
                 </View>    
                 <TouchableOpacity style={styles.closeButton} onPress={()=>Actions.pop()}>
                     <Image style={styles.closeButtonImage} source={require('../Assets/Images/close.png')}/>
                 </TouchableOpacity>
+                {UiLayer.bind(this,"")}
             </View>
         );
     }
@@ -117,10 +133,9 @@ export default class MatchList extends Component {
                             <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[4]}}/>
                             <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[5]}}/>
                         </View>
-                        
-                        
                     </View>
                 </View>
+                
             </View>
         );
     }

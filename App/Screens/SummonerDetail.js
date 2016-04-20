@@ -24,6 +24,10 @@ export default class SummonerDetail extends Component {
         super(props);
     }
     mapRunesView(runes){
+        //TODO backend should return statistics only.
+        if(!runes.statistics)
+            return null;
+            
         var views = runes.statistics.map(function(item, index) {
             return (<Text key={`runes-${index}`} style={[styles.heading4]}>{`${item.value} ${item.label}`}</Text>);
         });

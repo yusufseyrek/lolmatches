@@ -67,7 +67,7 @@ export default class SummonerList extends Component {
                             </View>
                         </View>
                         
-                        <View style={[styles.columnView,{flex:1}]}>
+                        <View style={[styles.columnView,{flex:1,justifyContent:'center'}]}>
                             
                             <View style={[styles.rowView,{justifyContent:'space-between', alignItems:'center'}]}>
                                 <Text style={[styles.textView,{fontSize:17}]}>{`${rowData.championName} (${stats.totalPlayed})`}</Text>
