@@ -76,7 +76,7 @@ export default class SelectSummoner extends Component {
       <View style={styles.container}>
 
         <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
-        <View style={styles.rowView}>
+        <View style={[styles.rowView,{justifyContent:'center'}]}>
           <Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
         </View>
 
@@ -88,6 +88,7 @@ export default class SelectSummoner extends Component {
               onChangeText={(text)=> this.setState({summonerName : text})}
               placeholder={Strings.get("entersummoner")}
               value={summonerName}
+              underlineColorAndroid="transparent"
             />
           </View>
           <ModalPicker
@@ -101,8 +102,8 @@ export default class SelectSummoner extends Component {
             
         </View>
         <View style={styles.whiteCell}>
-          <TouchableHighlight onPress={()=> this.searchClick(summonerName, summonerRegion)} style={{borderRadius:5, overflow:'hidden'}}>
-            <Text style={styles.textButton}>{Strings.get("searchgame")}</Text>
+          <TouchableHighlight onPress={()=> this.searchClick(summonerName, summonerRegion)} style={styles.blueButton}>
+            <Text style={styles.blueButtonText}>{Strings.get("searchgame")}</Text>
           </TouchableHighlight>
         </View>
 
@@ -168,11 +169,11 @@ let styles = StyleSheet.create({
   },
   rowView:{
     flexDirection:'row',
-    justifyContent:'center',
-    alignItems:'center'
+    
   },
   columnView:{
-    flexDirection:'column'
+    flexDirection:'column',
+    justifyContent:'center'
   },
   whiteBorder:{
     width:width,
@@ -219,7 +220,8 @@ let styles = StyleSheet.create({
   inputWrapper:{
     borderWidth:1,
     borderColor:'#fff',
-    padding:10,
+    paddingHorizontal:10,
+    paddingVertical:(Platform.OS === "ios") ? 10 : 0,
     borderRadius:5,
     flex:1
   },
@@ -241,12 +243,16 @@ let styles = StyleSheet.create({
     color:'#fff',
     fontSize:18
   },
-  textButton:{
+  blueButton:{
+    backgroundColor:'#1266a8',
+    paddingVertical:10,
+    borderRadius:5, 
+    overflow:'hidden'
+  },
+  blueButtonText:{
     textAlign:'center',
     fontSize:18,
     color:'#fff',
-    backgroundColor:'#1266a8',
-    paddingVertical:10
   },
   logoImage:{
 	  width:200,

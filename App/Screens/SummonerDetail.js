@@ -53,7 +53,7 @@ export default class SummonerDetail extends Component {
                                 <Image style={styles.spellImageTop} source={{uri : summonerData.spells[0].spellUrl}}/>
                                 <Image style={styles.spellImageBottom} source={{uri : summonerData.spells[1].spellUrl}}/>
                             </View>
-                            <Text style={styles.championName}>{`${summonerData.championName} (${summonerData.champion_stats.total_games})`}</Text>
+                            <Text style={styles.championName}>{`${summonerData.championName} (${stats.totalPlayed})`}</Text>
                         </View>
                     </View>
                     

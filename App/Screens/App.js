@@ -41,8 +41,8 @@ export default class lolnexus extends Component {
                     <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
                     
                     <Scene key="SummonerDetailTab" tabs={true} direction="vertical" default="SummonerDetail" >
-                        <Scene component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")} hideNavBar={true} />
-                        <Scene component={MatchList} icon={TabIcon} key="MatchList" title={Strings.get("matchhistory")} hideNavBar={true} />
+                        <Scene direction="vertical" component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")} hideNavBar={true} />
+                        <Scene direction="vertical" component={MatchList} icon={TabIcon} key="MatchList" title={Strings.get("matchhistory")} hideNavBar={true} />
                     </Scene>
                     
                 </Scene>

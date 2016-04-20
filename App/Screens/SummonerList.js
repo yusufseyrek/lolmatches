@@ -134,7 +134,6 @@ var styles = StyleSheet.create({
         marginBottom:10,
     },
     rowView:{
-        flex:1,
         flexDirection :'row',
     },
     rowContainerView:{
