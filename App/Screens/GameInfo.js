@@ -26,6 +26,7 @@ export default class GameInfo extends Component {
         super(props);
         var blueTeamMembers = [], purpleTeamMembers = [];
         this.props.data.participants.map(function (data) {
+            data.region = props.data.region;
             if (data.teamId == 100) {
                 blueTeamMembers.push(data);
             }else{

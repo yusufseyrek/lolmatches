@@ -6,7 +6,8 @@ import React, {
   StyleSheet,
   Text,
   View,
-  StatusBar
+  StatusBar,
+  Platform
 } from 'react-native';
 
 import Strings from '../Components/Strings';
@@ -20,7 +21,6 @@ import {Scene, Reducer, Router, Switch, TabBar, Modal, Schema, Actions} from 're
 const reducerCreate = params=>{
     const defaultReducer = Reducer(params);
     return (state, action)=>{
-        console.log(action);
         return defaultReducer(state, action);
     }
 };
@@ -35,19 +35,22 @@ class TabIcon extends React.Component {
 
 export default class lolnexus extends Component {
     componentWillMount(){
-        StatusBar.setHidden(false);
-        StatusBar.setBarStyle('light-content', true);
-        StatusBar.setTranslucent(true);
-        StatusBar.setBackgroundColor('transparent', true);
+        if(Platform.OS === "android"){
+            StatusBar.setTranslucent(true);
+            StatusBar.setBackgroundColor('transparent', true);
+        }
+        else{
+            StatusBar.setBarStyle('light-content', true);
+        }
     }
     render() {
         return <Router createReducer={reducerCreate} sceneStyle={{backgroundColor:'#000'}}>
                 <Scene key="modal" component={Modal}>
                     <Scene key="root" hideNavBar={true}>
                         <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")} initial={true}/>
-                        <Scene key="GameInfo" component={GameInfo} title={Strings.get("gameinfo")}/>
+                        <Scene key="GameInfo" panHandlers={null} component={GameInfo} title={Strings.get("gameinfo")}/>
                         
-                        <Scene key="SummonerDetailTab" tabs={true} direction="vertical" default="SummonerDetail" >
+                        <Scene key="SummonerDetailTab" panHandlers={null} tabs={true} direction="vertical" default="SummonerDetail" >
                             <Scene direction="vertical" component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")} hideNavBar={true} />
                             <Scene direction="vertical" component={MatchList} icon={TabIcon} key="MatchList" title={Strings.get("matchhistory")} hideNavBar={true} />
                         </Scene>

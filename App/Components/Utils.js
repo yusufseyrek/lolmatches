@@ -76,6 +76,7 @@ let Utils = {
         };
     },
     calculateKda(kill,death,assist){
+        //TODO KDA calculation is wrong in case of death equals to zero.
         var kda = (kill + assist) / death ;
         newKda = kda.toFixed(2);
         return newKda
