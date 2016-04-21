@@ -11,13 +11,11 @@ import React, {
   Platform,
   Image,
   Dimensions,
-  Picker
+  Picker,
+  ScrollView
 } from 'react-native';
 
-import Dropdown from 'react-native-spring-dropdown'
-
-const TEST_ENVIROMENT_FLAG = false
-;
+const TEST_ENVIROMENT_FLAG = false;
 
 let { width, height } = Dimensions.get("window");
 
@@ -60,7 +58,7 @@ export default class SelectSummoner extends Component {
 					</View>
 					<View style={styles.columnView}>
 						<View style={styles.rowView}>
-							<Text style={styles.historyText}>{item.summonerName}</Text>
+							<Text style={[styles.historyText,{fontSize:19,fontWeight:'bold'}]}>{item.summonerName}</Text>
 						</View>
 					<View style={[styles.whiteBorder,{width:width-145}]}></View>
 						<View style={styles.rowView} >
@@ -68,7 +66,7 @@ export default class SelectSummoner extends Component {
 						</View>
 					</View>
 					<View style={styles.columnView}>
-						<Text style={styles.historyText}>{item.region.toUpperCase()}</Text>
+						<Text style={[styles.historyText,{marginLeft:5,marginTop:7}]}>{item.region.toUpperCase()}</Text>
 					</View>
 				</View>
 			</TouchableOpacity>
@@ -77,52 +75,54 @@ export default class SelectSummoner extends Component {
     
     
     return (
-      <View style={styles.container}>
+        <View style={styles.container}>
+          <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
+          <ScrollView>
+            <View style={[styles.rowView,{justifyContent:'center'}]}>
+              <Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
+            </View>
 
-        <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
-        <View style={[styles.rowView,{justifyContent:'center'}]}>
-          <Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
-        </View>
+            <View style={styles.whiteCell}>
+              <View style={styles.inputWrapper}>
+                <TextInput
+                  autoCorrect={false}
+                  style={styles.summonerInput}
+                  placeholderTextColor={"#ddd"}
+                  onChangeText={(text)=> this.setState({summonerName : text})}
+                  placeholder={Strings.get("entersummoner")}
+                  value={summonerName}
+                  underlineColorAndroid="transparent"
+                />
+              </View>
+              <ModalPicker
+                  data={StaticData.regions}
+                  selectStyle={styles.regionButton}
+                  optionTextStyle={{fontSize:18}}
+                  initValue={Strings.get("selectregion")}
+                  cancelText={Strings.get("cancel")}
+                  cancelTextStyle={{color:'red',fontSize:19}}
+                  selectTextStyle={styles.regionButtonText}
+                  overlayStyle={{backgroundColor:'rgba(55,55,55,0.5)'}}
+                  onChange={(option)=>{ this.setState({summonerRegion : option.key}) }}/>
+            </View>
+            <View style={styles.whiteCell}>
+              <TouchableHighlight onPress={()=> this.searchClick(summonerName, summonerRegion)} style={styles.blueButton}>
+                <Text style={styles.blueButtonText}>{Strings.get("searchgame")}</Text>
+              </TouchableHighlight>
+            </View>
 
-        <View style={styles.whiteCell}>
-          <View style={styles.inputWrapper}>
-            <TextInput
-              autoCorrect={false}
-              style={styles.summonerInput}
-              placeholderTextColor={"#ddd"}
-              onChangeText={(text)=> this.setState({summonerName : text})}
-              placeholder={Strings.get("entersummoner")}
-              value={summonerName}
-              underlineColorAndroid="transparent"
-            />
-          </View>
-          <ModalPicker
-              data={StaticData.regions}
-              selectStyle={styles.regionButton}
-              optionTextStyle={{fontSize:18}}
-              initValue={Strings.get("selectregion")}
-              cancelText={Strings.get("cancel")}
-              cancelTextStyle={[{color:'red',fontSize:19}]}
-              selectTextStyle={styles.regionButtonText}
-              overlayStyle={{backgroundColor:'rgba(55,55,55,0.5)'}}
-              onChange={(option)=>{ this.setState({summonerRegion : option.key}) }}/>
+            <Text style={styles.sectionTitle}>{Strings.get("recentsearch")}</Text>
+            <View style={styles.whiteBorder}></View>
             
+            <View style={styles.containerColumnView}>
+              {historyViews}
+            </View>
+          </ScrollView>
+          <TouchableOpacity style={styles.infoButton} onPress={()=>Actions.SettingsScreen()}>
+            <Image style={styles.infoButtonImage} source={require('../Assets/Images/info.png')}/>
+          </TouchableOpacity>
+          {UiLayer.bind(this,"")}
         </View>
-        <View style={styles.whiteCell}>
-          <TouchableHighlight onPress={()=> this.searchClick(summonerName, summonerRegion)} style={styles.blueButton}>
-            <Text style={styles.blueButtonText}>{Strings.get("searchgame")}</Text>
-          </TouchableHighlight>
-        </View>
-
-        <Text style={styles.sectionTitle}>{Strings.get("recentsearch")}</Text>
-        <View style={styles.whiteBorder}></View>
-        
-        <View style={styles.containerColumnView}>
-          {historyViews}
-        </View>
-        {UiLayer.bind(this,"")}
-      </View>
-
     );
   }
   searchClick(summonerName, summonerRegion){
@@ -154,16 +154,27 @@ export default class SelectSummoner extends Component {
 };
 
 let styles = StyleSheet.create({
+  infoButtonImage:{
+      width:35,
+      height:35,
+      tintColor:'white'
+  },
+  infoButton:{
+      position:'absolute',
+      top:50,
+      right:15
+  },
   historyText:{
     backgroundColor:'transparent',
     color:'#fff',
     marginVertical:3,
-    marginLeft:5
+    marginLeft:0
   },
   profileIcon:{
     width:60,
     height:60,
-    marginRight:15
+    marginRight:15,
+    borderRadius:3
   },
   containerRowView:{
     justifyContent:'space-between',

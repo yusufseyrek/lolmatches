@@ -1,7 +1,7 @@
 
 
 
-var lang = "tr";
+var lang = "en";
 
 
 let Strings = {
