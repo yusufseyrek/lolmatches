@@ -13,7 +13,8 @@ import React, {
   Dimensions
 } from 'react-native';
 
-const TEST_ENVIROMENT_FLAG = false;
+const TEST_ENVIROMENT_FLAG = true
+;
 
 let { width, height } = Dimensions.get("window");
 
@@ -83,6 +84,7 @@ export default class SelectSummoner extends Component {
         <View style={styles.whiteCell}>
           <View style={styles.inputWrapper}>
             <TextInput
+              autoCorrect={false}
               style={styles.summonerInput}
               placeholderTextColor={"#ddd"}
               onChangeText={(text)=> this.setState({summonerName : text})}
