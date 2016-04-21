@@ -86,6 +86,11 @@ let Utils = {
         var total_gold = Math.round((totalGold / 1000));
         return total_gold
         
+    },
+    renderIf(value,view){
+        if (value) {
+            return view;
+        }
     }
     
 }

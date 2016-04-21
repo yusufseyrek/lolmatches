@@ -6,10 +6,9 @@ import React, {
   View,
   ListView,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  LayoutAnimation
 } from 'react-native';
-
-
 
 import {Actions} from 'react-native-router-flux';
 import SummonerDetail from './SummonerDetail';
@@ -22,9 +21,14 @@ var Utils = require('../Components/Utils');
 export default class SummonerList extends Component {
     constructor(props){
         super(props);
-        var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => true});
+        
+        this.props.data.forEach((item,index)=>{
+            item.isViewExtended = false;
+        });
         
         this.state = {
+            dataBlob : this.props.data,
             dataSource : ds.cloneWithRows(this.props.data),
             rankImageSize : 0
         }
@@ -32,17 +36,38 @@ export default class SummonerList extends Component {
     render() {
         return ( 
             <ListView
+                ref={"listView"}
                 dataSource={this.state.dataSource}
                 renderRow={this.renderRow.bind(this)}/>
         );
     }
-    renderSeparator(section,index){
+    onCellExtend(index, value){
+        var {dataSource, dataBlob } = this.state;
+        dataBlob[index].isViewExtended = value;
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        this.setState({dataSource: dataSource.cloneWithRows(dataBlob)});   
+    }
+    onSummonerSelect(rowData){
+        Actions.SummonerDetailTab({summonerData : rowData});
+    }
+    renderExtendedView(runes){
         return(
-            <View key={"seperator-"+index} style={styles.seperator}></View>
+            <View style={styles.extendedViewStyle}>
+                <View style={styles.columnView}>
+                    <Text style={styles.textView}>{`${Strings.get("runes").toUpperCase()} : `}</Text>
+                </View>
+                <View style={styles.columnView}>
+                    {this.mapRunesView(runes)}
+                </View>
+            </View>
         );
     }
-    onSummonerClick(rowData){
-        Actions.SummonerDetailTab({summonerData : rowData});
+    renderDetailButton(rowData){
+        return(
+            <TouchableHighlight style={styles.detailButton} onPress={()=>this.onSummonerSelect(rowData)}>
+                <Image style={styles.detailButtonImage} source={require('../Assets/Images/enter.png')}/>
+            </TouchableHighlight>
+        );
     }
     renderRow(rowData, section, index){
         var cellBg = this.props.cellColor;
@@ -50,16 +75,20 @@ export default class SummonerList extends Component {
             cellBg = "#FFF7BF";
         var stats = Utils.calculateStats(rowData.champion_stats);
         var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
-        let {rankImageSize} = this.state; 
+        var {rankImageSize} = this.state;
+        rankImageSize +=10;
+        var extendedView = rowData.isViewExtended ? this.renderExtendedView(rowData.runes) : null;
         return(
-            <TouchableHighlight onPress={()=>this.onSummonerClick(rowData)} key={"item-"+index}>
+            <TouchableHighlight onPress={()=>this.onCellExtend(index,!rowData.isViewExtended)} onLongPress={()=>this.onSummonerSelect(rowData)} key={"item-"+index}>
                 <View style={[styles.cell]}>
                     <View style={[styles.bgView,{backgroundColor: cellBg}]}></View>
+                    <Image style={[styles.rankImage,{width:rankImageSize,height:rankImageSize}]} source={rankImage}/>
                     <View style={styles.rowContainerView}>
                         
                         <View style={[styles.columnView,{marginRight:10}]}>
                             <View style={styles.rowView}>
                                 <Image style={styles.championImage} source={{uri : rowData.championSquareImage}}/>
+                                {Utils.renderIf(rowData.isViewExtended, this.renderDetailButton(rowData))}
                             </View>
                             <View style={styles.rowView}>
                                 <Image style={styles.spellImage} source={{uri : rowData.spells[0].spellUrl}}/>
@@ -67,11 +96,11 @@ export default class SummonerList extends Component {
                             </View>
                         </View>
                         
-                        <View style={[styles.columnView,{flex:1,justifyContent:'center'}]}>
+                        <View style={[styles.columnView,{flex:1}]}>
                             
-                            <View style={[styles.rowView,{justifyContent:'space-between', alignItems:'center'}]}>
-                                <Text style={[styles.textView,{fontSize:17}]}>{`${rowData.championName} (${stats.totalPlayed})`}</Text>
-                                <Text style={[styles.textView,{fontSize:15}]}>{`${Strings.get("winrate")}: ${stats.winRate}%`}</Text>
+                            <View style={[styles.rowView,{justifyContent:'space-between', alignItems:'center',marginTop:3}]}>
+                                <Text style={[styles.textView,{fontSize:16}]}>{`${rowData.championName} (${stats.totalPlayed})`}</Text>
+                                <Text style={[styles.textView,{fontSize:13}]}>{`${Strings.get("winrate")}: ${stats.winRate}%`}</Text>
                             </View>
                             <View style={[styles.rowView,{justifyContent:'space-between',borderBottomWidth:.5,borderColor:'white',paddingBottom:5,marginVertical:5}]}>
                                 <Text style={styles.textView}>{`${rowData.summonerName}`}</Text>
@@ -79,11 +108,9 @@ export default class SummonerList extends Component {
                             </View>
                             <View style={styles.rowView} onLayout={(event)=>{
                                 //TODO fix laggin while rendering
-                                if(!rankImageSize){
+                                if(rankImageSize <= 10){
                                     this.setState({rankImageSize: event.nativeEvent.layout.height});
-                                }
-                            }}>
-                                <Image style={[styles.rankImage,{width:rankImageSize,height:rankImageSize}]} source={rankImage}/>
+                                }}}>
                                 <View style={styles.columnView}>
                                     <Text style={styles.textView}>KDA</Text>
                                     <Text style={styles.textView}>{Strings.get("ranked").toUpperCase()}</Text>
@@ -100,20 +127,48 @@ export default class SummonerList extends Component {
                                     <Text style={styles.textView}>{`${rowData.masterie.ferocity} / ${rowData.masterie.cunning} / ${rowData.masterie.resolve}`}</Text>
                                 </View>
                             </View>
-                        </View>
+                        </View>    
                     </View>
+                    {extendedView}
                 </View>
             </TouchableHighlight>
         )
     }
+    mapRunesView(runes){
+        //TODO backend should return statistics only.
+        if(!runes.statistics)
+            return null;
+            
+        var views = runes.statistics.map(function(item, index) {
+            return (<Text key={`runes-${index}`} style={[styles.textView]}>{`${item.value} ${item.label}`}</Text>);
+        });
+        
+        return views;
+    }
 };
 
 var styles = StyleSheet.create({
-    rankImage:{
+    detailButton:{
         position:'absolute',
         top:0,
-        right:0,
-        bottom:0,
+        left:0,
+        padding:15,
+        backgroundColor:'black',
+        opacity:.7
+    },
+    detailButtonImage:{
+        width:40,
+        height:40,
+    },
+    extendedViewStyle:{
+        flexDirection:'row',
+        margin:10,
+        marginBottom: 0
+    },
+    rankImage:{
+        position:'absolute',
+        right:10,
+        bottom:10,
         resizeMode:'stretch'
     },
     bgView:{
@@ -124,7 +179,10 @@ var styles = StyleSheet.create({
     textView:{
         backgroundColor:'transparent',
         color:'white',
-        fontSize:13
+        fontSize:13,
+        textShadowColor:'black',
+        textShadowOffset:{width:1,height:1},
+        textShadowRadius:1
     },
     spellImage:{
         width:35,
@@ -141,16 +199,18 @@ var styles = StyleSheet.create({
     },
     cell : {
         flex : 1,
-        flexDirection:'row',
+        flexDirection:'column',
         borderBottomWidth:1,
         borderColor:'#fff',
         marginBottom:10,
+        paddingBottom:10
     },
     rowView:{
         flexDirection :'row',
     },
     rowContainerView:{
         margin:10,
+        marginBottom: 0,
         flex:1,
         flexDirection :'row',
     },
