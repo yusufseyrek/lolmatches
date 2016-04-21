@@ -10,10 +10,13 @@ import React, {
   Alert,
   Platform,
   Image,
-  Dimensions
+  Dimensions,
+  Picker
 } from 'react-native';
 
-const TEST_ENVIROMENT_FLAG = true
+import Dropdown from 'react-native-spring-dropdown'
+
+const TEST_ENVIROMENT_FLAG = false
 ;
 
 let { width, height } = Dimensions.get("window");
@@ -96,11 +99,13 @@ export default class SelectSummoner extends Component {
           <ModalPicker
               data={StaticData.regions}
               selectStyle={styles.regionButton}
+              optionTextStyle={{fontSize:18}}
               initValue={Strings.get("selectregion")}
               cancelText={Strings.get("cancel")}
+              cancelTextStyle={[{color:'red',fontSize:19}]}
               selectTextStyle={styles.regionButtonText}
+              overlayStyle={{backgroundColor:'rgba(55,55,55,0.5)'}}
               onChange={(option)=>{ this.setState({summonerRegion : option.key}) }}/>
-            
             
         </View>
         <View style={styles.whiteCell}>
