@@ -1,7 +1,7 @@
 
 
 
-var lang = "en";
+var lang = "tr";
 
 
 let Strings = {
@@ -25,7 +25,7 @@ let Strings = {
       "wins" : {"tr" : "Kazanmalar", "en" : "Wins"},
       "ranked" : {"tr" : "Dereceli", "en" : "Ranked"},
       "masteries" : {"tr" : "Kabiliyetler", "en" : "Masteries"},
-      "winrate" : {"tr" : "Kazanma Oranı", "en" : "Win Rate"},
+      "winrate" : {"tr" : "Kaz. Oranı", "en" : "Win Rate"},
       "runes" : {"tr" : "Rünler", "en" : "Runes"},
       "summonerdetails" : {"tr" : "Sihirdar Detayları", "en" : "Summoner Details"},
       "matchhistory" : {"tr" : "Maç Geçmişi", "en" : "Match History"},
