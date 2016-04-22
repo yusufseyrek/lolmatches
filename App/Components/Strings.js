@@ -30,7 +30,9 @@ let Strings = {
       "summonerdetails" : {"tr" : "Sihirdar Detayları", "en" : "Summoner Details"},
       "matchhistory" : {"tr" : "Maç Geçmişi", "en" : "Match History"},
       "back" : {"tr" : "Geri", "en" : "Back"},
-      "selectlanguage" : {"tr" : "Dil Seçiniz", "en" : "Select Language"}
+      "selectlanguage" : {"tr" : "Dil Seçiniz", "en" : "Select Language"},
+      "turkish" : {"tr" : "Türkçe" , "en" : "Turkish"},
+      "english" : {"tr" : "İngilizce" , "en" : "English"},
   }
 
 

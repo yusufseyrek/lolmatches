@@ -19,6 +19,8 @@ export default class SettingsScreen extends Component{
     constructor(props){
         super(props);
     }
+    //var bgColor = selectedlanguage ? '#1266a8' : 'transparent';
+    
     render(){
         return(
             <View>
@@ -30,9 +32,9 @@ export default class SettingsScreen extends Component{
                 
                 <View style={[styles.whiteBorder,{width:width-40,marginLeft:20}]}></View>
                 
-                <View style={[styles.rowView,{justifyContent:'space-between'}]}>
+                <View style={[styles.rowView,{backgroundColor:'#1266a8'}]}>
                     <View style={styles.columnView}> 
-                        <Text style={styles.textView}>Türkçe</Text>
+                        <Text style={styles.textView}>{Strings.get("turkish")}</Text>
                     </View>
                     <View style={styles.columnView}>  
                         <Image style={styles.flagImage} source={require('../Assets/Images/turkishflag.png')} />
@@ -41,9 +43,9 @@ export default class SettingsScreen extends Component{
                     
                <View style={[styles.whiteBorder,{width:width-40,marginLeft:20}]}></View>
                 
-               <View style={[styles.rowView,{justifyContent:'space-between'}]}>
+               <View style={[styles.rowView,{backgroundColor:'#1266a8'}]}>
                     <View style={styles.columnView}> 
-                        <Text style={styles.textView}>English</Text>
+                        <Text style={styles.textView}>{Strings.get("english")}</Text>
                     </View>
                     <View style={styles.columnView}>  
                         <Image style={styles.flagImage} source={require('../Assets/Images/britishflag.png')} />
@@ -116,7 +118,10 @@ export default class SettingsScreen extends Component{
         },
         rowView:{
             flexDirection:'row',
-            alignItems:'center'
+            alignItems:'center',
+            justifyContent:'space-between',
+            width:width - 40,
+            marginLeft:20
         },
         columnView:{
             flexDirection:'column',
@@ -127,7 +132,6 @@ export default class SettingsScreen extends Component{
             height:40,
             marginHorizontal:25,
             marginVertical:8,
-            backgroundColor:'#1266a8'
         },
         logoImage:{
             width:200,
