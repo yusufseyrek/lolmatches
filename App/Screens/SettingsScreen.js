@@ -35,7 +35,7 @@ export default class SettingsScreen extends Component{
                         <Text style={styles.textView}>Türkçe</Text>
                     </View>
                     <View style={styles.columnView}>  
-                        <Image style={styles.flagImage} source={require('../Assets/Images/bg.jpg')} />
+                        <Image style={styles.flagImage} source={require('../Assets/Images/turkishflag.png')} />
                     </View>
                 </View>
                     
@@ -102,7 +102,7 @@ export default class SettingsScreen extends Component{
         sectionTitle:{
             marginHorizontal:10,
             marginVertical:10,
-            fontSize:20,
+            fontSize:22,
             fontWeight:'600',
             backgroundColor:'transparent',
             color:'#fff'
@@ -110,7 +110,7 @@ export default class SettingsScreen extends Component{
         textView:{
             backgroundColor:'transparent',
             color:'#fff' ,
-            fontSize:22,
+            fontSize:18,
             marginVertical:8,
             marginHorizontal:25
         },
@@ -123,10 +123,11 @@ export default class SettingsScreen extends Component{
             alignItems:'center'
         },
         flagImage:{
-            width: 40,
+            width: 60,
             height:40,
             marginHorizontal:25,
-            marginVertical:3
+            marginVertical:8,
+            backgroundColor:'#1266a8'
         },
         logoImage:{
             width:200,
