@@ -10,10 +10,11 @@ import React, {
   Platform
 } from 'react-native';
 
-var Strings = require('../Components/Strings');
+var LanguageInterface = require('../Components/LanguageInterface');
 var Utils = require('../Components/Utils');
+var StaticData = require('../Components/StaticData');
 import SelectSummoner from './SelectSummoner';
-import GameInfo from './GameInfo';
+import ActiveMatchScreen from './ActiveMatchScreen';
 import SummonerDetail from './SummonerDetail';
 import MatchList from './MatchList';
 import SettingsScreen from './SettingsScreen';
@@ -29,8 +30,18 @@ const reducerCreate = params=>{
 
 class TabIcon extends React.Component {
     render(){
+        var activeTextStyle = {
+            color : StaticData.GOLD_COLOR,
+            fontWeight : 'bold'
+        };
+        var inActiveTextStyle = {
+            color : "white",
+            fontWeight : 'normal'
+        };
+        
+        
         return (
-            <Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>
+            <Text style={this.props.selected ? activeTextStyle : inActiveTextStyle}>{this.props.title}</Text>
         );
     }
 }
@@ -44,7 +55,7 @@ export default class lolnexus extends Component {
         };
     }
     componentWillMount(){
-        Strings.getCurrentLanguage().then((languageString)=>{
+        LanguageInterface.getCurrentLanguage().then((languageString)=>{
             if(languageString){
                 this.setState({isLanguageReady : true});
             }
@@ -65,16 +76,15 @@ export default class lolnexus extends Component {
                     <Router createReducer={reducerCreate} sceneStyle={{backgroundColor:'#000'}}>
                         <Scene key="modal" component={Modal}>
                             <Scene key="root" hideNavBar={true}>
-                                <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")} type="reset" initial={true}/>
-                                <Scene key="GameInfo" panHandlers={null} component={GameInfo} title={Strings.get("gameinfo")}/>
+                                <Scene key="SelectSummoner" component={SelectSummoner} type="reset" initial={true}/>
+                                <Scene key="ActiveMatchScreen" panHandlers={null} component={ActiveMatchScreen}/>
                                 
-                                <Scene key="SummonerDetailTab" panHandlers={null} tabs={true} direction="vertical" default="SummonerDetail" >
-                                    <Scene direction="vertical" component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")} hideNavBar={true} />
-                                    <Scene direction="vertical" component={MatchList} icon={TabIcon} key="MatchList" title={Strings.get("matchhistory")} hideNavBar={true} />
+                                <Scene key="SummonerDetailTab" tabBarStyle={{backgroundColor:'black',borderTopWidth:1,borderColor:'white'}} panHandlers={null} tabs={true} direction="vertical" default="SummonerDetail" >
+                                    <Scene direction="vertical" component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={LanguageInterface.get("summonerdetails")} hideNavBar={true} />
+                                    <Scene direction="vertical" component={MatchList} icon={TabIcon} key="MatchList" title={LanguageInterface.get("matchhistory")} hideNavBar={true} />
                                 </Scene>
                                 
                                 <Scene key="SettingsScreen" direction="vertical" component={SettingsScreen}/>
-                                
                             </Scene>
                         </Scene>
                     </Router>

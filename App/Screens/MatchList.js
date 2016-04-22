@@ -16,7 +16,7 @@ import {Actions, Reducer} from 'react-native-router-flux';
 import SummonerDetail from './SummonerDetail';
 
 var StaticData = require('../Components/StaticData');
-var Strings = require('../Components/Strings'); 
+var LanguageInterface = require('../Components/LanguageInterface'); 
 var Utils = require('../Components/Utils');
 var NetworkManager = require('../Components/NetworkManager');
 var UiLayer = require('../Components/UiLayer');

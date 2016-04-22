@@ -3,10 +3,14 @@ import Store from 'react-native-simple-store';
 
 const LANGUGAGE_STORE_KEY = 'language_key';
 
-let Strings = {
-  lang : "tr",
+let LanguageInterface = {
+  languageList : [
+    {"langSlug": "tr", "image": require('../Assets/Images/turkishflag.png'), "langKey":"turkish"},
+    {"langSlug": "en", "image": require('../Assets/Images/britishflag.png'), "langKey":"english"},
+  ],
+  langSlug : "en",
   get(key){
-    return this.data[key][this.lang];
+    return this.data[key][this.langSlug];
   },
   data : {
       "selectsummoner" :{"tr":"Sihirdar Seçiniz", "en" : "Select Summoner"},
@@ -39,16 +43,16 @@ let Strings = {
       if(language)
         return language.key;
       else
-        return this.lang;
+        return this.langSlug;
     });
     
     
   },
   setCurrentLanguage(key){
-    this.lang = key;
+    this.langSlug = key;
     return Store.save(LANGUGAGE_STORE_KEY,{key: key});
   }
 
 };
 
-module.exports = Strings;
+module.exports = LanguageInterface;
