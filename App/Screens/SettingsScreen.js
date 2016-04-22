@@ -20,8 +20,13 @@ import {Actions} from 'react-native-router-flux';
 export default class SettingsScreen extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            currentLanguage : "tr"
+        }
     }
+    
     render(){
+        var bgColor = Strings.lang==="tr" ? '#1266a8' : 'transparent';
         return(
             <View>
                 <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
@@ -32,25 +37,36 @@ export default class SettingsScreen extends Component{
                 
                 <View style={[styles.whiteBorder,{width:width-40,marginLeft:20}]}></View>
                 
-                <View style={[styles.rowView,{justifyContent:'space-between'}]}>
+                <TouchableOpacity onPress={()=>{
+                    Strings.setCurrentLanguage("tr");
+                    Actions.SelectSummoner()}
+                }>
+                
+                <View style={[styles.rowView,{backgroundColor:bgColor}]}>
                     <View style={styles.columnView}> 
-                        <Text style={styles.textView}>Türkçe</Text>
+                        <Text style={styles.textView}>{Strings.get("turkish")}</Text>
                     </View>
                     <View style={styles.columnView}>  
                         <Image style={styles.flagImage} source={require('../Assets/Images/turkishflag.png')} />
                     </View>
                 </View>
+                </TouchableOpacity>
+
                     
                <View style={[styles.whiteBorder,{width:width-40,marginLeft:20}]}></View>
-                
-               <View style={[styles.rowView,{justifyContent:'space-between'}]}>
+                <TouchableOpacity onPress={()=>{
+                    Strings.setCurrentLanguage("en");
+                    Actions.SelectSummoner()}
+                }>
+               <View style={[styles.rowView,{backgroundColor:bgColor}]}>
                     <View style={styles.columnView}> 
-                        <Text style={styles.textView}>English</Text>
+                        <Text style={styles.textView}>{Strings.get("english")}</Text>
                     </View>
                     <View style={styles.columnView}>  
                         <Image style={styles.flagImage} source={require('../Assets/Images/britishflag.png')} />
                     </View>
                 </View>
+                </TouchableOpacity>
                     
                 <View style={[styles.whiteBorder,{width:width-40,marginLeft:20}]}></View>
                
@@ -121,7 +137,10 @@ export default class SettingsScreen extends Component{
         },
         rowView:{
             flexDirection:'row',
-            alignItems:'center'
+            alignItems:'center',
+            justifyContent:'space-between',
+            width:width - 40,
+            marginLeft:20
         },
         columnView:{
             flexDirection:'column',
@@ -132,7 +151,6 @@ export default class SettingsScreen extends Component{
             height:40,
             marginHorizontal:25,
             marginVertical:8,
-            backgroundColor:'#1266a8'
         },
         logoImage:{
             width:200,

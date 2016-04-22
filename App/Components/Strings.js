@@ -30,6 +30,8 @@ let Strings = {
       "summonerdetails" : {"tr" : "Sihirdar Detayları", "en" : "Summoner Details"},
       "matchhistory" : {"tr" : "Maç Geçmişi", "en" : "Match History"},
       "back" : {"tr" : "Geri", "en" : "Back"},
+      "turkish" : {"tr" : "Türkçe" , "en" : "Turkish"},
+      "english" : {"tr" : "İngilizce" , "en" : "English"},
       "selectlanguage" : {"tr" : "Dil Seçiniz", "en" : "Select Language"}
   },
   getCurrentLanguage(){
@@ -39,10 +41,13 @@ let Strings = {
       else
         return this.lang;
     });
+    
+    
   },
   setCurrentLanguage(key){
     this.lang = key;
     return Store.save(LANGUGAGE_STORE_KEY,{key: key});
+
   }
 
 };
