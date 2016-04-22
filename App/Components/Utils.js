@@ -88,9 +88,10 @@ let Utils = {
         
     },
     renderIf(value,view){
-        if (value) {
+        if (value)
             return view;
-        }
+        else
+            null;
     }
     
 }

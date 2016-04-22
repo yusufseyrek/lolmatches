@@ -11,17 +11,22 @@ import React, {
   TouchableOpacity
 } from 'react-native';
 
-import Strings from '../Components/Strings';
+var Strings = require('../Components/Strings');
 
 var { width, height } = Dimensions.get("window");
+
+import {Actions} from 'react-native-router-flux';
 
 export default class SettingsScreen extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            currentLanguage : "tr"
+        }
     }
-    //var bgColor = selectedlanguage ? '#1266a8' : 'transparent';
     
     render(){
+        var bgColor = Strings.lang==="tr" ? '#1266a8' : 'transparent';
         return(
             <View>
                 <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
@@ -32,7 +37,12 @@ export default class SettingsScreen extends Component{
                 
                 <View style={[styles.whiteBorder,{width:width-40,marginLeft:20}]}></View>
                 
-                <View style={[styles.rowView,{backgroundColor:'#1266a8'}]}>
+                <TouchableOpacity onPress={()=>{
+                    Strings.setCurrentLanguage("tr");
+                    Actions.SelectSummoner()}
+                }>
+                
+                <View style={[styles.rowView,{backgroundColor:bgColor}]}>
                     <View style={styles.columnView}> 
                         <Text style={styles.textView}>{Strings.get("turkish")}</Text>
                     </View>
@@ -40,10 +50,15 @@ export default class SettingsScreen extends Component{
                         <Image style={styles.flagImage} source={require('../Assets/Images/turkishflag.png')} />
                     </View>
                 </View>
+                </TouchableOpacity>
+
                     
                <View style={[styles.whiteBorder,{width:width-40,marginLeft:20}]}></View>
-                
-               <View style={[styles.rowView,{backgroundColor:'#1266a8'}]}>
+                <TouchableOpacity onPress={()=>{
+                    Strings.setCurrentLanguage("en");
+                    Actions.SelectSummoner()}
+                }>
+               <View style={[styles.rowView,{backgroundColor:bgColor}]}>
                     <View style={styles.columnView}> 
                         <Text style={styles.textView}>{Strings.get("english")}</Text>
                     </View>
@@ -51,6 +66,7 @@ export default class SettingsScreen extends Component{
                         <Image style={styles.flagImage} source={require('../Assets/Images/britishflag.png')} />
                     </View>
                 </View>
+                </TouchableOpacity>
                     
                 <View style={[styles.whiteBorder,{width:width-40,marginLeft:20}]}></View>
                
@@ -63,7 +79,10 @@ export default class SettingsScreen extends Component{
                 </View>
               
                 
-                <TouchableOpacity style={styles.closeButton} onPress={()=>Actions.pop()}>
+                <TouchableOpacity style={styles.closeButton} onPress={()=>{
+                    Strings.setCurrentLanguage("en");
+                    Actions.SelectSummoner()}
+                }>
                     <Image style={styles.closeButtonImage} source={require('../Assets/Images/close.png')}/>
                 </TouchableOpacity>
             </View> 
