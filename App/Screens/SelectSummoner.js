@@ -15,7 +15,7 @@ import React, {
   ScrollView
 } from 'react-native';
 
-const TEST_ENVIROMENT_FLAG = true;
+const TEST_ENVIROMENT_FLAG = false;
 
 let { width, height } = Dimensions.get("window");
 
@@ -127,7 +127,7 @@ export default class SelectSummoner extends Component {
   }
   searchClick(summonerName, summonerRegion){
     if(TEST_ENVIROMENT_FLAG){
-        Actions.GameInfo({data : StaticData.dummy});
+        Actions.ActiveMatchScreen({data : StaticData.dummy});
         return false;
     }
     var that = this;
@@ -142,7 +142,7 @@ export default class SelectSummoner extends Component {
             else{
                 Utils.addSummonerToHistory(result,(newList)=>{
                   that.setState({summonerHistory : newList});
-                  Actions.GameInfo({data : result});
+                  Actions.ActiveMatchScreen({data : result});
                 });
             }
         })

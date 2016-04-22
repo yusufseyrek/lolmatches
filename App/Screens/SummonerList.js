@@ -22,7 +22,6 @@ export default class SummonerList extends Component {
     constructor(props){
         super(props);
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => true});
-        
         this.props.data.forEach((item,index)=>{
             item.isViewExtended = false;
         });
@@ -72,7 +71,7 @@ export default class SummonerList extends Component {
     renderRow(rowData, section, index){
         var cellBg = this.props.cellColor;
         if(rowData.itsMe)
-            cellBg = "#FFF7BF";
+            cellBg = "#FFB347";
         var stats = Utils.calculateStats(rowData.champion_stats);
         var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
         var {rankImageSize} = this.state;

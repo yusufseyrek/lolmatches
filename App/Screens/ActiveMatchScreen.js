@@ -21,9 +21,10 @@ import SummonerList from './SummonerList';
 var Strings = require('../Components/Strings');
 var StaticData = require('../Components/StaticData');
 
-export default class GameInfo extends Component {
+export default class ActiveMatchScreen extends Component {
     constructor(props){
         super(props);
+        console.log(props)
         var blueTeamMembers = [], purpleTeamMembers = [];
         this.props.data.participants.map(function (data) {
             data.region = props.data.region;
@@ -39,6 +40,7 @@ export default class GameInfo extends Component {
         };
     }
     render() {
+        var {data} = this.props;
         return (
             <View style={styles.container}>
                 <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
@@ -46,7 +48,10 @@ export default class GameInfo extends Component {
                     <TouchableOpacity style={styles.backButton} onPress={()=>Actions.pop()}>
                         <Text style={styles.backButtonText} >{Strings.get("back").toUpperCase()}</Text>
                     </TouchableOpacity>
-                    <Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
+                    <View style={styles.columnView}>
+                        <Text style={[styles.gameTypeText,{color:'#FFB347'}]}>{`${data.gameQueueConfig}`}</Text>
+                        <Text style={[styles.gameTypeText,{color:'white'}]}>{`${data.map}`}</Text>
+                    </View>
                 </View>
                 <ScrollableTabView style={{flex:1}} renderTabBar={()=> <CustomScrollableTabBar />}>
                     <SummonerList data={this.state.blueTeamMembers} cellColor={StaticData.BLUE_COLOR} tabLabel={Strings.get("blueteam").toUpperCase()}/>
@@ -58,6 +63,9 @@ export default class GameInfo extends Component {
 };
 
 var styles = StyleSheet.create({
+    columnView:{
+        flexDirection:'column'
+    },
     container : {
         flex:1
     },
@@ -69,7 +77,7 @@ var styles = StyleSheet.create({
     containerRowView:{
         flexDirection:'row',
         marginHorizontal : 20,
-        marginTop : 20,
+        marginTop : 30,
         marginBottom : 10,
         justifyContent:'space-between',
         alignItems:'center'
@@ -78,6 +86,11 @@ var styles = StyleSheet.create({
         backgroundColor:'transparent',
         color : 'white',
         fontSize : 19
+    },
+    gameTypeText:{
+        backgroundColor:'transparent',
+        fontSize : 19,
+        textAlign:'right'
     },
     logoImage:{
         width:132,

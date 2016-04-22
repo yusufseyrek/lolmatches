@@ -13,7 +13,7 @@ import React, {
 var Strings = require('../Components/Strings');
 var Utils = require('../Components/Utils');
 import SelectSummoner from './SelectSummoner';
-import GameInfo from './GameInfo';
+import ActiveMatchScreen from './ActiveMatchScreen';
 import SummonerDetail from './SummonerDetail';
 import MatchList from './MatchList';
 import SettingsScreen from './SettingsScreen';
@@ -65,8 +65,8 @@ export default class lolnexus extends Component {
                     <Router createReducer={reducerCreate} sceneStyle={{backgroundColor:'#000'}}>
                         <Scene key="modal" component={Modal}>
                             <Scene key="root" hideNavBar={true}>
-                                <Scene key="SelectSummoner" component={SelectSummoner}  title={Strings.get("selectsummoner")} type="reset" initial={true}/>
-                                <Scene key="GameInfo" panHandlers={null} component={GameInfo} title={Strings.get("gameinfo")}/>
+                                <Scene key="SelectSummoner" component={SelectSummoner} type="reset" initial={true}/>
+                                <Scene key="ActiveMatchScreen" panHandlers={null} component={ActiveMatchScreen}/>
                                 
                                 <Scene key="SummonerDetailTab" panHandlers={null} tabs={true} direction="vertical" default="SummonerDetail" >
                                     <Scene direction="vertical" component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={Strings.get("summonerdetails")} hideNavBar={true} />
@@ -74,7 +74,6 @@ export default class lolnexus extends Component {
                                 </Scene>
                                 
                                 <Scene key="SettingsScreen" direction="vertical" component={SettingsScreen}/>
-                                
                             </Scene>
                         </Scene>
                     </Router>
