@@ -35,7 +35,7 @@ export default class MatchList extends Component {
     componentDidMount(){
         let {summonerData} = this.props;
         //TODO userId -> summonerId
-        //TODO Backend should cache matchlist as well.
+        //TODO Backend should return Match Type
         UiLayer.isSpinnerVisible(this, true);
         NetworkManager.request("getMatchList",{userId: summonerData.summonerId, summonerRegion: summonerData.region},(matchList)=>{
             UiLayer.isSpinnerVisible(this, false);
