@@ -1,12 +1,12 @@
 
+import Store from 'react-native-simple-store';
 
-
-var lang = "tr";
-
+const LANGUGAGE_STORE_KEY = 'language_key';
 
 let Strings = {
+  lang : "tr",
   get(key){
-    return this.data[key][lang];
+    return this.data[key][this.lang];
   },
   data : {
       "selectsummoner" :{"tr":"Sihirdar Seçiniz", "en" : "Select Summoner"},
@@ -31,8 +31,19 @@ let Strings = {
       "matchhistory" : {"tr" : "Maç Geçmişi", "en" : "Match History"},
       "back" : {"tr" : "Geri", "en" : "Back"},
       "selectlanguage" : {"tr" : "Dil Seçiniz", "en" : "Select Language"}
+  },
+  getCurrentLanguage(){
+    return Store.get(LANGUGAGE_STORE_KEY).then((language)=>{
+      if(language)
+        return language.key;
+      else
+        return this.lang;
+    });
+  },
+  setCurrentLanguage(key){
+    this.lang = key;
+    return Store.save(LANGUGAGE_STORE_KEY,{key: key});
   }
-
 
 };
 

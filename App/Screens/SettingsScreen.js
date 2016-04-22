@@ -11,9 +11,11 @@ import React, {
   TouchableOpacity
 } from 'react-native';
 
-import Strings from '../Components/Strings';
+var Strings = require('../Components/Strings');
 
 var { width, height } = Dimensions.get("window");
+
+import {Actions} from 'react-native-router-flux';
 
 export default class SettingsScreen extends Component{
     constructor(props){
@@ -61,7 +63,10 @@ export default class SettingsScreen extends Component{
                 </View>
               
                 
-                <TouchableOpacity style={styles.closeButton} onPress={()=>Actions.pop()}>
+                <TouchableOpacity style={styles.closeButton} onPress={()=>{
+                    Strings.setCurrentLanguage("en");
+                    Actions.SelectSummoner()}
+                }>
                     <Image style={styles.closeButtonImage} source={require('../Assets/Images/close.png')}/>
                 </TouchableOpacity>
             </View> 
