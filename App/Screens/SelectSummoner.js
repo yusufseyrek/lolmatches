@@ -15,7 +15,7 @@ import React, {
   ScrollView
 } from 'react-native';
 
-const TEST_ENVIROMENT_FLAG = false;
+const TEST_ENVIROMENT_FLAG = true;
 
 let { width, height } = Dimensions.get("window");
 
@@ -23,7 +23,7 @@ import ModalPicker from 'react-native-modal-picker';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {Actions} from 'react-native-router-flux';
 
-var Strings = require('../Components/Strings');
+var LanguageInterface = require('../Components/LanguageInterface');
 var StaticData = require('../Components/StaticData');
 var NetworkManager = require('../Components/NetworkManager');
 var UiLayer = require('../Components/UiLayer');
@@ -72,9 +72,8 @@ export default class SelectSummoner extends Component {
 			</TouchableOpacity>
 		);
     }.bind(this));
-    
-    
     return (
+        //TODO fix select region message when language change
         <View style={styles.container}>
           <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
           <ScrollView>
@@ -89,7 +88,7 @@ export default class SelectSummoner extends Component {
                   style={styles.summonerInput}
                   placeholderTextColor={"#ddd"}
                   onChangeText={(text)=> this.setState({summonerName : text})}
-                  placeholder={Strings.get("entersummoner")}
+                  placeholder={LanguageInterface.get("entersummoner")}
                   value={summonerName}
                   underlineColorAndroid="transparent"
                 />
@@ -98,8 +97,8 @@ export default class SelectSummoner extends Component {
                   data={StaticData.regions}
                   selectStyle={styles.regionButton}
                   optionTextStyle={{fontSize:18}}
-                  initValue={Strings.get("selectregion")}
-                  cancelText={Strings.get("cancel")}
+                  initValue={LanguageInterface.get("selectregion")}
+                  cancelText={LanguageInterface.get("cancel")}
                   cancelTextStyle={{color:'red',fontSize:19}}
                   selectTextStyle={styles.regionButtonText}
                   overlayStyle={{backgroundColor:'rgba(55,55,55,0.5)'}}
@@ -107,11 +106,11 @@ export default class SelectSummoner extends Component {
             </View>
             <View style={styles.whiteCell}>
               <TouchableHighlight onPress={()=> this.searchClick(summonerName, summonerRegion)} style={styles.blueButton}>
-                <Text style={styles.blueButtonText}>{Strings.get("searchgame")}</Text>
+                <Text style={styles.blueButtonText}>{LanguageInterface.get("searchgame")}</Text>
               </TouchableHighlight>
             </View>
 
-            <Text style={styles.sectionTitle}>{Strings.get("recentsearch")}</Text>
+            <Text style={styles.sectionTitle}>{LanguageInterface.get("recentsearch")}</Text>
             <View style={styles.whiteBorder}></View>
             
             <View style={styles.containerColumnView}>
@@ -137,7 +136,7 @@ export default class SelectSummoner extends Component {
         NetworkManager.request("getGameInfo",{"summonerName" : summonerName, "summonerRegion": summonerRegion},function(result){
             UiLayer.isSpinnerVisible(that, false);
             if (result.err || result.error) {
-                Alert.alert(Strings.get("warning"),Strings.get("gamenotfound"));
+                Alert.alert(LanguageInterface.get("warning"),LanguageInterface.get("gamenotfound"));
             }
             else{
                 Utils.addSummonerToHistory(result,(newList)=>{
@@ -148,7 +147,7 @@ export default class SelectSummoner extends Component {
         })
     }
     else{
-        Alert.alert(Strings.get("warning"),Strings.get("enterproperly"));
+        Alert.alert(LanguageInterface.get("warning"),LanguageInterface.get("enterproperly"));
     }
   }
 };

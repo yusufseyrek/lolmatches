@@ -14,7 +14,7 @@ import {Actions} from 'react-native-router-flux';
 import SummonerDetail from './SummonerDetail';
 
 var StaticData = require('../Components/StaticData');
-var Strings = require('../Components/Strings'); 
+var LanguageInterface = require('../Components/LanguageInterface'); 
 
 var Utils = require('../Components/Utils');
 
@@ -53,7 +53,7 @@ export default class SummonerList extends Component {
         return(
             <View style={styles.extendedViewStyle}>
                 <View style={styles.columnView}>
-                    <Text style={styles.textView}>{`${Strings.get("runes").toUpperCase()} : `}</Text>
+                    <Text style={styles.textView}>{`${LanguageInterface.get("runes").toUpperCase()} : `}</Text>
                 </View>
                 <View style={styles.columnView}>
                     {this.mapRunesView(runes)}
@@ -99,7 +99,7 @@ export default class SummonerList extends Component {
                             
                             <View style={[styles.rowView,{justifyContent:'space-between', alignItems:'center',marginTop:3}]}>
                                 <Text style={[styles.textView,{fontSize:16}]}>{`${rowData.championName} (${stats.totalPlayed})`}</Text>
-                                <Text style={[styles.textView,{fontSize:13}]}>{`${Strings.get("winrate")}: ${stats.winRate}%`}</Text>
+                                <Text style={[styles.textView,{fontSize:13}]}>{`${LanguageInterface.get("winrate")}: ${stats.winRate}%`}</Text>
                             </View>
                             <View style={[styles.rowView,{justifyContent:'space-between',borderBottomWidth:.5,borderColor:'white',paddingBottom:5,marginVertical:5}]}>
                                 <Text style={styles.textView}>{`${rowData.summonerName}`}</Text>
@@ -112,8 +112,8 @@ export default class SummonerList extends Component {
                                 }}}>
                                 <View style={styles.columnView}>
                                     <Text style={styles.textView}>KDA</Text>
-                                    <Text style={styles.textView}>{Strings.get("ranked").toUpperCase()}</Text>
-                                    <Text style={styles.textView}>{Strings.get("masteries").toUpperCase()}</Text>
+                                    <Text style={styles.textView}>{LanguageInterface.get("ranked").toUpperCase()}</Text>
+                                    <Text style={styles.textView}>{LanguageInterface.get("masteries").toUpperCase()}</Text>
                                 </View>
                                 <View style={[styles.columnView,{marginHorizontal:5}]}>
                                     <Text style={styles.textView}>:</Text>

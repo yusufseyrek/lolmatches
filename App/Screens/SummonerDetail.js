@@ -15,7 +15,7 @@ var { width, height } = Dimensions.get("window");
 
 import {Actions} from 'react-native-router-flux';
 
-var Strings = require('../Components/Strings');
+var LanguageInterface = require('../Components/LanguageInterface');
 var StaticData = require('../Components/StaticData');
 var Utils = require('../Components/Utils');
 
@@ -88,7 +88,7 @@ export default class SummonerDetail extends Component {
                         </View>
                         <View style={[styles.columnView]}>
                             <View style={styles.rowView}>
-                                <Text style={styles.heading3}>{`${Strings.get("ranked")}: `}</Text>
+                                <Text style={styles.heading3}>{`${LanguageInterface.get("ranked")}: `}</Text>
                                 <Text style={[styles.heading3,{color:'green'}]}>{stats.wins}</Text>
                                 <Text style={styles.heading3}> / </Text>
                                 <Text style={[styles.heading3,{color:'red'}]}>{stats.losses}</Text>
@@ -99,13 +99,13 @@ export default class SummonerDetail extends Component {
                     <View style={[styles.containerView,{justifyContent:'space-between'}]}>
                         <View style={styles.columnView}>
                             <View style={styles.rowView}>
-                                <Text style={styles.heading3}>{`${Strings.get("wins")}: `}</Text>
+                                <Text style={styles.heading3}>{`${LanguageInterface.get("wins")}: `}</Text>
                                 <Text style={styles.heading3}>{summonerData.champion_stats.total_games}</Text>
                             </View>
                         </View>
                         <View style={styles.columnView}>
                             <View style={styles.rowView}>
-                                <Text style={styles.heading3}>{`${Strings.get("masteries")}: `}</Text>
+                                <Text style={styles.heading3}>{`${LanguageInterface.get("masteries")}: `}</Text>
                                 <Text style={styles.heading3}>{`${summonerData.masterie.ferocity}/${summonerData.masterie.cunning}/${summonerData.masterie.resolve}`}</Text>
                             </View>
                         </View>      
@@ -113,7 +113,7 @@ export default class SummonerDetail extends Component {
                     
                     <View style={styles.containerView}>
                         <View style={styles.columnView}>
-                            <Text style={[styles.heading3]}>{`${Strings.get("runes")}: `}</Text>
+                            <Text style={[styles.heading3]}>{`${LanguageInterface.get("runes")}: `}</Text>
                             <View style={styles.containerView}/>
                             {this.mapRunesView(summonerData.runes)}
                         </View>

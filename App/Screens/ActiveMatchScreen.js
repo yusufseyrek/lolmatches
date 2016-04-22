@@ -18,7 +18,7 @@ import CustomScrollableTabBar from '../Components/CustomScrollableTabBar';
 import SummonerList from './SummonerList';
 
 
-var Strings = require('../Components/Strings');
+var LanguageInterface = require('../Components/LanguageInterface');
 var StaticData = require('../Components/StaticData');
 
 export default class ActiveMatchScreen extends Component {
@@ -46,7 +46,7 @@ export default class ActiveMatchScreen extends Component {
                 <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
                 <View style={styles.containerRowView}>
                     <TouchableOpacity style={styles.backButton} onPress={()=>Actions.pop()}>
-                        <Text style={styles.backButtonText} >{Strings.get("back").toUpperCase()}</Text>
+                        <Text style={styles.backButtonText} >{LanguageInterface.get("back").toUpperCase()}</Text>
                     </TouchableOpacity>
                     <View style={styles.columnView}>
                         <Text style={[styles.gameTypeText,{color:'#FFB347'}]}>{`${data.gameQueueConfig}`}</Text>
@@ -54,8 +54,8 @@ export default class ActiveMatchScreen extends Component {
                     </View>
                 </View>
                 <ScrollableTabView style={{flex:1}} renderTabBar={()=> <CustomScrollableTabBar />}>
-                    <SummonerList data={this.state.blueTeamMembers} cellColor={StaticData.BLUE_COLOR} tabLabel={Strings.get("blueteam").toUpperCase()}/>
-                    <SummonerList data={this.state.purpleTeamMembers} cellColor={StaticData.PURPLE_COLOR} tabLabel={Strings.get("purpleteam").toUpperCase()}/>
+                    <SummonerList data={this.state.blueTeamMembers} cellColor={StaticData.BLUE_COLOR} tabLabel={LanguageInterface.get("blueteam").toUpperCase()}/>
+                    <SummonerList data={this.state.purpleTeamMembers} cellColor={StaticData.PURPLE_COLOR} tabLabel={LanguageInterface.get("purpleteam").toUpperCase()}/>
                 </ScrollableTabView>
             </View>
         );
