@@ -15,7 +15,7 @@ import React, {
   ScrollView
 } from 'react-native';
 
-const TEST_ENVIROMENT_FLAG = false;
+const TEST_ENVIROMENT_FLAG = true;
 
 let { width, height } = Dimensions.get("window");
 
