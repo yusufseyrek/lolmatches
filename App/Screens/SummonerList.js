@@ -11,7 +11,6 @@ import React, {
 } from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
-import SummonerDetail from './SummonerDetail';
 
 var StaticData = require('../Components/StaticData');
 var LanguageInterface = require('../Components/LanguageInterface'); 
@@ -107,6 +106,7 @@ export default class SummonerList extends Component {
                             </View>
                             <View style={styles.rowView} onLayout={(event)=>{
                                 //TODO fix laggin while rendering
+                                //TODO sometimes rank icons comes small
                                 if(rankImageSize <= 10){
                                     this.setState({rankImageSize: event.nativeEvent.layout.height});
                                 }}}>
