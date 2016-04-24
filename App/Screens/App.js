@@ -38,8 +38,6 @@ class TabIcon extends React.Component {
             color : "white",
             fontWeight : 'normal'
         };
-        
-        
         return (
             <Text style={this.props.selected ? activeTextStyle : inActiveTextStyle}>{this.props.title}</Text>
         );
