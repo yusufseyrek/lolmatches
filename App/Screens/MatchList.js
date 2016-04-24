@@ -7,7 +7,8 @@ import React, {
   ListView,
   Image,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Date
 } from 'react-native';
 
 var { width, height } = Dimensions.get("window");
@@ -71,72 +72,82 @@ export default class MatchList extends Component {
     renderRow(rowData, section, index){
         var cellBgColor = rowData.myData.winner ? 'green' : 'red';
         return(
+           
             <View style={[styles.rowView,styles.cellView]} key={`matchlistkey-${index}`}>
                 
                 <View style={[styles.maskView,{backgroundColor: cellBgColor}]}></View>
                 
-                <View style={[styles.rowView,{width : width, justifyContent:'space-between'}]}>
-                    <View style={styles.columnView}>
-                        <Image style={styles.championImage} source={{uri : rowData.myData.championSquareImage}}>
-                            <View style={styles.championNameView}>
-                                <Text style={styles.championName}>{rowData.myData.championName}</Text>
-                            </View>
-                        </Image>
-          
+                <View style={[styles.columnView]}>
+                    <View style={[styles.rowView,{backgroundColor:'black',width:width,justifyContent:'space-between'}]}>
+                        <Text style={styles.matchText}>{rowData.matchMode}</Text>
+                        <Text style={styles.matchText}>{Utils.calculateGameDuration(rowData.matchDuration)}MIN</Text>
+                        <Text style={styles.matchText}>{Utils.calculateDiffDate(rowData.matchCreation)}Days Ago</Text>
+                        
                     </View>
-                    
-                    <View style={styles.columnView}>
-                        <View style={styles.rowView}>
-                            <Text style={styles.textView}>{`${rowData.myData.kills}/${rowData.myData.deaths}/${rowData.myData.assists}`}</Text>
-                        </View>
-                        <View style={styles.rowView}>
-                            <Text style={styles.textView}>{Utils.calculateKda(rowData.myData.kills,rowData.myData.deaths,rowData.myData.assists)}</Text>
-                            <Text style={styles.kda}>KDA</Text>
-                        </View>
-                        </View>
+                    <View style={[styles.rowView,{width : width, justifyContent:'space-between'}]}>
                         <View style={styles.columnView}>
-                        <View style={styles.rowView}>
-                                                             
-                            <Text style={styles.textView}>{Utils.calculateTotalGold(rowData.myData.totalGold)}K</Text>
-                        </View>
-                        <View style={styles.rowView}>
-                            <Text style={styles.kda}>Gold</Text>
-                        </View>
-                        <View style={styles.rowView}>
-                        
-                            <Text style={styles.textView}>{`${rowData.myData.minionsKilled}`}</Text>
-                        </View>
-                        <View style={styles.rowView}>
-                            <Text style={styles.kda}>Creep</Text>
-                        </View>
+                            <Image style={styles.championImage} source={{uri : rowData.myData.championSquareImage}}>
+                                <View style={styles.championNameView}>
+                                    <Text style={styles.championName}>{rowData.myData.championName}</Text>
+                                </View>
+                            </Image>
+            
                         </View>
                         
                         <View style={styles.columnView}>
-                        <View style={styles.rowView}>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.spells[0].spellUrl}}/>
+                            <View style={styles.rowView}>
+                                <Text style={styles.textView}>{`${rowData.myData.kills}/${rowData.myData.deaths}/${rowData.myData.assists}`}</Text>
+                            </View>
+                            <View style={styles.rowView}>
+                                <Text style={styles.textView}>{Utils.calculateKda(rowData.myData.kills,rowData.myData.deaths,rowData.myData.assists)}</Text>
+                                <Text style={styles.kda}>KDA</Text>
+                            </View>
+                            </View>
+                            <View style={styles.columnView}>
+                            <View style={styles.rowView}>
+                                                                
+                                <Text style={styles.textView}>{Utils.calculateTotalGold(rowData.myData.totalGold)}K</Text>
+                            </View>
+                            <View style={styles.rowView}>
+                                <Text style={styles.kda}>Gold</Text>
+                            </View>
+                            <View style={styles.rowView}>
                             
-                        </View>
-                        <View style={styles.rowView}>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.spells[1].spellUrl}}/>
+                                <Text style={styles.textView}>{`${rowData.myData.minionsKilled}`}</Text>
+                            </View>
+                            <View style={styles.rowView}>
+                                <Text style={styles.kda}>Creep</Text>
+                            </View>
+                            </View>
                             
-                        </View>
-                        </View>
-                        
-                        <View style={[styles.columnView, {marginRight:10, alignItems:'stretch'}]}>
-                        <View style={styles.rowView}>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[0]}}/>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[1]}}/>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[2]}}/>
-                        </View>
-                        <View style={styles.rowView}>
-                            <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[3]}}/>
-                            <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[4]}}/>
-                            <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[5]}}/>
+                            <View style={styles.columnView}>
+                            <View style={styles.rowView}>
+                                <Image style={styles.spellImageTop} source={{uri : rowData.myData.spells[0].spellUrl}}/>
+                                
+                            </View>
+                            <View style={styles.rowView}>
+                                <Image style={styles.spellImageTop} source={{uri : rowData.myData.spells[1].spellUrl}}/>
+                                
+                            </View>
+                            </View>
+                            
+                            <View style={[styles.columnView, {marginRight:10, alignItems:'stretch'}]}>
+                            <View style={styles.rowView}>
+                                <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[0]}}/>
+                                <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[1]}}/>
+                                <Image style={styles.spellImageTop} source={{uri : rowData.myData.items[2]}}/>
+                            </View>
+                            <View style={styles.rowView}>
+                                <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[3]}}/>
+                                <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[4]}}/>
+                                <Image style={styles.spellImageBottom} source={{uri : rowData.myData.items[5]}}/>
+                            </View>
                         </View>
                     </View>
                 </View>
                 
             </View>
+           
         );
     }
 };
@@ -229,5 +240,14 @@ var styles = StyleSheet.create({
         width:width/13,
         height:width/13,
         margin:1
+    },
+    matchStatus:{
+        height:10,
+        backgroundColor : 'black'
+    },
+    matchText:{
+        backgroundColor : 'transparent',
+        color:'white'
     }
+    
 });
