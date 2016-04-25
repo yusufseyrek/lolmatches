@@ -82,8 +82,9 @@ export default class SummonerProfile extends Component {
         });
     }
     mostPlayedViews(data){
-        return data.map((item, index)=>{
+        let views = data.map((item, index)=>{
             let borderWidth = (index == data.length-1) ? 0 : .5;
+            let backgroundColor = (index%2 == 0) ? 'transparent' : '#111';   
             let kda = {
                 kill : (item.stats.totalChampionKills / item.stats.totalSessionsPlayed).toFixed(1),
                 death : (item.stats.totalDeathsPerSession / item.stats.totalSessionsPlayed).toFixed(1),
@@ -91,7 +92,7 @@ export default class SummonerProfile extends Component {
                 minion : (item.stats.totalMinionKills / item.stats.totalSessionsPlayed).toFixed(1),
             };
             return (
-                <View style={[styles.rowView,styles.mostPlayedItem,{borderBottomWidth: borderWidth}]} key={`mostPlayedItem-${index}`}>
+                <View style={[styles.rowView,styles.mostPlayedItem,{borderBottomWidth: borderWidth,backgroundColor:backgroundColor}]} key={`mostPlayedItem-${index}`}>
                     <View style={[styles.rowView,{flex:1}]}>
                         <Image style={styles.championImage} source={{uri : item.championObject.squareImage}}/>
                         <View style={[styles.columnView,{marginLeft:5}]}>
@@ -107,43 +108,45 @@ export default class SummonerProfile extends Component {
                     </View>
                     <View style={[styles.seperatorVertical,{height:30}]}></View>
                     <View style={[styles.columnView,{flex:1}]}>
-                        <Text style={styles.heading4}>{`${item.stats.totalSessionsWon} Wins / ${item.stats.totalSessionsLost} Losses`}</Text>
+                        <Text style={styles.heading4}>{`${item.stats.totalSessionsWon} Win / ${item.stats.totalSessionsLost} Loss`}</Text>
                         <Text style={styles.heading4}>{`Creep: ${kda.minion}/game`}</Text>
                     </View>
                 </View>
             )
         });
+        if(data.length > 0){
+            views.unshift(
+                <View style={[styles.rowView,{margin:15}]} key={"most-played-title"}>
+                    <Text style={[styles.heading2,{fontWeight:'bold'}]}>Most Played Champions</Text>
+                </View>
+            );
+        }
+        return views;
     }
     render() {
         let {mostPlayedChampions, summonerInfo, leagueData} = this.state;
+        
+        let championName = "";
+        if(summonerInfo.name)
+            championName = `${summonerInfo.name} (${summonerInfo.summonerLevel})`;
         return (
             <View style={{flex:1}} >
                 <Image style={styles.splashImage} source={require('../Assets/Images/bg.jpg')} />
-
                 <View style={styles.container}>
-
                     <View style={[styles.containerView,{marginTop:25, justifyContent:'center'}]}>
                         <View style={styles.rowView}>
                             <Image style={styles.summonerIcon} source={{uri : summonerInfo.iconImage}}/>
-                            <Text style={styles.championName}>{`${summonerInfo.name} (${summonerInfo.summonerLevel})`}</Text>
+                            <Text style={styles.championName}>{championName}</Text>
                         </View>
                     </View>
-
                     <View style={styles.seperatorHorizontal}></View>
-
                     <ScrollView>
                         {this.rankedViews(leagueData)}
-
                         <View style={styles.columnView}>
-                            <View style={[styles.rowView,{margin:15,}]}>
-                                <Text style={[styles.heading2,{fontWeight:'bold'}]}>Most Played Champions</Text>
-                            </View>
                             {this.mostPlayedViews(mostPlayedChampions)}
                         </View>
                     </ScrollView>
-
                 </View>
-
                 <TouchableOpacity style={styles.closeButton} onPress={()=>Actions.pop()}>
                     <Image style={styles.closeButtonImage} source={require('../Assets/Images/close.png')}/>
                 </TouchableOpacity>
@@ -159,7 +162,7 @@ var styles = StyleSheet.create({
         flexDirection:'row',
         marginHorizontal:15,
         paddingVertical:5,
-        borderColor:'white'
+        borderColor:'white',
     },
     championImage:{
         width: 50,
