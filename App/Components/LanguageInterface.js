@@ -39,6 +39,7 @@ let LanguageInterface = {
       "english" : {"tr" : "İngilizce" , "en" : "English"},
       "selectlanguage" : {"tr" : "Dil Seçiniz", "en" : "Select Language"},
       "summonerstats" : {"tr": "Sihirdar İstatistikleri", "en": "Summoner Stats"},
+      
       "teambuilderdraftranked5x5" : {"tr" : "Dereceli 5x5" , "en" : "Ranked 5x5"},
       "rankedsolo5x5" : {"tr" : "Dereceli 5x5" , "en" : "Ranked 5x5"},
       "rankedteam3x3" : {"tr" : "Dereceli 3x3", "en" : "Ranked 3x3"},
@@ -54,8 +55,17 @@ let LanguageInterface = {
       "firstblood2x2" : {"tr" : "İlk kan 2x2" , "en" : "First Blood 2x2"},
       "hexakill" : {"tr" : "6'da 6" , "en" : "Hexa Kill"},
       "urf" : {"tr" : "Urf" , "en" : "Urf"},
+      "urfbot" : {"tr" : "Urf Bot" , "en" : "Urf Bot"},
       "aramunranked5x5" : {"tr" : "Aram" , "en" : "Aram"},
-      "counterpick" : {"tr" : "Counter Pick" , "en" : "Counter Pick"}
+      "counterpick" : {"tr" : "Counter Pick" , "en" : "Counter Pick"},
+      "none" : {"tr" : "None" , "en" : "None"},
+      "odinunranked" : {"tr" : "Odin Unranked" , "en" : "Odin Unranked"},
+      "bilgewater" : {"tr" : "Bilge Water" , "en" : "Bilge Water"},
+      "cap5x5" : {"tr" : "Cap 5x5" , "en" : "Cap 5x5"},
+      "sr6x6" : {"tr" : "Sr 6x6" , "en" : "Sr 6x6"},
+      "nightmarebot" : {"tr" : "NightMare Bot" , "en" : "NightMare bot"},
+      "ascension" : {"tr" : "Ascension" , "en" : "Ascension"}
+      
       
   },
   getCurrentLanguage(){
