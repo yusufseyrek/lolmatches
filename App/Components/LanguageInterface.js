@@ -58,7 +58,6 @@ let LanguageInterface = {
   setCurrentLanguage(key){
     this.langSlug = key;
     return Store.save(LANGUGAGE_STORE_KEY,{key: key});
-
   }
 
 };

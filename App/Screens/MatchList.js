@@ -7,7 +7,8 @@ import React, {
   ListView,
   Image,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Date
 } from 'react-native';
 
 var { width, height } = Dimensions.get("window");
@@ -74,10 +75,10 @@ export default class MatchList extends Component {
     renderRow(rowData, section, index){
         var cellBgColor = rowData.stats.win ? 'green' : 'red';
         return(
+           
             <View style={[styles.rowView,styles.cellView]} key={`matchlistkey-${index}`}>
                 
                 <View style={[styles.maskView,{backgroundColor: cellBgColor}]}></View>
-                
                 <View style={[styles.rowView,{width : width, justifyContent:'space-between'}]}>
                     <View style={styles.columnView}>
                         <Image style={styles.championImage} source={{uri : rowData.myChampion.squareImage}}>
@@ -85,7 +86,6 @@ export default class MatchList extends Component {
                                 <Text style={styles.championName}>{rowData.myChampion.name}</Text>
                             </View>
                         </Image>
-          
                     </View>
                     
                     <View style={styles.columnView}>
@@ -98,8 +98,7 @@ export default class MatchList extends Component {
                         </View>
                         </View>
                         <View style={styles.columnView}>
-                        <View style={styles.rowView}>
-                                                             
+                        <View style={styles.rowView}>                               
                             <Text style={styles.textView}>{Utils.calculateTotalGold(rowData.stats.goldEarned)}K</Text>
                         </View>
                         <View style={styles.rowView}>
@@ -133,11 +132,13 @@ export default class MatchList extends Component {
                             <Image style={styles.spellImageBottom} source={{uri : rowData.stats.items[3]}}/>
                             <Image style={styles.spellImageBottom} source={{uri : rowData.stats.items[4]}}/>
                             <Image style={styles.spellImageBottom} source={{uri : rowData.stats.items[5]}}/>
+
                         </View>
                     </View>
                 </View>
                 
             </View>
+           
         );
     }
 };
@@ -230,5 +231,14 @@ var styles = StyleSheet.create({
         width:width/13,
         height:width/13,
         margin:1
+    },
+    matchStatus:{
+        height:10,
+        backgroundColor : 'black'
+    },
+    matchText:{
+        backgroundColor : 'transparent',
+        color:'white'
     }
+    
 });
