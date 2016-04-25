@@ -47,15 +47,15 @@ export default class SummonerProfile extends Component {
     }
     rankedViews(data){
         return data.map((item, index)=>{
-            console.log(item)
             let rankImage = StaticData.getRankedIcon(item.tier.toLowerCase());
             let rankString = `${item.tier} ${item.entries[0].division}`;
+            let matchType = LanguageInterface.get(Utils.converMatchType(item.queue));
             return (
-                <View>
+                <View key={`rankedItem-${index}`}>
                     <View style={[styles.rowView,{marginHorizontal:15}]}>
                         <View style={[styles.columnView,{flex:1}]}>
                             <View style={[styles.columnView,{alignItems:'center'}]}>
-                                <Text style={[styles.heading2,{color:StaticData.GOLD_COLOR}]}>{item.queue}</Text>
+                                <Text style={[styles.heading2,{color:StaticData.GOLD_COLOR}]}>{matchType}</Text>
                                 <Image style={styles.rankImage} source={rankImage}/>
                                 <Text style={styles.heading2}>{item.entries[0].playerOrTeamName}</Text>
                             </View>
@@ -81,9 +81,41 @@ export default class SummonerProfile extends Component {
             );
         });
     }
+    mostPlayedViews(data){
+        return data.map((item, index)=>{
+            let borderWidth = (index == data.length-1) ? 0 : .5;
+            let kda = {
+                kill : (item.stats.totalChampionKills / item.stats.totalSessionsPlayed).toFixed(1),
+                death : (item.stats.totalDeathsPerSession / item.stats.totalSessionsPlayed).toFixed(1),
+                assist : (item.stats.totalAssists / item.stats.totalSessionsPlayed).toFixed(1),
+                minion : (item.stats.totalMinionKills / item.stats.totalSessionsPlayed).toFixed(1),
+            };
+            return (
+                <View style={[styles.rowView,styles.mostPlayedItem,{borderBottomWidth: borderWidth}]} key={`mostPlayedItem-${index}`}>
+                    <View style={[styles.rowView,{flex:1}]}>
+                        <Image style={styles.championImage} source={{uri : item.championObject.squareImage}}/>
+                        <View style={[styles.columnView,{marginLeft:5}]}>
+                            <Text style={[styles.heading3,{fontWeight:'600'}]}>{item.championObject.name}</Text>
+                            <View style={[styles.rowView,{marginTop:3}]}>
+                                <Text style={[styles.heading4,{color:'green'}]}>{kda.kill}</Text>
+                                <Text style={[styles.heading5,{color:'white'}]}> / </Text>
+                                <Text style={[styles.heading4,{color:'red'}]}>{kda.death}</Text>
+                                <Text style={[styles.heading5,{color:'white'}]}> / </Text>
+                                <Text style={[styles.heading4,{color:'orange'}]}>{kda.assist}</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={[styles.seperatorVertical,{height:30}]}></View>
+                    <View style={[styles.columnView,{flex:1}]}>
+                        <Text style={styles.heading4}>{`${item.stats.totalSessionsWon} Wins / ${item.stats.totalSessionsLost} Losses`}</Text>
+                        <Text style={styles.heading4}>{`Creep: ${kda.minion}/game`}</Text>
+                    </View>
+                </View>
+            )
+        });
+    }
     render() {
         let {mostPlayedChampions, summonerInfo, leagueData} = this.state;
-        //var stats = Utils.calculateStats(summonerData.champion_stats);
         return (
             <View style={{flex:1}} >
                 <Image style={styles.splashImage} source={require('../Assets/Images/bg.jpg')} />
@@ -103,30 +135,12 @@ export default class SummonerProfile extends Component {
                         {this.rankedViews(leagueData)}
 
                         <View style={styles.columnView}>
-                            <Text style={styles.heading2}>Most Played Champions</Text>
-                            <View style={[styles.rowView,styles.mostPlayedItem]}>
-                                <View style={[styles.rowView,{flex:1}]}>
-                                    <Image style={styles.championImage} source={null}/>
-                                    <Text style={[styles.heading3,{marginLeft:10}]}>Miss Fortune</Text>
-                                </View>
-                                <View style={[styles.seperatorVertical,{height:30}]}></View>
-                                <View style={[styles.columnView,{flex:1}]}>
-                                    <View style={[styles.rowView,{marginBottom:3}]}>
-                                        <Text style={styles.heading4}>KDA: </Text>
-                                        <Text style={[styles.heading4,{color:'green'}]}>13</Text>
-                                        <Text style={[styles.heading5,{color:'white'}]}> / </Text>
-                                        <Text style={[styles.heading4,{color:'red'}]}>13</Text>
-                                        <Text style={[styles.heading5,{color:'white'}]}> / </Text>
-                                        <Text style={[styles.heading4,{color:'orange'}]}>13</Text>
-                                    </View>
-                                    <View style={styles.rowView}>
-                                        <Text style={styles.heading4}>10 Wins / 30 Losses</Text>
-                                    </View>
-                                </View>
+                            <View style={[styles.rowView,{margin:15,}]}>
+                                <Text style={[styles.heading2,{fontWeight:'bold'}]}>Most Played Champions</Text>
                             </View>
+                            {this.mostPlayedViews(mostPlayedChampions)}
                         </View>
                     </ScrollView>
-
 
                 </View>
 
@@ -144,8 +158,7 @@ var styles = StyleSheet.create({
     mostPlayedItem:{
         flexDirection:'row',
         marginHorizontal:15,
-        paddingVertical:10,
-        borderBottomWidth:.5,
+        paddingVertical:5,
         borderColor:'white'
     },
     championImage:{
@@ -154,13 +167,13 @@ var styles = StyleSheet.create({
         borderRadius:3
     },
     heading2:{
-        textAlign:'center',
+
         backgroundColor:'transparent',
         fontSize:20,
         color:'white'
     },
     heading3:{
-        textAlign:'center',
+
         backgroundColor:'transparent',
         fontSize:16,
         color:'white'
@@ -171,7 +184,7 @@ var styles = StyleSheet.create({
         color:'white'
     },
     heading5:{
-        textAlign:'center',
+
         backgroundColor:'transparent',
         fontSize:12,
         color:'white'

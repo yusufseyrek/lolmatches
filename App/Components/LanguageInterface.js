@@ -39,7 +39,24 @@ let LanguageInterface = {
       "english" : {"tr" : "İngilizce" , "en" : "English"},
       "selectlanguage" : {"tr" : "Dil Seçiniz", "en" : "Select Language"},
       "summonerstats" : {"tr": "Sihirdar İstatistikleri", "en": "Summoner Stats"},
-      "summonerprofile" : {"tr": "Sihirdar Profili", "en": "Summoner Profile"}
+      "summonerprofile" : {"tr": "Sihirdar Profili", "en": "Summoner Profile"},
+      "teambuilderdraftranked5x5" : {"tr" : "Dereceli 5x5" , "en" : "Ranked 5x5"},
+      "rankedsolo5x5" : {"tr" : "Dereceli" , "en" : "Ranked"},
+      "rankedteam3x3" : {"tr" : "Dereceli 3x3", "en" : "Ranked 3x3"},
+      "rankedteam5x5" : {"tr" : "Dereceli Takım 5x5", "en" : "Ranked Team 5x5"},
+      "rankedpremade3x3" : {"tr" : "Dereceli Duo 3x3" , "en" : "Ranked Duo 3x3"},
+      "rankedpremade5x5" : {"tr" : "Dereceli Duo 5x5" , "en" : "Ranked Duo 5x5"},
+      "normal" : {"tr" : "Normal" , "en" : "Normal"},
+      "normal3x3" : {"tr" : "Normal 3x3" , "en" : "Normal 3x3"},
+      "bot" : {"tr" : "Yapay Zeka" , "en" : "Bot"},
+      "bot3x3" : {"tr" : "Yapay Zeka 3x3" , "en" : "Bot 3x3"},
+      "oneforall5x5" : {"tr" : "Birimiz Hepimiz İçin" , "en" : "One For All"},
+      "firstblood1x1" : {"tr" : "İlk kan 1x1" , "en" : "First Blood 1x1"},
+      "firstblood2x2" : {"tr" : "İlk kan 2x2" , "en" : "First Blood 2x2"},
+      "hexakill" : {"tr" : "6'da 6" , "en" : "Hexa Kill"},
+      "urf" : {"tr" : "Urf" , "en" : "Urf"},
+      "aramunranked5x5" : {"tr" : "Aram" , "en" : "Aram"},
+      "counterpick" : {"tr" : "Counter Pick" , "en" : "Counter Pick"}
   },
   getCurrentLanguage(){
     return Store.get(LANGUGAGE_STORE_KEY).then((language)=>{

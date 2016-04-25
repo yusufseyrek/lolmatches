@@ -70,7 +70,7 @@ export default class SummonerList extends Component {
     renderRow(rowData, section, index){
         var cellBg = this.props.cellColor;
         if(rowData.itsMe)
-            cellBg = "#FFB347";
+            cellBg = StaticData.GOLD_COLOR;
         var stats = Utils.calculateStats(rowData.champion_stats);
         var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
         var {rankImageSize} = this.state;
