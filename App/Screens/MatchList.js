@@ -8,10 +8,14 @@ import React, {
   Image,
   TouchableOpacity,
   Dimensions,
-  Date
+  Date,
+  screen
 } from 'react-native';
 
 var { width, height } = Dimensions.get("window");
+
+let championImageSize = width/4;
+
 
 import {Actions, Reducer} from 'react-native-router-flux';
 
@@ -46,10 +50,10 @@ export default class MatchList extends Component {
                 this.setState({dataSource : this.state.dataSource.cloneWithRows(matchList)});
             }
         });
+        
     }
     render() {
         var { summonerData } = this.props;
-        
         return (
             <View style={{flex:1,paddingBottom:50}}>
                 <Image style={styles.bgImage} source={require('../Assets/Images/bg.jpg')} />
@@ -74,13 +78,17 @@ export default class MatchList extends Component {
 
     renderRow(rowData, section, index){
         var cellBgColor = rowData.stats.win ? 'green' : 'red';
+        var formatedSubType = rowData.subType.replace("_","");
+        formatedSubType = formatedSubType.replace("_","").toLowerCase();
+
+        let detailContainerSize = width - (championImageSize + 20);
         return(
            
             <View style={[styles.rowView,styles.cellView]} key={`matchlistkey-${index}`}>
-                
                 <View style={[styles.maskView,{backgroundColor: cellBgColor}]}></View>
-                <View style={[styles.rowView,{width : width, justifyContent:'space-between'}]}>
-                    <View style={styles.columnView}>
+                <View style={[styles.rowView,{width : width}]}>
+                    
+                    <View style={[styles.columnView]}>
                         <Image style={styles.championImage} source={{uri : rowData.myChampion.squareImage}}>
                             <View style={styles.championNameView}>
                                 <Text style={styles.championName}>{rowData.myChampion.name}</Text>
@@ -88,51 +96,59 @@ export default class MatchList extends Component {
                         </Image>
                     </View>
                     
-                    <View style={styles.columnView}>
-                        <View style={styles.rowView}>
-                            <Text style={styles.textView}>{`${rowData.stats.championsKilled}/${rowData.stats.numDeaths}/${rowData.stats.assists}`}</Text>
-                        </View>
-                        <View style={styles.rowView}>
-                            <Text style={styles.textView}>{Utils.calculateKda(rowData.stats.championsKilled,rowData.stats.numDeaths,rowData.stats.assists)}</Text>
-                            <Text style={styles.kda}>KDA</Text>
-                        </View>
-                        </View>
-                        <View style={styles.columnView}>
-                        <View style={styles.rowView}>                               
-                            <Text style={styles.textView}>{Utils.calculateTotalGold(rowData.stats.goldEarned)}K</Text>
-                        </View>
-                        <View style={styles.rowView}>
-                            <Text style={styles.kda}>Gold</Text>
-                        </View>
-                        <View style={styles.rowView}>
-                        
-                            <Text style={styles.textView}>{`${rowData.stats.minionsKilled}`}</Text>
-                        </View>
-                        <View style={styles.rowView}>
-                            <Text style={styles.kda}>Creep</Text>
-                        </View>
+                    <View style={[styles.columnView,{flex:1}]}>
+                        <View style={[styles.rowView,{width:detailContainerSize,justifyContent:'space-between',marginBottom:5}]}>
+                            <Text style={[styles.matchText,{fontWeight:'600'}]}>{LanguageInterface.get(formatedSubType).toUpperCase()}</Text>
+                            <Text style={[styles.matchText,{marginRight:10}]}>{Utils.calculateDiffDate(rowData.createDate)} Days Ago</Text>
                         </View>
                         
-                        <View style={styles.columnView}>
-                        <View style={styles.rowView}>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.spells[0]}}/>
-                        </View>
-                        <View style={styles.rowView}>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.spells[1]}}/>
-                        </View>
-                        </View>
-                        
-                        <View style={[styles.columnView, {marginRight:10, alignItems:'stretch'}]}>
-                        <View style={styles.rowView}>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.stats.items[0]}}/>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.stats.items[1]}}/>
-                            <Image style={styles.spellImageTop} source={{uri : rowData.stats.items[2]}}/>
-                        </View>
-                        <View style={styles.rowView}>
-                            <Image style={styles.spellImageBottom} source={{uri : rowData.stats.items[3]}}/>
-                            <Image style={styles.spellImageBottom} source={{uri : rowData.stats.items[4]}}/>
-                            <Image style={styles.spellImageBottom} source={{uri : rowData.stats.items[5]}}/>
-
+                        <View style={[styles.rowView,{justifyContent:'space-between',width:detailContainerSize}]}>
+                            <View style={[styles.columnView]}>
+                                <View style={styles.rowView}>
+                                    <Text style={styles.textView}>{`${rowData.stats.championsKilled}/${rowData.stats.numDeaths}/${rowData.stats.assists}`}</Text>
+                                </View>
+                                <View style={styles.rowView}>
+                                    <Text style={styles.textView}>{Utils.calculateKda(rowData.stats.championsKilled,rowData.stats.numDeaths,rowData.stats.assists)}</Text>
+                                    <Text style={styles.kda}>KDA</Text>
+                                </View>
+                            </View>
+                            <View style={styles.columnView}>
+                                <View style={styles.rowView}>                               
+                                    <Text style={styles.textView}>{Utils.calculateTotalGold(rowData.stats.goldEarned)}K</Text>
+                                </View>
+                                <View style={styles.rowView}>
+                                    <Text style={styles.kda}>Gold</Text>
+                                </View>
+                                <View style={styles.rowView}>
+                                    <Text style={styles.textView}>{`${rowData.stats.minionsKilled}`}</Text>
+                                </View>
+                                <View style={styles.rowView}>
+                                    <Text style={styles.kda}>Creep</Text>
+                                </View>
+                            </View>
+                                
+                            <View style={styles.columnView}>
+                                <View style={styles.rowView}>
+                                    <Image style={styles.spellImageTop} source={{uri : rowData.spells[0]}}/>
+                                </View>
+                                <View style={styles.rowView}>
+                                    <Image style={styles.spellImageTop} source={{uri : rowData.spells[1]}}/>
+                                </View>
+                            </View>
+                                
+                            <View style={[styles.columnView, {marginRight:10, alignItems:'stretch'}]}>
+                                <View style={styles.rowView}>
+                                    <Image style={styles.spellImageTop} source={{uri : rowData.stats.items[0]}}/>
+                                    <Image style={styles.spellImageTop} source={{uri : rowData.stats.items[1]}}/>
+                                    <Image style={styles.spellImageTop} source={{uri : rowData.stats.items[2]}}/>
+                                </View>
+                                <View style={styles.rowView}>
+                                    <Image style={styles.spellImageBottom} source={{uri : rowData.stats.items[3]}}/>
+                                    <Image style={styles.spellImageBottom} source={{uri : rowData.stats.items[4]}}/>
+                                    <Image style={styles.spellImageBottom} source={{uri : rowData.stats.items[5]}}/>
+                                </View>
+                                
+                            </View>
                         </View>
                     </View>
                 </View>
@@ -185,8 +201,8 @@ var styles = StyleSheet.create({
         opacity:.3
     },
     championImage:{
-        width: width/4,
-        height:width/4,
+        width: championImageSize,
+        height: championImageSize,
         margin:10
     },
     containerView:{

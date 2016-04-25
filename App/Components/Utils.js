@@ -93,17 +93,12 @@ let Utils = {
         else
             null;
     },
-    calculateGameDuration(duration){
-        
-        var gameDuration = Math.round((duration / 60)) ;
-        return gameDuration;
-        
-    },
     calculateDiffDate(matchCreation){
         
         var currentDate = new Date()
         var matchDate = new Date(matchCreation)
-        var diff = ((currentDate - matchDate) / (24 * 3600 * 1000))
+        var diff = Math.round(((currentDate - matchDate) / (24 * 3600 * 1000)))
+        
         return diff ;
         
     }
