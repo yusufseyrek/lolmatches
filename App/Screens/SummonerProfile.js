@@ -125,7 +125,6 @@ export default class SummonerProfile extends Component {
     }
     render() {
         let {mostPlayedChampions, summonerInfo, leagueData} = this.state;
-        
         let championName = "";
         if(summonerInfo.name)
             championName = `${summonerInfo.name} (${summonerInfo.summonerLevel})`;

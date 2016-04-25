@@ -56,7 +56,7 @@ export default class lolnexus extends Component {
     componentWillMount(){
         LanguageInterface.getCurrentLanguage().then((languageString)=>{
             if(languageString){
-                this.setState({isLanguageReady : true});
+                this.setState({isLanguageReady : true, langKey: languageString});
             }
         })
         
@@ -71,7 +71,7 @@ export default class lolnexus extends Component {
     render() {
         return (
             <View style={{flex:1}}>
-                {Utils.renderIf(this.state.isLanguageReady,
+                {Utils.renderIf((this.state.isLanguageReady),
                     <Router createReducer={reducerCreate} sceneStyle={{backgroundColor:'#000'}}>
                         <Scene key="modal" component={Modal}>
                             <Scene key="root" hideNavBar={true}>

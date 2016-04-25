@@ -73,14 +73,14 @@ export default class SummonerList extends Component {
             cellBg = StaticData.GOLD_COLOR;
         var stats = Utils.calculateStats(rowData.champion_stats);
         var rankImage = StaticData.getRankedIcon(rowData.rank.tier);
-        var {rankImageSize} = this.state;
-        rankImageSize +=10;
+
+
         var extendedView = rowData.isViewExtended ? this.renderExtendedView(rowData.runes) : null;
         return(
             <TouchableHighlight onPress={()=>this.onCellExtend(index,!rowData.isViewExtended)} onLongPress={()=>this.onSummonerSelect(rowData)} key={"item-"+index}>
                 <View style={[styles.cell]}>
                     <View style={[styles.bgView,{backgroundColor: cellBg}]}></View>
-                    <Image style={[styles.rankImage,{width:rankImageSize,height:rankImageSize}]} source={rankImage}/>
+                    <Image style={[styles.rankImage]} source={rankImage}/>
                     <View style={styles.rowContainerView}>
                         
                         <View style={[styles.columnView,{marginRight:10}]}>
@@ -104,12 +104,7 @@ export default class SummonerList extends Component {
                                 <Text style={styles.textView}>{`${rowData.summonerName}`}</Text>
                                 <Text style={styles.textView}>{rowData.rank.rankString}</Text>
                             </View>
-                            <View style={styles.rowView} onLayout={(event)=>{
-                                //TODO fix laggin while rendering
-                                //TODO sometimes rank icons comes small
-                                if(rankImageSize <= 10){
-                                    this.setState({rankImageSize: event.nativeEvent.layout.height});
-                                }}}>
+                            <View style={styles.rowView}>
                                 <View style={styles.columnView}>
                                     <Text style={styles.textView}>KDA</Text>
                                     <Text style={styles.textView}>{LanguageInterface.get("ranked").toUpperCase()}</Text>
@@ -165,6 +160,8 @@ var styles = StyleSheet.create({
         marginBottom: 0
     },
     rankImage:{
+        width:48,
+        height:48,
         position:'absolute',
         right:10,
         bottom:10,
