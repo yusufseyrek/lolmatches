@@ -15,7 +15,7 @@ var Utils = require('../Components/Utils');
 var StaticData = require('../Components/StaticData');
 import SelectSummoner from './SelectSummoner';
 import ActiveMatchScreen from './ActiveMatchScreen';
-import SummonerStats from './SummonerStats';
+import SummonerProfile from './SummonerProfile';
 import MatchList from './MatchList';
 import SettingsScreen from './SettingsScreen';
 
@@ -79,7 +79,7 @@ export default class lolnexus extends Component {
                                 <Scene key="ActiveMatchScreen" panHandlers={null} component={ActiveMatchScreen}/>
                                 
                                 <Scene key="SummonerDetailTab" tabBarStyle={{backgroundColor:'black',borderTopWidth:1,borderColor:'white'}} panHandlers={null} tabs={true} direction="vertical" default="SummonerDetail" >
-                                    <Scene direction="vertical" component={SummonerStats} icon={TabIcon} key="SummonerStats" title={LanguageInterface.get("summonerstats")} hideNavBar={true} />
+                                    <Scene direction="vertical" component={SummonerProfile} icon={TabIcon} key="SummonerProfile" title={LanguageInterface.get("summonerprofile")} hideNavBar={true} />
                                     <Scene direction="vertical" component={MatchList} icon={TabIcon} key="MatchList" title={LanguageInterface.get("matchhistory")} hideNavBar={true} />
                                 </Scene>
                                 

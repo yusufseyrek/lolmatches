@@ -28,7 +28,7 @@ export default class MatchList extends Component {
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         
         this.state = {
-            spinnerVisiblity: true,
+            spinnerVisiblity: false,
             dataSource : ds.cloneWithRows([])
         }
     }

@@ -38,7 +38,8 @@ let LanguageInterface = {
       "turkish" : {"tr" : "Türkçe" , "en" : "Turkish"},
       "english" : {"tr" : "İngilizce" , "en" : "English"},
       "selectlanguage" : {"tr" : "Dil Seçiniz", "en" : "Select Language"},
-      "summonerstats" : {"tr": "Sihirdar İstatistikleri", "en": "Summoner Stats"}
+      "summonerstats" : {"tr": "Sihirdar İstatistikleri", "en": "Summoner Stats"},
+      "summonerprofile" : {"tr": "Sihirdar Profili", "en": "Summoner Profile"}
   },
   getCurrentLanguage(){
     return Store.get(LANGUGAGE_STORE_KEY).then((language)=>{
