@@ -59,7 +59,7 @@ export default class SettingsScreen extends Component{
                     <Image style={styles.logoImage} source={require('../Assets/Images/lol-logo.png')}/>
                 </View>
                 <View style={styles.columnView}>
-                    <Text></Text>
+                    
                 </View>
                 <TouchableOpacity style={styles.closeButton} onPress={()=>{
                     Actions.SelectSummoner()}}>

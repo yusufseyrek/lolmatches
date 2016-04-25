@@ -79,10 +79,8 @@ export default class MatchList extends Component {
     renderRow(rowData, section, index){
         var cellBgColor = rowData.stats.win ? 'green' : 'red';
         let formatedSubType = Utils.converMatchType(rowData.subType);
-        console.log(formatedSubType,rowData.subType);
         let detailContainerSize = width - (championImageSize + 20);
         return(
-           
             <View style={[styles.rowView,styles.cellView]} key={`matchlistkey-${index}`}>
                 <View style={[styles.maskView,{backgroundColor: cellBgColor}]}></View>
                 <View style={[styles.rowView,{width : width}]}>
