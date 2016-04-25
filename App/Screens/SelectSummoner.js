@@ -61,7 +61,7 @@ export default class SelectSummoner extends Component {
 							<Text style={[styles.historyText,{fontSize:19,fontWeight:'bold'}]}>{item.summonerName}</Text>
 						</View>
 					<View style={[styles.whiteBorder,{width:width-145}]}></View>
-						<View style={styles.rowView} >
+						<View style={styles.rowView}>
 							<Text style={styles.historyText}>{item.rankString}</Text>
 						</View>
 					</View>

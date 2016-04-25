@@ -27,54 +27,81 @@ export default class SummonerDetail extends Component {
         //TODO backend should return statistics only.
         if(!runes.statistics)
             return null;
-            
+
         var views = runes.statistics.map(function(item, index) {
             return (<Text key={`runes-${index}`} style={[styles.heading4]}>{`${item.value} ${item.label}`}</Text>);
         });
-        
+
         return views;
     }
     render() {
         var { summonerData } = this.props;
-         
+
         var rankImage = StaticData.getRankedIcon(summonerData.rank.tier);
         var oldRankImage = StaticData.getRankedIcon(summonerData.rank_last.tier);
 
-        var stats = Utils.calculateStats(summonerData.champion_stats);  
+        var stats = Utils.calculateStats(summonerData.champion_stats);
         return (
             <View style={{flex:1}} >
                 <Image style={styles.splashImage} source={{uri: summonerData.championSplashImage}} />
-                
+
                 <View style={styles.container}>
-                    <View style={styles.containerView}>
-                        <Text style={styles.summonerName}>{summonerData.summonerName}</Text>
-                    </View>
-                    
-                    <View style={styles.containerView}>
+
+                    <View style={[styles.containerView,{marginTop:25, justifyContent:'center'}]}>
                         <View style={styles.rowView}>
-                            <Image style={styles.championImage} source={{uri : summonerData.championSquareImage}}/>
-                            <View style={styles.columnView}>
-                                <Image style={styles.spellImageTop} source={{uri : summonerData.spells[0].spellUrl}}/>
-                                <Image style={styles.spellImageBottom} source={{uri : summonerData.spells[1].spellUrl}}/>
+                            <Image style={styles.summonerIcon} source={{uri : summonerData.championSquareImage}}/>
+                            <Text style={styles.championName}>{`${summonerData.summonerName} (30)`}</Text>
+                        </View>
+                    </View>
+
+                    <View style={styles.seperatorHorizontal}></View>
+
+                    <View style={[styles.rowView,{marginHorizontal:15}]}>
+                        
+                        <View style={[styles.columnView,{flex:1}]}>
+                            <View style={[styles.columnView,{alignItems:'center'}]}>
+                                <Text style={[styles.heading2,{color:StaticData.GOLD_COLOR}]}>Solo 5v5</Text>
+                                <Image style={styles.rankImage} source={rankImage}/>
+                                <View style={[styles.columnView,{flex:1,alignItems:'center'}]}>
+                                    <Text style={styles.heading2}>Platinum IV</Text>
+                                    <Text style={styles.heading4}>77 League Points</Text>
+                                    <View style={[styles.rowView,{marginTop:10}]}>
+                                        <Text style={[styles.heading2,{color:'green'}]}>20</Text>
+                                        <Text style={[styles.heading3,{color:'white'}]}> / </Text>
+                                        <Text style={[styles.heading2,{color:'red'}]}>27</Text>
+                                    </View>
+                                </View>
                             </View>
-                            <Text style={styles.championName}>{`${summonerData.championName} (${stats.totalPlayed})`}</Text>
                         </View>
+                        
+                        <View style={styles.seperatorVertical}></View>
+                        
+                        <View style={[styles.columnView,{flex:1}]}>
+                            <View style={[styles.columnView,{alignItems:'center'}]}>
+                                <Text style={[styles.heading2,{color:StaticData.GOLD_COLOR}]}>Solo 5v5</Text>
+                                <Image style={styles.rankImage} source={rankImage}/>
+                                <View style={[styles.columnView,{flex:1,alignItems:'center'}]}>
+                                    <Text style={styles.heading2}>Platinum IV</Text>
+                                    <Text style={styles.heading4}>77 League Points</Text>
+                                    <View style={[styles.rowView,{marginTop:10}]}>
+                                        <Text style={[styles.heading2,{color:'green'}]}>20</Text>
+                                        <Text style={[styles.heading3,{color:'white'}]}> / </Text>
+                                        <Text style={[styles.heading2,{color:'red'}]}>27</Text>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                        
+                        
+                        
                     </View>
                     
-                    <View style={styles.containerView}>
-                        <View style={styles.columnView}>
-                            <Image style={styles.rankImage} source={rankImage}/>
-                        </View>
-                        <View style={[styles.rowView, {justifyContent:'space-between', flex:1}]}>
-                            <Text style={styles.rankText}>{summonerData.rank.rankString}</Text>
-                            <Image style={styles.oldRankImage} source={oldRankImage}/>
-                        </View>
-                    </View>
-                    
+                    <View style={styles.seperatorHorizontal}></View>
+
                     <View style={styles.containerView}>
                         <View style={styles.seperator}></View>
                     </View>
-                    
+
                     <View style={[styles.containerView,{justifyContent:'space-between'}]}>
                         <View style={styles.columnView}>
                             <View style={styles.rowView}>
@@ -95,7 +122,7 @@ export default class SummonerDetail extends Component {
                             </View>
                         </View>
                     </View>
-                    
+
                     <View style={[styles.containerView,{justifyContent:'space-between'}]}>
                         <View style={styles.columnView}>
                             <View style={styles.rowView}>
@@ -108,9 +135,9 @@ export default class SummonerDetail extends Component {
                                 <Text style={styles.heading3}>{`${LanguageInterface.get("masteries")}: `}</Text>
                                 <Text style={styles.heading3}>{`${summonerData.masterie.ferocity}/${summonerData.masterie.cunning}/${summonerData.masterie.resolve}`}</Text>
                             </View>
-                        </View>      
+                        </View>
                     </View>
-                    
+
                     <View style={styles.containerView}>
                         <View style={styles.columnView}>
                             <Text style={[styles.heading3]}>{`${LanguageInterface.get("runes")}: `}</Text>
@@ -118,23 +145,28 @@ export default class SummonerDetail extends Component {
                             {this.mapRunesView(summonerData.runes)}
                         </View>
                     </View>
-                    
+
                     <View style={styles.containerView}>
                         <View style={styles.seperator}></View>
                     </View>
-                    
-                </View>  
-                
+
+                </View>
+
                 <TouchableOpacity style={styles.closeButton} onPress={()=>Actions.pop()}>
                     <Image style={styles.closeButtonImage} source={require('../Assets/Images/close.png')}/>
                 </TouchableOpacity>
-                
+
             </View>
         );
     }
 };
 
 var styles = StyleSheet.create({
+    heading2:{
+        backgroundColor:'transparent',
+        fontSize:20,
+        color:'white'
+    },
     heading3:{
         backgroundColor:'transparent',
         fontSize:16,
@@ -168,14 +200,14 @@ var styles = StyleSheet.create({
         backgroundColor:'transparent',
         color:'#FFF'
     },
-    championImage:{
-        width:81,
-        height: 81,
-        marginRight:2
+    summonerIcon:{
+        width:60,
+        height: 60,
+        borderRadius:3
     },
     spellImageTop:{
         width:40,
-        height:40  
+        height:40
     },
     spellImageBottom:{
         width:40,
@@ -184,15 +216,13 @@ var styles = StyleSheet.create({
     },
     championName:{
         fontSize: 23,
-        marginLeft:20,
+        marginLeft:10,
         backgroundColor:'transparent',
         color:'#FFF'
     },
     rankImage:{
-        width:60,
-        height:60,
-        marginLeft:10,
-        marginRight:11,
+        width:100,
+        height:100,
     },
     oldRankImage:{
         width:40,
@@ -209,10 +239,18 @@ var styles = StyleSheet.create({
         position:'absolute',
         opacity:.4
     },
-    seperator:{
+    seperatorHorizontal:{
         width: width - 30,
-        height:1,
-        backgroundColor:'grey'
+        height:.5,
+        backgroundColor:'grey',
+        marginLeft:15,
+        marginVertical:10
+    },
+    seperatorVertical:{
+        width:.5,
+        backgroundColor:'grey',
+        margin:10,
+        height:150
     },
     closeButtonImage:{
         width:35,

@@ -8,7 +8,8 @@ let LanguageInterface = {
     {"langSlug": "tr", "image": require('../Assets/Images/turkishflag.png'), "langKey":"turkish"},
     {"langSlug": "en", "image": require('../Assets/Images/britishflag.png'), "langKey":"english"},
   ],
-  langSlug : "en",
+  langSlug : "",
+  defaultLang : "tr",
   get(key){
     return this.data[key][this.langSlug];
   },
@@ -36,14 +37,20 @@ let LanguageInterface = {
       "back" : {"tr" : "Geri", "en" : "Back"},
       "turkish" : {"tr" : "Türkçe" , "en" : "Turkish"},
       "english" : {"tr" : "İngilizce" , "en" : "English"},
-      "selectlanguage" : {"tr" : "Dil Seçiniz", "en" : "Select Language"}
+      "selectlanguage" : {"tr" : "Dil Seçiniz", "en" : "Select Language"},
+      "summonerstats" : {"tr": "Sihirdar İstatistikleri", "en": "Summoner Stats"}
   },
   getCurrentLanguage(){
     return Store.get(LANGUGAGE_STORE_KEY).then((language)=>{
-      if(language)
+      if(language){
+        this.langSlug = language.key;
         return language.key;
-      else
-        return this.langSlug;
+      }
+      else{
+        this.langSlug = this.defaultLang;
+        return this.defaultLang;
+      }
+        
     });
     
     

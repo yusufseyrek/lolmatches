@@ -31,8 +31,8 @@ export default class SettingsScreen extends Component{
             var bgColor = (languageItem.langSlug == LanguageInterface.langSlug) ? "#1266a8" : "transparent";
             return(
                 <TouchableOpacity key={`lang-${index}`} style={styles.languageButton} onPress={()=>{
-                    LanguageInterface.setCurrentLanguage(languageItem.langSlug);
-                    Actions.SelectSummoner()}}>
+                    LanguageInterface.setCurrentLanguage(languageItem.langSlug).then(()=>Actions.SelectSummoner());
+                    }}>
                     <View style={[styles.rowView,{backgroundColor:bgColor}]}>
                         <View style={styles.columnView}> 
                             <Text style={styles.textView}>{LanguageInterface.get(languageItem.langKey)}</Text>

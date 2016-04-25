@@ -15,7 +15,7 @@ var Utils = require('../Components/Utils');
 var StaticData = require('../Components/StaticData');
 import SelectSummoner from './SelectSummoner';
 import ActiveMatchScreen from './ActiveMatchScreen';
-import SummonerDetail from './SummonerDetail';
+import SummonerStats from './SummonerStats';
 import MatchList from './MatchList';
 import SettingsScreen from './SettingsScreen';
 
@@ -49,7 +49,8 @@ export default class lolnexus extends Component {
         super(props);
         
         this.state={
-            isLanguageReady : false
+            isLanguageReady : false,
+            langKey : ''
         };
     }
     componentWillMount(){
@@ -78,7 +79,7 @@ export default class lolnexus extends Component {
                                 <Scene key="ActiveMatchScreen" panHandlers={null} component={ActiveMatchScreen}/>
                                 
                                 <Scene key="SummonerDetailTab" tabBarStyle={{backgroundColor:'black',borderTopWidth:1,borderColor:'white'}} panHandlers={null} tabs={true} direction="vertical" default="SummonerDetail" >
-                                    <Scene direction="vertical" component={SummonerDetail} icon={TabIcon} key="SummonerDetail" title={LanguageInterface.get("summonerdetails")} hideNavBar={true} />
+                                    <Scene direction="vertical" component={SummonerStats} icon={TabIcon} key="SummonerStats" title={LanguageInterface.get("summonerstats")} hideNavBar={true} />
                                     <Scene direction="vertical" component={MatchList} icon={TabIcon} key="MatchList" title={LanguageInterface.get("matchhistory")} hideNavBar={true} />
                                 </Scene>
                                 
